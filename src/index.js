@@ -14,6 +14,14 @@ app.use(express.urlencoded({extended:false}))
 app.use(express.static(publicPath)); // Serve static files
 
 app.get("/",(req,res)=>{
+    res.render("home")
+})
+
+app.get("/dashboard",(req,res)=>{
+    res.render("dashboard")
+})
+
+app.get("/login",(req,res)=>{
     res.render("login")
 })
 
@@ -37,7 +45,7 @@ app.post("/login",async (req,res)=>{
     const user=await collection.findOne({ name, password })
 
     if (user){
-        res.render("home")
+        res.render("dashboard")
     } else{
         res.render("login", { error: "Username or Password Incorrect. Please register for an account if you have not already" })
     }

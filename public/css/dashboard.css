@@ -60,19 +60,6 @@ body {
     transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
-.login-button {
-    color: rgb(128, 255, 255);
-}
-
-.login-button:hover {
-    text-decoration: underline;
-}
-
-.register-button:hover {
-    color: rgb(214, 2, 2);
-    text-decoration: underline;
-}
-
 .footer {
     position: fixed;
     bottom: 0;

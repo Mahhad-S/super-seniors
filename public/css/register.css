@@ -14,7 +14,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url(/templates/imgAssets/background.png);
+    background-image: url(/css/imgAssets/background.png);
     background-size: cover;
     background-position: center;
     padding-top: 60px; /* Adjust for navbar height */
