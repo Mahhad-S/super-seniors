@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/public\css/login.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
@@ -13,29 +13,19 @@
 
     <nav class="navbar">
         <div class="container-fluid">
-            <a class="navbar-logo" href="/dashboard" alt="Logo">
-                <img src="/css/imgAssets/project_Logo.png" alt="Logo" class="Logo">
+            <a class="navbar-logo" href="/templates/home.html" alt="Logo">
+                <img src="/templates/imgAssets/project_Logo.png" alt="Logo" class="Logo">
             </a>
             <div class="nav-buttons">
-                <a href="/login" class="nav-button login-button">Login</a>
-                <a href="/register" class="nav-button register-button">Create your account</a>
+                <a href="/templates/login.html" class="nav-button login-button">Login</a>
+                <a href="/templates/register.html" class="nav-button register-button">Create your account</a>
             </div>
         </div>
     </nav>
 
     <div class="wrapper">
         <form action="/login" method="post">
-            <img class="project-title" src="/css/imgAssets/Project_Title.png">
-<<<<<<< HEAD
-=======
-
-            {{#if error}}
-            <div id="error-message" class="error-message">
-                Incorrect username or password, please try again
-            </div>
-            {{/if}}
-
->>>>>>> e4208be12ccf33730bb82b27dcb8048f44e8d041
+            <img class="project-title" src="/templates/imgAssets/Project_Title.png">
             <div class="input-box">
                 <input type="text" name="name" placeholder="Username" required>
                 <i class='bx bxs-user-circle'></i>
@@ -53,11 +43,7 @@
             <button type="submit" class="btn">Login</button>
 
             <div class="register-link">
-<<<<<<< HEAD
-                <p>Don't have an account? <a href="/register">Register</a></p>
-=======
-                <p>Don't have an account? <a href="/templates/register.hbs">Register</a></p>
->>>>>>> e4208be12ccf33730bb82b27dcb8048f44e8d041
+                <p>Don't have an account? <a href="/templates/register.html">Register</a></p>
             </div>
         </form>
     </div>
@@ -65,6 +51,9 @@
     <footer class="footer">
         <p>A project for the class of COMP 380</p>
     </footer>
+
+    <script src="/src/index.js"></script>
+    <script src="/src/mongodb.js"></script>
     
 </body>
 </html>

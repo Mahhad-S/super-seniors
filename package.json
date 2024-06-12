@@ -2,7 +2,13 @@
   "dependencies": {
     "express": "^4.19.2",
     "hbs": "^4.2.0",
+<<<<<<< HEAD
     "mongoose": "^8.4.1",
+=======
+    "mongoose": "^8.4.1"
+  },
+  "devDependencies": {
+>>>>>>> e4208be12ccf33730bb82b27dcb8048f44e8d041
     "nodemon": "^3.1.3"
   }
 }
