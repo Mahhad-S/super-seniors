@@ -26,6 +26,17 @@ app.use(session({
     }),
     cookie: { maxAge: 1000 * 60 * 60 * 24 } // 1 day
 }));
+app.get("/",(req,res)=>{
+    res.render("home")
+})
+
+app.get("/dashboard",(req,res)=>{
+    res.render("dashboard")
+})
+
+app.get("/login",(req,res)=>{
+    res.render("login")
+})
 
 // Middleware to check if user is authenticated
 function isAuthenticated(req, res, next) {
@@ -67,11 +78,10 @@ app.post("/login", async (req, res) => {
     const { name, password } = req.body;
     const user = await collection.findOne({ name, password });
 
-    if (user) {
-        req.session.user = user; // Set the user session
-        res.redirect("/dashboard");
-    } else {
-        res.render("login", { error: "Username or Password Incorrect. Please register for an account if you have not already" });
+    if (user){
+        res.render("dashboard")
+    } else{
+        res.render("login", { error: "Username or Password Incorrect. Please register for an account if you have not already" })
     }
 });
 

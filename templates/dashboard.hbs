@@ -15,11 +15,23 @@
             <a class="navbar-logo" href="/" alt="Logo">
                 <img src="/css/imgAssets/project_Logo.png" alt="Logo" class="Logo">
             </a>
-            <div class="nav-buttons">
-            <a href="/logout" class="nav-button">Logout</a>
+            <div class="nav-buttons" id="nav-buttons">
+                <a href="/" class="nav-button signout-button" onclick="handleLogout()">Sign Out</a>
             </div>
         </div>
     </nav>
+
+    <div class="container">
+        <div class="sidebar">
+            <a href="#" class="sidebar-button">New Article</a>
+            <a href="#" class="sidebar-button">Browser</a>
+            <a href="#" class="sidebar-button">Community</a>
+        </div>
+
+        <div class="main-content">
+            <h1>Welcome to the Dashboard</h1>
+        </div>
+    </div>
 
     <footer class="footer">
         <p>A project for the class of COMP 380</p>
