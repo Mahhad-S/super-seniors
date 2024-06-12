@@ -53,8 +53,4 @@ app.post("/login",async (req,res)=>{
 
 app.listen(3000,()=>{
     console.log("port connected")
-<<<<<<< HEAD
 })
-=======
-})
->>>>>>> e4208be12ccf33730bb82b27dcb8048f44e8d041
