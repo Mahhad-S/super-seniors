@@ -26,6 +26,13 @@
     <div class="wrapper">
         <form action="/login" method="post">
             <img class="project-title" src="/css/imgAssets/Project_Title.png">
+
+            {{#if error}}
+            <div id="error-message" class="error-message">
+                Incorrect username or password, please try again
+            </div>
+            {{/if}}
+
             <div class="input-box">
                 <input type="text" name="name" placeholder="Username" required>
                 <i class='bx bxs-user-circle'></i>
