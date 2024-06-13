@@ -38,6 +38,10 @@ app.get("/login",(req,res)=>{
     res.render("login")
 })
 
+app.get("/articleCreation", (req, res) => {
+    res.render("articleCreation");
+});
+
 // Middleware to check if user is authenticated
 function isAuthenticated(req, res, next) {
     if (req.session.user) {
