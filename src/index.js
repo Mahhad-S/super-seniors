@@ -48,7 +48,11 @@ function isAuthenticated(req, res, next) {
 }
 
 app.get("/", (req, res) => {
-    res.render("home");
+    if (req.session.user) {
+        res.redirect("/dashboard");
+    } else {
+        res.render("home");
+    }
 });
 
 app.get("/dashboard", isAuthenticated, (req, res) => {
@@ -75,13 +79,17 @@ app.post("/register", async (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
-    const { name, password } = req.body;
+    const { name, password, rememberMe } = req.body;
     const user = await collection.findOne({ name, password });
 
-    if (user){
-        res.render("dashboard")
-    } else{
-        res.render("login", { error: "Username or Password Incorrect. Please register for an account if you have not already" })
+    if (user) {
+        req.session.user = user;
+        if (rememberMe) {
+            req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // 30 days
+        }
+        res.redirect("/dashboard");
+    } else {
+        res.render("login", { error: "Username or Password Incorrect. Please register for an account if you have not already" });
     }
 });
 
