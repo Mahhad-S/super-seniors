@@ -93,7 +93,7 @@ h1 {
 }
 
 .search-bar {
-    width: calc(100% - 110px);
+    width: calc(100% - 120px);
     padding: 0.5em;
     border: 1px solid #ccc;
     border-radius: 4px;
