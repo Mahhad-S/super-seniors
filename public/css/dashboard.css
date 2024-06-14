@@ -96,11 +96,9 @@ body {
 }
 
 .main-content {
-    margin-left: 200px; /* Same as sidebar width */
     padding: 20px;
     flex-grow: 1;
     display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
