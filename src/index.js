@@ -29,6 +29,10 @@ app.get("/register",(req,res)=>{
     res.render("register")
 })
 
+app.get("/browser",(req,res)=>{
+    res.render("browser")
+})
+
 app.post("/register",async (req,res)=>{
     const data={
         name:req.body.name,
