@@ -72,6 +72,26 @@ app.get("/register", (req, res) => {
     res.render("register");
 });
 
+app.get("/general-article", (req, res) => {
+    res.render("general-article");
+});
+
+app.get("/character-article", (req, res) => {
+    res.render("character-article");
+});
+
+app.get("/locations-article", (req, res) => {
+    res.render("locations-article");
+});
+
+app.get("/Orgs-article", (req, res) => {
+    res.render("Orgs-article");
+});
+
+app.get("/items-article", (req, res) => {
+    res.render("items-article");
+});
+
 app.post("/register", async (req, res) => {
     const data = {
         name: req.body.name,

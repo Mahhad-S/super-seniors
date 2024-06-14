@@ -66,7 +66,7 @@ body {
     flex: 1;
     width: 100%;
     margin-top: 70px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(167, 167, 167, 0.9);
     overflow: hidden;
 }
 
@@ -124,8 +124,9 @@ body {
 }
 
 h1 {
-    font-size: 32px;
-    color: #333;
+    font-size: 48px;
+    color: #000000;
+    text-align: center;
 }
 
 .main-content {
@@ -136,9 +137,9 @@ h1 {
 
 .card {
     background: white;
-    width: 220px;
-    height: 400px;
-    margin: 10px;
+    width: 300px;
+    height: 300px;
+    margin: 15px;
     border-radius: 15px;
     text-decoration: none; /* Remove default link styling */
     color: inherit; /* Inherit text color */
@@ -152,11 +153,10 @@ h1 {
     transform: scale(1.05); /* Slightly enlarge the card on hover */
 }
 
-.card-image {
-    background-color: aqua;
-    height: 150px;
-    margin-bottom: 15px;
-    border-radius: 15px 15px 0 0;
+.card i {
+    font-size: 56px; /* Adjust the icon size */
+    margin-bottom: 10px; /* Add some spacing below the icon */
+    margin-top: 90px;
 }
 
 .card h2 {
