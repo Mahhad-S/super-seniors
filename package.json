@@ -1,10 +1,5 @@
 {
   "dependencies": {
-<<<<<<< HEAD
-    "express": "^4.19.2",
-    "hbs": "^4.2.0",
-    "mongoose": "^8.4.1",
-=======
     "connect-mongo": "^5.1.0",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
@@ -12,7 +7,6 @@
     "mongoose": "^8.4.1"
   },
   "devDependencies": {
->>>>>>> 9a876406d93f192e74f5a19d1a588c896fc590b7
     "nodemon": "^3.1.3"
   }
 }
