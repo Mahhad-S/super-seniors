@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url(/css/imgAssets/background-2.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo img.Logo {
+    width: 50px;
+    height: auto;
+}
+
+.nav-buttons {
+    display: flex;
+    position: fixed;
+    gap: 10px;
+    top: 12px;
+    right: 5px;
+}
+
+.nav-button {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: #575757;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    margin-top: 70px;
+    background-color: rgba(255, 255, 255, 0.9);
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-button {
+    padding: 15px 20px;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-button:hover {
+    background-color: #575757;
+}
+
+.template-button {
+    padding: 15px 20px;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.template-button:hover {
+    background-color: #575757;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 32px;
+    color: #333;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    width: 220px;
+    height: 400px;
+    margin: 10px;
+    border-radius: 15px;
+    text-decoration: none; /* Remove default link styling */
+    color: inherit; /* Inherit text color */
+    display: block; /* Make the anchor tag a block element */
+    overflow: hidden; /* Ensure any overflow is hidden */
+    transition: transform 0.2s ease-in-out; /* Add a transition for hover effect */
+    text-align: center; /* Center align text inside cards */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card on hover */
+}
+
+.card-image {
+    background-color: aqua;
+    height: 150px;
+    margin-bottom: 15px;
+    border-radius: 15px 15px 0 0;
+}
+
+.card h2 {
+    text-align: center;
+    margin: 10px 0; /* Add some margin for spacing */
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0);
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    font-size: 14px;
+}
