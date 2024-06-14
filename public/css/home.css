@@ -47,7 +47,11 @@ body {
     position: fixed;
     gap: 10px;
     top: 12px;
+<<<<<<< HEAD
     right: 0px;
+=======
+    right: 5px;
+>>>>>>> 9a876406d93f192e74f5a19d1a588c896fc590b7
 }
 
 .nav-button {
@@ -77,11 +81,19 @@ body {
     position: fixed;
     bottom: 0;
     width: 100%;
+<<<<<<< HEAD
     background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+=======
+    background-color: rgba(0, 0, 0);
+>>>>>>> 9a876406d93f192e74f5a19d1a588c896fc590b7
     color: #fff;
     text-align: center;
     padding: 10px 0;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+<<<<<<< HEAD
     z-index: 1000; /* Ensure footer stays on top */
+=======
+    z-index: 1000;
+>>>>>>> 9a876406d93f192e74f5a19d1a588c896fc590b7
     font-size: 14px;
 }
