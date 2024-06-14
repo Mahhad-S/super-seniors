@@ -8,6 +8,7 @@ const collection = require("./mongodb");
 
 const templatePath = path.join(__dirname, '../templates');
 const publicPath = path.join(__dirname, '../public');
+const srcPath = path.join(__dirname, '../src');
 
 app.use(express.json());
 app.set("view engine", "hbs");
