@@ -21,9 +21,16 @@ const LogInSchema=new mongoose.Schema({
         required:true
     }
 })
-
 // Create a model based on the schema
 const collection=new mongoose.model("Collection1",LogInSchema)
+
+// Define the schema for articles
+const articleSchemaGen = new mongoose.Schema({
+    title: String,
+    content: String
+  });
+
+const Article = mongoose.model('Article', articleSchemaGen, 'General Articles');
 
 // Export the collection model
 module.exports=collection
