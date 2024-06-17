@@ -30,6 +30,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+function validateForm() {
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    var errorMessage = document.getElementById('error-message');
+
+    if (username !== 'correctusername' || password !== 'correctpassword') {
+        errorMessage.style.display = 'block';
+        return false; // Prevent form submission
+    }
+
+    return true; // Allow form submission
+}
+
+// Check if there's an error message to display
+window.onload = function() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var errorParam = urlParams.get('error');
+    var errorMessage = document.getElementById('error-message');
+
+    if (errorParam) {
+        errorMessage.style.display = 'block';
+    }
+};
+
 document.querySelector('.view-button').addEventListener('click', function() {
     const articleContent = document.getElementById('articleContent').value;
 
@@ -56,4 +80,19 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+// Mauricio's search bar
+function performSearch() {
+    const query = document.getElementById('search-bar').value;
+    // Logic to perform search and display results
+    document.getElementById('search-results').innerHTML = 'Results for: ' + query;
+}
+
+//Mahhad's view article script
+window.onload = function() {
+    const articleContent = sessionStorage.getItem('articleContent');
+
+    document.getElementById('articleTitle').innerText = content.title;
+    document.getElementById('articleBody').innerText = content.body;
+};
 
