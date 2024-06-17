@@ -138,18 +138,39 @@ body {
     border-radius: 5px;
 }
 
-.section-buttons {
+.section-box { /* Modify by the handsome Nuno */
     display: flex;
     margin-bottom: 20px;
 }
 
-.section-button {
+.section-box .section-button { /* Modify by the handsome Nuno */
+    width: 150px;
+    padding: 10px 20px;
+    background-color: #2e2e2e80;
+    color: #fff;
+    border: 1px solid rgb(19, 19, 19);
+    cursor: pointer;
+}
+
+.section-box .section-button.active { /* Modify by the handsome Nuno */
     width: 150px;
     padding: 10px 20px;
     background-color: #2e2e2e;
     color: #fff;
     border: 1px solid rgb(19, 19, 19);
     cursor: pointer;
+}
+
+.content-box { /* Modify by the handsome Nuno */
+    padding: 0px;
+}
+
+.content-box .content { /* Modify by the handsome Nuno */
+    display: none;
+}
+
+.content-box .content.active { /* Modify by the handsome Nuno */
+    display: block;
 }
 
 .article-content {

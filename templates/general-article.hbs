@@ -36,14 +36,40 @@
                 </div>
                 <div class="article-title">
                     <p>Article Title</p>
-                    <input type="text" class="title-input" id="articleTitle" placeholder="Enter article title">
+                    <label for="title"></label>
+                    <input class="title-input" type="text" id="title" name="title" required>
                 </div>
-                <div class="section-buttons">
-                    <button class="section-button">Body</button>
+                <div class="section-box">
+                    <button class="section-button active">Body</button>
                     <button class="section-button">Sidebar</button>
                     <button class="section-button">Navigation</button>
                 </div>
-                <textarea class="article-content" id="articleContent" placeholder="Enter your article content here"></textarea>
+
+                <div class="content-box">
+                    <div class="content active">
+                        <label for="article-body">Body:</label>
+                        <input class="body-input" type="text" id="body" name="body" required>
+                    </div>
+
+                    <div class="content">
+                        <label for="article-sttb">Sidebar: Top Text Box</label>
+                        <input class="sstb-input" type="text" id="sttb" name="sttb" required>
+                        <h3>Sidebar: Panel Top Text Box</h3>
+                        <label for="article-sptb">Sidebar: Panel Top Text Box</label>
+                        <input class="sptb-input" type="text" id="sptb" name="sptb" required>
+                        <h3>Sidebar: Panel Bottom Text Box</h3>
+                        <label for="article-spbb">Sidebar: Panel Bottom Text Box</label>
+                        <input class="spbb-input" type="text" id="spbb" name="spbb" required>
+                        <h3>Sidebar: Bottom Text Box</h3>
+                        <label for="article-sbtb">Sidebar: Bottom Text Box</label>
+                        <input class="sbtb-input" type="text" id="sbtb" name="sbtb" required>
+                    </div>
+
+                    <div class="content">
+                        <h2>Comming Soon in SPRINT3</h2>
+                    </div>
+
+                </div>
             </div>
         </div>
         
@@ -52,6 +78,22 @@
     <footer class="footer">
         <p>A project for the class of COMP 380</p>
     </footer>
+
+    <script>
+        const tabs= document.querySelectorAll('.section-button');
+        const all_content= document.querySelectorAll('.content');
+
+        tabs.forEach((tab, index)=>{
+            tab.addEventListener('click', ()=>{
+                tabs.forEach(tab=>{tab.classList.remove('active')});
+                tab.classList.add('active');
+            
+            all_content.forEach(content=>{content.classList.remove('active')});
+            all_content[index].classList.add('active');
+            })
+
+        })
+    </script>
 
 </body>
 </html>
