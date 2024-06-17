@@ -96,6 +96,14 @@ app.get('/viewArticle', (req, res) => {
     res.render('viewArticle');
 });
 
+app.get("/browser",(req,res)=>{
+    res.render("browser")
+})
+
+app.get("/community",(req,res)=>{
+    res.render("community")
+})
+
 app.post("/register", async (req, res) => {
     const data = {
         name: req.body.name,
