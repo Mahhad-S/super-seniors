@@ -131,6 +131,19 @@ app.post("/login", async (req, res) => {
     }
 });
 
+app.post('/saveArticle', async (req, res) => {
+    const { title, content } = req.body;
+  
+    const article = new Article({ title, content });
+  
+    try {
+      await article.save();
+      res.status(200).json({ message: 'Article saved successfully' });
+    } catch (err) {
+      res.status(500).json({ message: 'Error saving article', error: err });
+    }
+  });
+
 app.get("/logout", (req, res) => {
     req.session.destroy(err => {
         if (err) {
