@@ -15,6 +15,7 @@ app.set("view engine", "hbs");
 app.set("views", templatePath);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(publicPath)); // Serve static files
+app.use(express.static(srcPath));
 
 // Configure session middleware
 app.use(session({
