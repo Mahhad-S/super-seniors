@@ -28,10 +28,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const viewButton = document.querySelector('.view-button');
     if (viewButton) {
         viewButton.addEventListener('click', function() {
-            const articleContent = document.querySelector('.article-title input').value;
+            const articleTitle = document.querySelector('.article-title input').value;
+            const articleBody = document.querySelector('.content-box .content.active .body-input').value;
 
-            // Store the value in the sessionStorage
-            sessionStorage.setItem('articleContent', articleContent);
+            // Store the values in the sessionStorage
+            sessionStorage.setItem('articleTitle', articleTitle);
+            sessionStorage.setItem('articleBody', articleBody);
 
             // Redirect to the viewArticle page
             window.location.href = '/viewArticle';
