@@ -1,4 +1,4 @@
-/*Homepage CSS Styilng*/
+/* Homepage CSS Styling */
 
 @import url("https://fonts.googleapis.com/css?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
@@ -17,6 +17,7 @@ body {
     background-image: url(/css/imgAssets/background-2.png);
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 }
 
 .navbar {
@@ -73,6 +74,127 @@ body {
     text-decoration: underline;
 }
 
+.create-button {
+    width: 300px; 
+    padding: 15px; 
+    background-color: rgba(8, 165, 238, 0.8);
+    color: #fff;
+    font-size: 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 30px;
+}
+
+.create-button:hover {
+    background-color: rgb(19, 110, 185);
+}
+
+.blur-center {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 300%;
+    backdrop-filter: blur(5px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.content-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 2; /* Ensure this is above the blur-center */
+    position: relative;
+    flex-grow: 1;
+    margin-top: 80px;
+}
+
+
+
+.project-title-logo {
+    max-width: 350px;
+    height: auto;
+}
+
+.map-image-section {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.map-image-logo {
+    max-width: 800px;
+    height: auto;
+}
+.description-section {
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.418);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgb(0, 0, 0);
+    margin-top: 20px; /* Adjusted margin for spacing */
+}
+
+.description-section p {
+    font-size: 17px;
+    line-height: 1.5;
+    color: #000000;
+}
+.container {
+    display: flex; 
+    justify-content: space-between; 
+    max-width: 1000px; 
+    margin: 20px auto; 
+}
+.content-center h1{
+    text-align: center;
+    font-size: 40px;
+    color: #000000;
+    margin-top: 100px;
+}
+.content-center h3{
+    text-align: center;
+    font-size: 40px;
+    color: #000000;
+}
+.column-features {
+    flex: 1; 
+    padding: 20px;
+    border: 1px solid #ccc;  
+}
+
+.column-features h2 {
+    font-size: 20px; 
+    margin-bottom: 10px; 
+}
+
+.column-features p {
+    font-size: 10px;
+}
+
+.column {
+    flex: 1; 
+    padding: 20px;
+    border: 1px solid #ccc;  
+}
+
+.column h2 {
+    font-size: 20px; 
+    margin-bottom: 10px; 
+}
+
+.column p {
+    font-size: 15px;
+}
+
+.indent{
+    margin-top: 10px;
+}
 .footer {
     position: fixed;
     bottom: 0;
@@ -84,4 +206,7 @@ body {
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     font-size: 14px;
+}
+.features{
+    margin-top: 20px;
 }
