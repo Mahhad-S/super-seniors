@@ -7,6 +7,19 @@
     <title>Character Article</title>
     <link rel="stylesheet" href="/Article/character-article.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script>
+    document.querySelector('.view-button').addEventListener('click', function() {
+        const articleTitle = document.getElementById('articleTitle').value;
+        const articleContent = document.getElementById('articleContent').value;
+
+        // Store the values in the sessionStorage
+        sessionStorage.setItem('articleTitle', articleTitle);
+        sessionStorage.setItem('articleContent', articleContent);
+
+        // Redirect to the view page
+        window.location.href = '/viewArticle';
+    });
+    </script>
 </head>
 <body>
     

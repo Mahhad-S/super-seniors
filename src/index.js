@@ -92,6 +92,10 @@ app.get("/items-article", (req, res) => {
     res.render("items-article");
 });
 
+app.get('/viewArticle', (req, res) => {
+    res.render('viewArticle');
+});
+
 app.post("/register", async (req, res) => {
     const data = {
         name: req.body.name,
