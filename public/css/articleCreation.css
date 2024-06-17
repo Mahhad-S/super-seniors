@@ -94,10 +94,74 @@ body {
     background-color: #575757;
 }
 
+.template-button {
+    padding: 15px 20px;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.template-button:hover {
+    background-color: #575757;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 48px;
+    color: #000000;
+    text-align: center;
+}
+
 .main-content {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    width: 300px;
+    height: 300px;
+    margin: 15px;
+    border-radius: 15px;
+    text-decoration: none; /* Remove default link styling */
+    color: inherit; /* Inherit text color */
+    display: block; /* Make the anchor tag a block element */
+    overflow: hidden; /* Ensure any overflow is hidden */
+    transition: transform 0.2s ease-in-out; /* Add a transition for hover effect */
+    text-align: center; /* Center align text inside cards */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card on hover */
+}
+
+.card i {
+    font-size: 56px; /* Adjust the icon size */
+    margin-bottom: 10px; /* Add some spacing below the icon */
+    margin-top: 90px;
+}
+
+.card h2 {
+    text-align: center;
+    margin: 10px 0; /* Add some margin for spacing */
 }
 
 .footer {

@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="/css/dashboard.css">
+    <title>Article Creation</title>
+    <link rel="stylesheet" href="/css/articleCreation.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="container-fluid">
             <a class="navbar-logo" href="/dashboard" alt="Logo">
                 <img src="/css/imgAssets/project_Logo.png" alt="Logo" class="Logo">
@@ -29,7 +29,31 @@
         </div>
 
         <div class="content-wrapper">
-            
+            <div class="title-container">
+                <h1>Create New Article</h1>
+            </div>
+            <div class="main-content">
+                <a href="/general-article" class="card">
+                    <i class='bx bx-cog' ></i>
+                    <h2>General</h2>
+                </a>
+                <a href="/character-article" class="card">
+                    <i class='bx bx-user' ></i>
+                    <h2>Characters</h2>
+                </a>
+                <a href="/locations-article" class="card">
+                    <i class='bx bx-map'></i>
+                    <h2>Locations</h2>
+                </a>
+                <a href="/Orgs-article" class="card">
+                    <i class='bx bx-sitemap' ></i>
+                    <h2>Organizations</h2>
+                </a>
+                <a href="/items-article" class="card">
+                    <i class='bx bx-package' ></i>
+                    <h2>Items</h2>
+                </a>
+            </div>
         </div>
     </div>
 

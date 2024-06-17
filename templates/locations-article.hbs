@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="/css/dashboard.css">
+    <title>locations Article</title>
+    <link rel="stylesheet" href="/Article/locations-article.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -29,8 +29,24 @@
         </div>
 
         <div class="content-wrapper">
-            
+            <div class="main-content">
+                <div class="button-container">
+                    <button class="save-button">Save</button>
+                    <button class="view-button">View</button>
+                </div>
+                <div class="article-title">
+                    <p>Article Title</p>
+                    <input type="text" class="title-input" id="articleTitle" placeholder="Enter article title">
+                </div>
+                <div class="section-buttons">
+                    <button class="section-button">Body</button>
+                    <button class="section-button">Sidebar</button>
+                    <button class="section-button">Navigation</button>
+                </div>
+                <textarea class="article-content" id="articleContent" placeholder="Enter your article content here"></textarea>
+            </div>
         </div>
+        
     </div>
 
     <footer class="footer">

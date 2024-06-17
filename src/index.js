@@ -8,6 +8,7 @@ const collection = require("./mongodb");
 
 const templatePath = path.join(__dirname, '../templates');
 const publicPath = path.join(__dirname, '../public');
+const srcPath = path.join(__dirname, '../src');
 
 app.use(express.json());
 app.set("view engine", "hbs");
@@ -26,6 +27,21 @@ app.use(session({
     }),
     cookie: { maxAge: 1000 * 60 * 60 * 24 } // 1 day
 }));
+app.get("/",(req,res)=>{
+    res.render("home")
+})
+
+app.get("/dashboard",(req,res)=>{
+    res.render("dashboard")
+})
+
+app.get("/login",(req,res)=>{
+    res.render("login")
+})
+
+app.get("/articleCreation", (req, res) => {
+    res.render("articleCreation");
+});
 
 // Middleware to check if user is authenticated
 function isAuthenticated(req, res, next) {
@@ -37,7 +53,11 @@ function isAuthenticated(req, res, next) {
 }
 
 app.get("/", (req, res) => {
-    res.render("home");
+    if (req.session.user) {
+        res.redirect("/dashboard");
+    } else {
+        res.render("home");
+    }
 });
 
 app.get("/dashboard", isAuthenticated, (req, res) => {
@@ -52,6 +72,26 @@ app.get("/register", (req, res) => {
     res.render("register");
 });
 
+app.get("/general-article", (req, res) => {
+    res.render("general-article");
+});
+
+app.get("/character-article", (req, res) => {
+    res.render("character-article");
+});
+
+app.get("/locations-article", (req, res) => {
+    res.render("locations-article");
+});
+
+app.get("/Orgs-article", (req, res) => {
+    res.render("Orgs-article");
+});
+
+app.get("/items-article", (req, res) => {
+    res.render("items-article");
+});
+
 app.post("/register", async (req, res) => {
     const data = {
         name: req.body.name,
@@ -64,11 +104,14 @@ app.post("/register", async (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
-    const { name, password } = req.body;
+    const { name, password, rememberMe } = req.body;
     const user = await collection.findOne({ name, password });
 
     if (user) {
-        req.session.user = user; // Set the user session
+        req.session.user = user;
+        if (rememberMe) {
+            req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // 30 days
+        }
         res.redirect("/dashboard");
     } else {
         res.render("login", { error: "Username or Password Incorrect. Please register for an account if you have not already" });
