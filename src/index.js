@@ -3,7 +3,6 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const app = express();
 const path = require("path");
-const hbs = require("hbs");
 const collection = require("./mongodb");
 
 const templatePath = path.join(__dirname, '../templates');
@@ -11,10 +10,7 @@ const publicPath = path.join(__dirname, '../public');
 const srcPath = path.join(__dirname, '../src');
 
 app.use(express.json());
-app.set("view engine", "hbs");
-app.set("views", templatePath);
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(publicPath)); // Serve static files
 
 // Configure session middleware
 app.use(session({
@@ -27,21 +23,10 @@ app.use(session({
     }),
     cookie: { maxAge: 1000 * 60 * 60 * 24 } // 1 day
 }));
-app.get("/",(req,res)=>{
-    res.render("home")
-})
 
-app.get("/dashboard",(req,res)=>{
-    res.render("dashboard")
-})
-
-app.get("/login",(req,res)=>{
-    res.render("login")
-})
-
-app.get("/articleCreation", (req, res) => {
-    res.render("articleCreation");
-});
+// Serve static files
+app.use(express.static(publicPath)); 
+app.use(express.static(srcPath));
 
 // Middleware to check if user is authenticated
 function isAuthenticated(req, res, next) {
@@ -52,57 +37,66 @@ function isAuthenticated(req, res, next) {
     }
 }
 
+// Routes to serve HTML files
 app.get("/", (req, res) => {
-    if (req.session.user) {
-        res.redirect("/dashboard");
-    } else {
-        res.render("home");
-    }
+    res.sendFile(path.join(__dirname, '../templates/home.html'));
 });
 
 app.get("/dashboard", isAuthenticated, (req, res) => {
-    res.render("dashboard");
+    res.sendFile(path.join(__dirname, '../templates/dashboard.html'));
 });
 
 app.get("/login", (req, res) => {
-    res.render("login");
+    res.sendFile(path.join(__dirname, '../templates/login.html'));
+});
+
+app.get("/articleCreation", (req, res) => {
+    res.sendFile(path.join(__dirname, '../templates/articleCreation.html'));
 });
 
 app.get("/register", (req, res) => {
-    res.render("register");
+    res.sendFile(path.join(__dirname, '../templates/register.html'));
 });
 
 app.get("/general-article", (req, res) => {
-    res.render("general-article");
+    res.sendFile(path.join(__dirname, '../templates/general-article.html'));
 });
 
 app.get("/character-article", (req, res) => {
-    res.render("character-article");
+    res.sendFile(path.join(__dirname, '../templates/character-article.html'));
 });
 
 app.get("/locations-article", (req, res) => {
-    res.render("locations-article");
+    res.sendFile(path.join(__dirname, '../templates/locations-article.html'));
 });
 
 app.get("/Orgs-article", (req, res) => {
-    res.render("Orgs-article");
+    res.sendFile(path.join(__dirname, '../templates/Orgs-article.html'));
 });
 
 app.get("/items-article", (req, res) => {
-    res.render("items-article");
+    res.sendFile(path.join(__dirname, '../templates/items-article.html'));
 });
 
 app.get('/viewArticle', (req, res) => {
-    res.render('viewArticle');
+    res.sendFile(path.join(__dirname, '../templates/viewArticle.html'));
 });
 
-app.get("/browser",(req,res)=>{
-    res.render("browser")
-})
+app.get("/browser", (req, res) => {
+    res.sendFile(path.join(__dirname, '../templates/browser.html'));
+});
 
-app.get("/community",(req,res)=>{
-    res.render("community")
-})
+app.get("/community", (req, res) => {
+    res.sendFile(path.join(__dirname, '../templates/community.html'));
+});
+
+app.get("/articleCreation", (req, res) => {
+    res.sendFile(path.join(__dirname, '../templates/articleCreation.html'));
+});
+
+app.get("/general-article", (req, res) => {
+    res.sendFile(path.join(__dirname, '../templates/general-article.html'));
+});
 
 app.post("/register", async (req, res) => {
     const data = {
@@ -126,7 +120,14 @@ app.post("/login", async (req, res) => {
         }
         res.redirect("/dashboard");
     } else {
-        res.render("login", { error: "Username or Password Incorrect. Please register for an account if you have not already" });
+        res.redirect("/login?error=true");    }
+});
+
+app.use("/login", (req, res, next) => {
+    if (req.query.error) {
+        res.sendFile(path.join(__dirname, '../templates/login.html'), { error: "Username or Password Incorrect. Please register for an account if you have not already" });
+    } else {
+        next();
     }
 });
 
@@ -142,12 +143,14 @@ app.get("/logout", (req, res) => {
 
 app.get("/navbar-logo", (req, res) => {
     if (req.session.user) {
-        res.redirect("/dashboard");
+    res.redirect("/dashboard");
     } else {
-        res.redirect("/");
+    res.redirect("/");
     }
 });
 
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
 });
+
+

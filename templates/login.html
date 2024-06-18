@@ -26,11 +26,9 @@
         <form action="/login" method="post">
             <img class="project-title" src="/css/imgAssets/Project_Title.png">
 
-            {{#if error}}
             <div id="error-message" class="error-message">
                 Incorrect username or password, please try again
             </div>
-            {{/if}}
 
             <div class="input-box">
                 <input type="text" name="name" id="username" placeholder="Username" required>
@@ -58,7 +56,7 @@
         <p>A project for the class of COMP 380</p>
     </footer>
 
-    <script src="/js/rememberMe.js"></script>
+    <script src="/script.js"></script>
     
 </body>
 </html>

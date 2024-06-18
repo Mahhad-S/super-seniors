@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Items Article</title>
-    <link rel="stylesheet" href="/Article/items-article.css">
+    <title>Article Creation</title>
+    <link rel="stylesheet" href="/css/articleCreation.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="container-fluid">
             <a class="navbar-logo" href="/dashboard" alt="Logo">
                 <img src="/css/imgAssets/project_Logo.png" alt="Logo" class="Logo">
@@ -29,29 +29,39 @@
         </div>
 
         <div class="content-wrapper">
+            <div class="title-container">
+                <h1>Create New Article</h1>
+            </div>
             <div class="main-content">
-                <div class="button-container">
-                    <button href= "/browser" class="save-button">Save</button>
-                    <button href= "/viewArticle" class="view-button">View</button>
-                </div>
-                <div class="article-title">
-                    <p>Article Title</p>
-                    <input type="text" class="title-input" id="articleTitle" placeholder="Enter article title">
-                </div>
-                <div class="section-buttons">
-                    <button class="section-button">Body</button>
-                    <button class="section-button">Sidebar</button>
-                    <button class="section-button">Navigation</button>
-                </div>
-                <textarea class="article-content" id="articleContent" placeholder="Enter your article content here"></textarea>
+                <a href="/general-article" class="card">
+                    <i class='bx bx-cog' ></i>
+                    <h2>General</h2>
+                </a>
+                <a href="/character-article" class="card">
+                    <i class='bx bx-user' ></i>
+                    <h2>Characters</h2>
+                </a>
+                <a href="/locations-article" class="card">
+                    <i class='bx bx-map'></i>
+                    <h2>Locations</h2>
+                </a>
+                <a href="/Orgs-article" class="card">
+                    <i class='bx bx-sitemap' ></i>
+                    <h2>Organizations</h2>
+                </a>
+                <a href="/items-article" class="card">
+                    <i class='bx bx-package' ></i>
+                    <h2>Items</h2>
+                </a>
             </div>
         </div>
-        
     </div>
 
     <footer class="footer">
         <p>A project for the class of COMP 380</p>
     </footer>
+
+    <script src="/script.js"></script>
 
 </body>
 </html>

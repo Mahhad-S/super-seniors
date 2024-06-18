@@ -31,8 +31,8 @@
         <div class="content-wrapper">
             <div class="main-content">
                 <div class="button-container">
-                    <button href= "/browser" class="save-button">Save</button>
-                    <button href= "/viewArticle" class="view-button">View</button>
+                    <button href="/browser" class="save-button">Save</button>
+                    <button href="/viewArticle" class="view-button">View</button>
                 </div>
                 <div class="article-title">
                     <p>Article Title</p>
@@ -54,19 +54,19 @@
                     <div class="content">
                         <label for="article-sttb">Sidebar: Top Text Box</label>
                         <input class="sstb-input" type="text" id="sttb" name="sttb" required>
-                        <h3>Sidebar: Panel Top Text Box</h3>
+
                         <label for="article-sptb">Sidebar: Panel Top Text Box</label>
                         <input class="sptb-input" type="text" id="sptb" name="sptb" required>
-                        <h3>Sidebar: Panel Bottom Text Box</h3>
+
                         <label for="article-spbb">Sidebar: Panel Bottom Text Box</label>
                         <input class="spbb-input" type="text" id="spbb" name="spbb" required>
-                        <h3>Sidebar: Bottom Text Box</h3>
+                        
                         <label for="article-sbtb">Sidebar: Bottom Text Box</label>
                         <input class="sbtb-input" type="text" id="sbtb" name="sbtb" required>
                     </div>
 
                     <div class="content">
-                        <h2>Comming Soon in SPRINT3</h2>
+                        <h2>Coming Soon in SPRINT3</h2>
                     </div>
 
                 </div>
@@ -79,21 +79,7 @@
         <p>A project for the class of COMP 380</p>
     </footer>
 
-    <script>
-        const tabs= document.querySelectorAll('.section-button');
-        const all_content= document.querySelectorAll('.content');
-
-        tabs.forEach((tab, index)=>{
-            tab.addEventListener('click', ()=>{
-                tabs.forEach(tab=>{tab.classList.remove('active')});
-                tab.classList.add('active');
-            
-            all_content.forEach(content=>{content.classList.remove('active')});
-            all_content[index].classList.add('active');
-            })
-
-        })
-    </script>
+    <script src="/script.js"></script>
 
 </body>
 </html>
