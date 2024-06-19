@@ -8,9 +8,18 @@
 <body>
     <h1 id="articleTitle"></h1>
     <p id="articleBody"></p>
+
+    <footer class="footer">
+        <p>A project for the class of COMP 380</p>
+    </footer>
+
     <script>
-        document.getElementById('articleTitle').textContent = sessionStorage.getItem('articleTitle');
-        document.getElementById('articleBody').textContent = sessionStorage.getItem('articleBody');
+        window.onload = function() {
+            var title = sessionStorage.getItem('articleTitle');
+            var body = sessionStorage.getItem('articleBody');
+            document.getElementById('articleTitle').textContent = title;
+            document.getElementById('articleBody').textContent = body;
+        };
     </script>
 </body>
 </html>
