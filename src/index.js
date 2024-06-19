@@ -6,7 +6,7 @@ const mongoose = require("mongoose")
 const app = express();
 const path = require("path");
 
-const userModel = require('./User');
+const userModel = require('./User.js');
 
 const templatePath = path.join(__dirname, '../templates');
 const publicPath = path.join(__dirname, '../public');
@@ -147,13 +147,11 @@ app.use("/login", (req, res, next) => {
     }
 });
 
-app.get("/logout", isAuthenticated, (req, res) => {
+app.post("/logout", isAuthenticated, (req, res) => {
     req.session.destroy((err) => {
-        if (err) {
-            return res.redirect("/dashboard");
-        }
-        res.redirect("/");
-    });
+        if (err) throw err;
+        res.redirect("/login");
+      });
 });
 
 app.get("/navbar-logo", (req, res) => {
