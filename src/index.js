@@ -111,33 +111,64 @@ app.get("/general-article",(req, res) => {
 
 app.post("/register", async (req, res) => {
     const { username, email, password } = req.body;
-    let user = await userModel.findOne({ email});
-    if (user) {
-        return res.redirect("/register?error=true");
+    
+    try {
+        let user = await userModel.findOne({ username });
+        if (user) {
+            console.log("User already exists");
+            return res.redirect("/register?error=userexists");
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 12);
+        user = new userModel({ 
+            username, 
+            email, 
+            password: hashedPassword 
+        });
+
+        await user.save();
+        console.log("User registered successfully");
+        res.redirect("/login");
+    } catch (error) {
+        console.error("Error registering user:", error);
+        res.redirect("/register?error=true");
     }
-    const hashedPassword = await bcrypt.hash(password, 12);
-    user = new userModel({ 
-        username, 
-        email, 
-        password: hashedPassword 
-    });
-    await user.save();
-    res.redirect("/login");
 });
+
 
 app.post("/login", async (req, res) => {
     const { username, password } = req.body;
-    const user = await userModel.findOne({username});
-    if(!user){
-        return res.redirect("/login?error=true");
+    try {
+        const user = await userModel.findOne({ username });
+        if (!user) {
+            console.log("User not found");
+            return res.redirect("/login?error=notfound");
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            console.log("Password does not match");
+            return res.redirect("/login?error=incorrectpassword");
+        }
+
+        req.session.isAuthenticated = true;
+        console.log("User authenticated successfully");
+        res.redirect("/dashboard");
+    } catch (error) {
+        console.error("Error during login:", error);
+        res.redirect("/login?error=true");
     }
-    const isMatch = await bcrypt.compare(password, user.password);
-    if(!isMatch){
-        return res.redirect("/login?error=true");
-    }
-    req.session.isAuthenticated = true;
-    res.redirect("/dashboard");
 });
+
+// Middleware to check if user is authenticated
+function isAuthenticated(req, res, next) {
+    if (req.session.isAuthenticated) {
+        return next();
+    } else {
+        res.redirect('/login');
+    }
+}
+
 
 app.use("/login", (req, res, next) => {
     if (req.query.error) {
