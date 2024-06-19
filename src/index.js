@@ -160,16 +160,6 @@ app.post("/login", async (req, res) => {
     }
 });
 
-// Middleware to check if user is authenticated
-function isAuthenticated(req, res, next) {
-    if (req.session.isAuthenticated) {
-        return next();
-    } else {
-        res.redirect('/login');
-    }
-}
-
-
 app.use("/login", (req, res, next) => {
     if (req.query.error) {
         res.sendFile(path.join(__dirname, '../templates/login.html'), { error: "Username or Password Incorrect. Please register for an account if you have not already" });
