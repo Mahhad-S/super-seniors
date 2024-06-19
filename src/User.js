@@ -1,23 +1,17 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const LogInSchema = new mongoose.Schema({
+const userSchema = new Schema({
     username:{
         type:String,
-        required:true
     },
     email:{
         type:String,
-        required:true,
         unique:true
     },
     password:{
         type:String,
-        required:true
     }
 })
 
-// Create a model based on the schema
-const collection= mongoose.model("Collection1",LogInSchema)
-
-// Export the collection model
-module.exports=collection
+module.exports = mongoose.model('Collection1', userSchema);
