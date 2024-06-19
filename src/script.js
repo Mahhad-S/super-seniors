@@ -55,10 +55,12 @@ window.onload = function() {
 };
 
 document.querySelector('.view-button').addEventListener('click', function() {
-    const articleContent = document.getElementById('articleContent').value;
+    const articleTitle = document.getElementById('articleContent').value;
+            const articleBody = document.querySelector('.content-box .content.active .body-input').value;
 
-    // Store the value in the sessionStorage
-    sessionStorage.setItem('articleContent', articleContent);
+    // Store the values in the sessionStorage
+    sessionStorage.setItem('articleTitle', articleTitle);
+            sessionStorage.setItem('articleBody', articleBody);
 
     // Redirect to the viewArticle page
     window.location.href = '/viewArticle';
