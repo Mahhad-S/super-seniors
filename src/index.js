@@ -126,18 +126,17 @@ app.post("/register", async (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
-    const { email, password } = req.body;
-    const user = await userModel.findOne({ email });
+    const { username, password } = req.body;
+    const user = await userModel.findOne({username});
     if(!user){
         return res.redirect("/login?error=true");
     }
     const isMatch = await bcrypt.compare(password, user.password);
     if(!isMatch){
         return res.redirect("/login?error=true");
-    } else {
-        req.session.isAuthenticated = true;
-        res.redirect("/dashboard");
     }
+    req.session.isAuthenticated = true;
+    res.redirect("/dashboard");
 });
 
 app.use("/login", (req, res, next) => {
