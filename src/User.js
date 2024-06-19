@@ -15,5 +15,3 @@ const userSchema = new mongoose.Schema({
 })
 
 module.exports = mongoose.model('Collection1', userSchema);
-
-//sda
