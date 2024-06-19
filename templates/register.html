@@ -2,17 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="/css/register.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-
     <nav class="navbar">
         <div class="container-fluid">
-            <a class="navbar-logo" href="/navbar-logo" alt="Logo">
+            <a class="navbar-logo" href="/" alt="Logo">
                 <img src="/css/imgAssets/project_Logo.png" alt="Logo" class="Logo">
             </a>
             <div class="nav-buttons">
@@ -25,22 +22,19 @@
     <div class="wrapper">
         <form action="/register" method="post">
             <img class="project-title" src="/css/imgAssets/Project_Title.png">
-            
-            <div class="input-box">
-                <input type="text" name="name" placeholder="Username" required>
-                <i class='bx bxs-user-circle'></i>
-            </div>
-            <div class="input-box">
-                <input type="email" name="email" placeholder="Email" required>
-                <i class='bx bxs-envelope'></i>
-            </div>
-            <div class="input-box">
-                <input type="password" name="password" placeholder="Password" required>
-                <i class='bx bxs-lock-alt'></i>
-            </div>
 
-            <div class="terms-conditions">
-                <label><input type="checkbox" required> I accept the terms and conditions</label>
+                <div id="error-message" class="error-message">
+
+                </div>
+
+            <div class="input-box">
+                <input type="text" name="username" id="username" placeholder="Username" required>
+            </div>
+            <div class="input-box">
+                <input type="email" name="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" id="password" placeholder="Password" required>
             </div>
 
             <button type="submit" class="btn">Register</button>
@@ -54,8 +48,5 @@
     <footer class="footer">
         <p>A project for the class of COMP 380</p>
     </footer>
-
-    <script src="/script.js"></script>
-    
 </body>
 </html>
