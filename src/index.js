@@ -1,27 +1,38 @@
 const express = require("express");
+const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
+const mongoose = require("mongoose")
 const app = express();
 const path = require("path");
-const collection = require("./mongodb");
+
+const userModel = require('./User.js');
 
 const templatePath = path.join(__dirname, '../templates');
 const publicPath = path.join(__dirname, '../public');
 const srcPath = path.join(__dirname, '../src');
 
+mongoose
+    .connect("mongodb://localhost:27017/SuperSeniors")
+    .then((res)=>{
+        console.log("MongoDB Connected")
+    })
+    .catch((error)=>{
+        console.log("Failed to Connect",error)
+    })
+
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 // Configure session middleware
 app.use(session({
     secret: 'yourSecretKey',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: MongoStore.create({
         mongoUrl: 'mongodb://localhost:27017/SuperSeniors',
         collectionName: 'sessions'
     }),
-    cookie: { maxAge: 1000 * 60 * 60 * 24 } // 1 day
 }));
 
 // Serve static files
@@ -30,7 +41,7 @@ app.use(express.static(srcPath));
 
 // Middleware to check if user is authenticated
 function isAuthenticated(req, res, next) {
-    if (req.session.user) {
+    if (req.session.isAuthenticated) {
         return next();
     } else {
         res.redirect('/login');
@@ -38,7 +49,7 @@ function isAuthenticated(req, res, next) {
 }
 
 // Routes to serve HTML files
-app.get("/", (req, res) => {
+app.get("/",(req, res) => {
     res.sendFile(path.join(__dirname, '../templates/home.html'));
 });
 
@@ -46,11 +57,11 @@ app.get("/dashboard", isAuthenticated, (req, res) => {
     res.sendFile(path.join(__dirname, '../templates/dashboard.html'));
 });
 
-app.get("/login", (req, res) => {
+app.get("/login",(req, res) => {
     res.sendFile(path.join(__dirname, '../templates/login.html'));
 });
 
-app.get("/articleCreation", (req, res) => {
+app.get("/articleCreation",(req, res) => {
     res.sendFile(path.join(__dirname, '../templates/articleCreation.html'));
 });
 
@@ -58,69 +69,74 @@ app.get("/register", (req, res) => {
     res.sendFile(path.join(__dirname, '../templates/register.html'));
 });
 
-app.get("/general-article", (req, res) => {
+app.get("/general-article",(req, res) => {
     res.sendFile(path.join(__dirname, '../templates/general-article.html'));
 });
 
-app.get("/character-article", (req, res) => {
+app.get("/character-article",(req, res) => {
     res.sendFile(path.join(__dirname, '../templates/character-article.html'));
 });
 
-app.get("/locations-article", (req, res) => {
+app.get("/locations-article",(req, res) => {
     res.sendFile(path.join(__dirname, '../templates/locations-article.html'));
 });
 
-app.get("/Orgs-article", (req, res) => {
+app.get("/Orgs-article",(req, res) => {
     res.sendFile(path.join(__dirname, '../templates/Orgs-article.html'));
 });
 
-app.get("/items-article", (req, res) => {
+app.get("/items-article",(req, res) => {
     res.sendFile(path.join(__dirname, '../templates/items-article.html'));
 });
 
-app.get('/viewArticle', (req, res) => {
+app.get('/viewArticle',(req, res) => {
     res.sendFile(path.join(__dirname, '../templates/viewArticle.html'));
 });
 
-app.get("/browser", (req, res) => {
+app.get("/browser",(req, res) => {
     res.sendFile(path.join(__dirname, '../templates/browser.html'));
 });
 
-app.get("/community", (req, res) => {
+app.get("/community",(req, res) => {
     res.sendFile(path.join(__dirname, '../templates/community.html'));
 });
 
-app.get("/articleCreation", (req, res) => {
+app.get("/articleCreation",(req, res) => {
     res.sendFile(path.join(__dirname, '../templates/articleCreation.html'));
 });
 
-app.get("/general-article", (req, res) => {
+app.get("/general-article",(req, res) => {
     res.sendFile(path.join(__dirname, '../templates/general-article.html'));
 });
 
 app.post("/register", async (req, res) => {
-    const data = {
-        name: req.body.name,
-        password: req.body.password
-    };
-
-    const user = await collection.insertMany([data]);
-    req.session.user = user[0]; // Set the user session
-    res.redirect("/dashboard");
+    const { username, email, password } = req.body;
+    let user = await userModel.findOne({ email});
+    if (user) {
+        return res.redirect("/register?error=true");
+    }
+    const hashedPassword = await bcrypt.hash(password, 12);
+    user = new userModel({ 
+        username, 
+        email, 
+        password: hashedPassword 
+    });
+    await user.save();
+    res.redirect("/login");
 });
 
 app.post("/login", async (req, res) => {
-    const { name, password, rememberMe } = req.body;
-    const user = await collection.findOne({ name, password });
-
-    if (user) {
-        req.session.user = user;
-        if (rememberMe) {
-            req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // 30 days
-        }
-        res.redirect("/dashboard");
-    } else {
-        res.redirect("/login?error=true");    }
+    const { username, password } = req.body;
+    const user = await userModel.findOne({username});
+    if(!user){
+        return res.redirect("/login?error=true");
+    }
+    const isMatch = await bcrypt.compare(password, user.password);
+    if(!isMatch){
+        return res.redirect("/login?error=true");
+    }
+    req.session.isAuthenticated = true;
+    res.redirect("/dashboard");
 });
 
 app.use("/login", (req, res, next) => {
@@ -131,14 +147,11 @@ app.use("/login", (req, res, next) => {
     }
 });
 
-app.get("/logout", (req, res) => {
-    req.session.destroy(err => {
-        if (err) {
-            return res.redirect("/dashboard");
-        }
-        res.clearCookie('connect.sid');
-        res.redirect("/");
-    });
+app.post("/logout", isAuthenticated, (req, res) => {
+    req.session.destroy((err) => {
+        if (err) throw err;
+        res.redirect("/login");
+      });
 });
 
 app.get("/navbar-logo", (req, res) => {
