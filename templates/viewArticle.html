@@ -3,23 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>View Articles</title>
 </head>
 <body>
-    <h1 id="articleTitle"></h1>
-    <p id="articleBody"></p>
+    <div id="articlesContainer"></div>
 
     <footer class="footer">
         <p>A project for the class of COMP 380</p>
     </footer>
 
     <script>
-        window.onload = function() {
-            var title = sessionStorage.getItem('articleTitle');
-            var body = sessionStorage.getItem('articleBody');
-            document.getElementById('articleTitle').textContent = title;
-            document.getElementById('articleBody').textContent = body;
-        };
+        async function fetchArticleData() {
+            try {
+                const response = await fetch('/viewArticle');
+                const articles = await response.json();
+                const container = document.getElementById('articlesContainer');
+
+                articles.forEach(article => {
+                    const articleDiv = document.createElement('div');
+                    articleDiv.classList.add('article');
+
+                    const titleElement = document.createElement('h1');
+                    titleElement.textContent = article.title;
+                    articleDiv.appendChild(titleElement);
+
+                    const bodyElement = document.createElement('p');
+                    bodyElement.textContent = article.body;
+                    articleDiv.appendChild(bodyElement);
+
+                    if (article.sttb) {
+                        const sttbElement = document.createElement('p');
+                        sttbElement.textContent = `Sidebar Top Text Box: ${article.sttb}`;
+                        articleDiv.appendChild(sttbElement);
+                    }
+
+                    if (article.sptb) {
+                        const sptbElement = document.createElement('p');
+                        sptbElement.textContent = `Sidebar Panel Top Text Box: ${article.sptb}`;
+                        articleDiv.appendChild(sptbElement);
+                    }
+
+                    if (article.spbb) {
+                        const spbbElement = document.createElement('p');
+                        spbbElement.textContent = `Sidebar Panel Bottom Text Box: ${article.spbb}`;
+                        articleDiv.appendChild(spbbElement);
+                    }
+
+                    if (article.sbtb) {
+                        const sbtbElement = document.createElement('p');
+                        sbtbElement.textContent = `Sidebar Bottom Text Box: ${article.sbtb}`;
+                        articleDiv.appendChild(sbtbElement);
+                    }
+
+                    container.appendChild(articleDiv);
+                });
+            } catch (error) {
+                console.error('Error fetching article data:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchArticleData);
     </script>
 </body>
 </html>

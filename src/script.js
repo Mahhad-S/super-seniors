@@ -24,18 +24,6 @@ window.onload = function() {
     }
 };
 
-document.querySelector('.view-button').addEventListener('click', function() {
-    const articleTitle = document.getElementById('articleContent').value;
-            const articleBody = document.querySelector('.content-box .content.active .body-input').value;
-
-    // Store the values in the sessionStorage
-    sessionStorage.setItem('articleTitle', articleTitle);
-            sessionStorage.setItem('articleBody', articleBody);
-
-    // Redirect to the viewArticle page
-    window.location.href = '/viewArticle';
-})
-
 document.addEventListener("DOMContentLoaded", () => {
     const tabs = document.querySelectorAll('.section-button');
     const allContent = document.querySelectorAll('.content');
@@ -59,19 +47,3 @@ function performSearch() {
     // Logic to perform search and display results
     document.getElementById('search-results').innerHTML = 'Results for: ' + query;
 }
-
-// Mahhad's script to save article text into session storage
-document.querySelector('.save-button').addEventListener('click', function() {
-    var title = document.querySelector('.title-input').value;
-    var body = document.querySelector('.body-input').value;
-    sessionStorage.setItem('articleTitle', title);
-    sessionStorage.setItem('articleBody', body);
-});
-
-// Mahhad's script to retrieve save data from session storage and display on view page
-window.onload = function() {
-    var title = sessionStorage.getItem('articleTitle');
-    var body = sessionStorage.getItem('articleBody');
-    document.getElementById('articleTitle').textContent = title;
-    document.getElementById('articleBody').textContent = body;
-};
