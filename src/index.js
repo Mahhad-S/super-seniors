@@ -5,8 +5,14 @@ const MongoStore = require("connect-mongo");
 const mongoose = require("mongoose")
 const app = express();
 const path = require("path");
+const cors = require('cors');
 
-const userModel = require('./User.js');
+const userModel = require('./User');
+const GeneralArticleCollection = require('./mongodb');
+const CharacterArticleCollection = require('./mongodb');
+const LocationsArticleCollection = require('./mongodb');
+const OrganizationsArticleCollection = require('./mongodb');
+const ItemsArticleCollection = require('./mongodb');
 
 const templatePath = path.join(__dirname, '../templates');
 const publicPath = path.join(__dirname, '../public');
@@ -23,6 +29,9 @@ mongoose
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors({
+    origin: 'http://localhost:3000'
+}));
 
 // Configure session middleware
 app.use(session({
@@ -160,6 +169,111 @@ app.post("/login", async (req, res) => {
     }
 });
 
+app.post("/saveArticleGen", async (req, res) => {
+    const { title, body, sttb, sptb, spbb, sbtb } = req.body;
+
+    const newArticle = new GeneralArticleCollection({
+        title,
+        body,
+        sttb,
+        sptb,
+        spbb,
+        sbtb
+    });
+
+    try {
+        await newArticle.save();
+        res.redirect('/viewArticle');
+    } catch (error) {
+        console.error("Error saving article:", error);
+        res.redirect('/general-article');
+    }
+});
+
+app.post("/saveArticleItem", async (req, res) => {
+    const { title, body, sttb, sptb, spbb, sbtb } = req.body;
+
+    const newArticle = new ItemsArticleCollection({
+        title,
+        body,
+        sttb,
+        sptb,
+        spbb,
+        sbtb
+    });
+
+    try {
+        await newArticle.save();
+        res.redirect('/viewArticle');
+    } catch (error) {
+        console.error("Error saving article:", error);
+        res.redirect('/items-article');
+    }
+});
+
+app.post("/saveArticleCharacter", async (req, res) => {
+    const { title, body, sttb, sptb, spbb, sbtb } = req.body;
+
+    const newArticle = new CharacterArticleCollection({
+        title,
+        body,
+        sttb,
+        sptb,
+        spbb,
+        sbtb
+    });
+
+    try {
+        await newArticle.save();
+        res.redirect('/viewArticle');
+    } catch (error) {
+        console.error("Error saving article:", error);
+        res.redirect('/character-article');
+    }
+});
+
+app.post("/saveArticleOrg", async (req, res) => {
+    const { title, body, sttb, sptb, spbb, sbtb } = req.body;
+
+    const newArticle = new OrganizationsArticleCollection({
+        title,
+        body,
+        sttb,
+        sptb,
+        spbb,
+        sbtb
+    });
+
+    try {
+        await newArticle.save();
+        res.redirect('/viewArticle');
+    } catch (error) {
+        console.error("Error saving article:", error);
+        res.redirect('/Orgs-article');
+    }
+});
+
+app.post("/saveArticleLocation", async (req, res) => {
+    const { title, body, sttb, sptb, spbb, sbtb } = req.body;
+
+    const newArticle = new LocationsArticleCollection({
+        title,
+        body,
+        sttb,
+        sptb,
+        spbb,
+        sbtb
+    });
+
+    try {
+        await newArticle.save();
+        res.redirect('/viewArticle');
+    } catch (error) {
+        console.error("Error saving article:", error);
+        res.redirect('/locations-article');
+    }
+});
+
 app.use("/login", (req, res, next) => {
     if (req.query.error) {
         res.sendFile(path.join(__dirname, '../templates/login.html'), { error: "Username or Password Incorrect. Please register for an account if you have not already" });
@@ -180,6 +294,56 @@ app.get("/navbar-logo", (req, res) => {
     res.redirect("/dashboard");
     } else {
     res.redirect("/");
+    }
+});
+
+app.get("/viewArticleGen", async (req, res) => {
+    try {
+        const articles = await GeneralArticleCollection.find({});
+        res.json(articles);
+    } catch (error) {
+        console.error("Error fetching articles:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+app.get("/viewArticleItem", async (req, res) => {
+    try {
+        const articles = await ItemsArticleCollection.find({});
+        res.json(articles);
+    } catch (error) {
+        console.error("Error fetching articles:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+app.get("/viewArticleOrgs", async (req, res) => {
+    try {
+        const articles = await OrganizationsArticleCollection.find({});
+        res.json(articles);
+    } catch (error) {
+        console.error("Error fetching articles:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+app.get("/viewArticleCharacter", async (req, res) => {
+    try {
+        const articles = await CharacterArticleCollection.find({});
+        res.json(articles);
+    } catch (error) {
+        console.error("Error fetching articles:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+app.get("/viewArticleLocation", async (req, res) => {
+    try {
+        const articles = await LocationsArticleCollection.find({});
+        res.json(articles);
+    } catch (error) {
+        console.error("Error fetching articles:", error);
+        res.status(500).send("Internal Server Error");
     }
 });
 
