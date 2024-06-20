@@ -17,7 +17,7 @@
     <script>
         async function fetchArticleData() {
             try {
-                const response = await fetch('/viewArticle');
+                const response = await fetch('/viewArticleGen');
                 const articles = await response.json();
                 const container = document.getElementById('articlesContainer');
 
