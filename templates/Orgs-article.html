@@ -9,7 +9,6 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    
     <nav class="navbar">
         <div class="container-fluid">
             <a class="navbar-logo" href="/dashboard" alt="Logo">
@@ -30,30 +29,61 @@
 
         <div class="content-wrapper">
             <div class="main-content">
-                <div class="button-container">
-                    <button href= "/browser" class="save-button">Save</button>
-                    <button href= "/viewArticle" class="view-button">View</button>
-                </div>
-                <div class="article-title">
-                    <p>Article Title</p>
-                    <input type="text" class="title-input" id="articleTitle" placeholder="Enter article title">
-                </div>
-                <div class="section-buttons">
-                    <button class="section-button">Body</button>
-                    <button class="section-button">Sidebar</button>
-                    <button class="section-button">Navigation</button>
-                </div>
-                <textarea class="article-content" id="articleContent" placeholder="Enter your article content here"></textarea>
+                <form action="/saveArticleOrg" method="POST" id="articleForm">
+                    <div class="button-container">
+                        <button type="submit" class="save-button" id="saveButton">Save</button>
+                        <a href="/viewArticle" class="view-button">View</a>
+                    </div>
+                    <div class="article-title">
+                        <p>Article Title</p>
+                        <label for="title"></label>
+                        <input class="title-input" type="text" id="title" name="title" required>
+                    </div>
+                    <div class="section-box">
+                        <button type="button" class="section-button active" id="bodyButton">Body</button>
+                        <button type="button" class="section-button" id="sidebarButton">Sidebar</button>
+                        <button type="button" class="section-button" id="navigationButton">Navigation</button>
+                    </div>
+
+                    <div class="content-box">
+                        <div class="content active">
+                            <label for="article-body">Body:</label>
+                            <input class="body-input" type="text" id="body" name="body" required>
+                        </div>
+
+                        <div class="content">
+                            <h2>Coming Soon in SPRINT3</h2>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-        
     </div>
 
     <footer class="footer">
         <p>A project for the class of COMP 380</p>
     </footer>
 
-    <script src="/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const saveButton = document.getElementById('saveButton');
+            const form = document.getElementById('articleForm');
+            
+            // Add event listener to prevent form submission for non-save buttons
+            document.querySelectorAll('.section-button').forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    // Logic for showing different sections can be added here
+                });
+            });
 
+            // Prevent form submission for non-save buttons
+            form.addEventListener('submit', function(event) {
+                if (event.submitter !== saveButton) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
