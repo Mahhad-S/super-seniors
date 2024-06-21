@@ -61,7 +61,11 @@ function performSearch() {
     document.getElementById('search-results').innerHTML = 'Results for: ' + query;
 }
 
-/* Quill Text Editor 
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------  */
+
+
+/* Quill Text Editor Custom Prototype             -- Don't Erase Will be revisit later on!!!
 const quill = new Quill('#editor', {
     modules: {
       toolbar: [
@@ -73,6 +77,8 @@ const quill = new Quill('#editor', {
     theme: 'snow',
   });
 */
+
+/* Quill Text Editor and Functions -- Starts  */
 
 var quill = new Quill('#editor', {
     theme: 'snow'
@@ -103,3 +109,5 @@ document.getElementById('quillForm').addEventListener('submit', function(event) 
         console.error('Error:', error);
     });
 });
+
+/* Quill Text Editor and Functions -- Ends  */

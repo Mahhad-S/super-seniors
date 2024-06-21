@@ -47,14 +47,30 @@
                         <button type="button" class="section-button" id="navigationButton">Navigation</button>
                     </div>
 
-                    <div id="editor"></div>
+                    
 
                     <div class="content-box">
+                        
                         <div class="content active">
+                            <div id="editor"></div>
                             <form id="body">
                                 <input type="hidden" name="content" id="content">
                                 <button type="submit">Submit</button>
                             </form>
+                        </div>
+
+                        <div class="content">
+                            <label for="article-sttb">Sidebar: Top Text Box</label>
+                            <input class="sstb-input" type="text" id="sttb" name="sttb" required>
+    
+                            <label for="article-sptb">Sidebar: Panel Top Text Box</label>
+                            <input class="sptb-input" type="text" id="sptb" name="sptb" required>
+
+                            <label for="article-spbb">Sidebar: Panel Bottom Text Box</label>
+                            <input class="spbb-input" type="text" id="spbb" name="spbb" required>
+
+                            <label for="article-sbtb">Sidebar: Bottom Text Box</label>
+                            <input class="sbtb-input" type="text" id="sbtb" name="sbtb" required>
                         </div>
 
                         <div class="content">
