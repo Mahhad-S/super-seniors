@@ -185,7 +185,7 @@ app.post("/saveArticleGen", async (req, res) => {
 
     try {
         await newArticle.save();
-        res.redirect('/viewArticle');
+        res.redirect('/dashboard');
     } catch (error) {
         console.error("Error saving article:", error);
         res.redirect('/general-article');
@@ -206,7 +206,7 @@ app.post("/saveArticleItem", async (req, res) => {
 
     try {
         await newArticle.save();
-        res.redirect('/viewArticle');
+        res.redirect('/dashboard');
     } catch (error) {
         console.error("Error saving article:", error);
         res.redirect('/items-article');
@@ -227,7 +227,7 @@ app.post("/saveArticleCharacter", async (req, res) => {
 
     try {
         await newArticle.save();
-        res.redirect('/viewArticle');
+        res.redirect('/dashboard');
     } catch (error) {
         console.error("Error saving article:", error);
         res.redirect('/character-article');
@@ -248,7 +248,7 @@ app.post("/saveArticleOrg", async (req, res) => {
 
     try {
         await newArticle.save();
-        res.redirect('/viewArticle');
+        res.redirect('/dashboard');
     } catch (error) {
         console.error("Error saving article:", error);
         res.redirect('/Orgs-article');
@@ -269,7 +269,7 @@ app.post("/saveArticleLocation", async (req, res) => {
 
     try {
         await newArticle.save();
-        res.redirect('/viewArticle');
+        res.redirect('/dashboard');
     } catch (error) {
         console.error("Error saving article:", error);
         res.redirect('/locations-article');
