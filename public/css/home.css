@@ -2,6 +2,10 @@
 
 @import url("https://fonts.googleapis.com/css?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -27,12 +31,16 @@ body {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     transition: top 0.3s; /* Add this line for smooth transitions */
+}
+
+.navbar-hidden {
+    top: -70px; /* Adjust based on the actual height of your navbar */
 }
 
 .navbar-logo {
@@ -46,11 +54,10 @@ body {
 }
 
 .nav-buttons {
-    display: flex;
-    position: fixed;
-    gap: 10px;
-    top: 12px;
-    right: 5px;
+    position: absolute; /* Changed to absolute */
+    top: 23px; /* Adjust as necessary, aligned with navbar padding */
+    right: 20px; /* Adjust as necessary, aligned with navbar padding */
+    z-index: 1050;
 }
 
 .nav-button {
