@@ -199,6 +199,25 @@ body {
     border-radius: 5px;
 }
 
+/* Quill Editor CSS -- Starts */
+textarea,
+input {
+    border: 1px solid #ccc;
+  }
+ 
+textarea,
+input,
+  .ql-editor {
+    padding: 4px;
+    font-size: 14px;
+  }
+  
+#editor {
+    width: 100%;
+    height: 400px;
+}
+/* Quill Editor CSS -- Ends */
+
 .footer {
     position: fixed;
     bottom: 0;
