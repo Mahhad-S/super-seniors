@@ -7,12 +7,18 @@
     font-family: "Poppins", sans-serif;
 }
 
+body.tab-active-bg {
+    background-position: center; /* Keep the background image centered */
+}
+
 body {
     display: flex;
+    flex-direction: column;
     min-height: 100vh;
     background-image: url(/css/imgAssets/background-2.png);
-    background-size: cover;
-    background-position: center;
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat;
 }
 
 .navbar {
@@ -54,6 +60,8 @@ body {
     font-weight: 600;
     border-radius: 5px;
     transition: color 0.3s ease, text-decoration 0.3s ease;
+    background-color: transparent;
+    border: none;
 }
 
 .nav-button:hover {
@@ -62,11 +70,13 @@ body {
 
 .container {
     display: flex;
+    flex: 1;
     width: 100%;
     margin-top: 70px;
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: rgba(167, 167, 167, 0.9);
     overflow: hidden;
+    /*adjust for page sizing*/
+    min-width: 300px; /* Set a minimum width for the container */
 }
 
 .sidebar {
@@ -93,13 +103,33 @@ body {
     background-color: #575757;
 }
 
-.main-content {
-    padding: 20px;
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
+    padding: 20px;
+}
+
+.title-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
+    margin-top: 300px;
 }
+
+h1 {
+    font-size: 48px;
+    color: #000000;
+    text-align: center;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 
 .footer {
     position: fixed;
@@ -112,4 +142,26 @@ body {
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 10px 20px;
+        margin: 0 20px 0 20px; /* Adjust horizontal margin */
+    }
+
+    .title-input, .article-content {
+        width: 100%;
+    }
+
+    .button-container, .section-buttons {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .save-button, .view-button, .section-button {
+        width: 100%;
+        text-align: center;
+    }
 }
