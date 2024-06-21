@@ -8,11 +8,13 @@ const path = require("path");
 const cors = require('cors');
 
 const userModel = require('./User');
-const GeneralArticleCollection = require('./mongodb');
-const CharacterArticleCollection = require('./mongodb');
-const LocationsArticleCollection = require('./mongodb');
-const OrganizationsArticleCollection = require('./mongodb');
-const ItemsArticleCollection = require('./mongodb');
+const {
+    GeneralArticleCollection,
+    CharacterArticleCollection,
+    ItemsArticleCollection,
+    LocationsArticleCollection,
+    OrganizationsArticleCollection
+} = require('./mongodb');
 
 const templatePath = path.join(__dirname, '../templates');
 const publicPath = path.join(__dirname, '../public');
@@ -350,5 +352,3 @@ app.get("/viewArticleLocation", async (req, res) => {
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
 });
-
-
