@@ -8,63 +8,25 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <div id="articlesContainer"></div>
+    <div id="articlesContainer">
+        <div class="article">
+            <h1 id="articleTitle"></h1>
+            <p id="articleBody"></p>
+        </div>
+    </div>
 
     <footer class="footer">
         <p>A project for the class of COMP 380</p>
     </footer>
 
     <script>
-        async function fetchArticleData() {
-            try {
-                const response = await fetch('/viewArticleGen');
-                const articles = await response.json();
-                const container = document.getElementById('articlesContainer');
+        document.addEventListener('DOMContentLoaded', function() {
+            const title = localStorage.getItem('articleTitle');
+            const body = localStorage.getItem('articleBody');
 
-                articles.forEach(article => {
-                    const articleDiv = document.createElement('div');
-                    articleDiv.classList.add('article');
-
-                    const titleElement = document.createElement('h1');
-                    titleElement.textContent = article.title;
-                    articleDiv.appendChild(titleElement);
-
-                    const bodyElement = document.createElement('p');
-                    bodyElement.textContent = article.body;
-                    articleDiv.appendChild(bodyElement);
-
-                    if (article.sttb) {
-                        const sttbElement = document.createElement('p');
-                        sttbElement.textContent = `Sidebar Top Text Box: ${article.sttb}`;
-                        articleDiv.appendChild(sttbElement);
-                    }
-
-                    if (article.sptb) {
-                        const sptbElement = document.createElement('p');
-                        sptbElement.textContent = `Sidebar Panel Top Text Box: ${article.sptb}`;
-                        articleDiv.appendChild(sptbElement);
-                    }
-
-                    if (article.spbb) {
-                        const spbbElement = document.createElement('p');
-                        spbbElement.textContent = `Sidebar Panel Bottom Text Box: ${article.spbb}`;
-                        articleDiv.appendChild(spbbElement);
-                    }
-
-                    if (article.sbtb) {
-                        const sbtbElement = document.createElement('p');
-                        sbtbElement.textContent = `Sidebar Bottom Text Box: ${article.sbtb}`;
-                        articleDiv.appendChild(sbtbElement);
-                    }
-
-                    container.appendChild(articleDiv);
-                });
-            } catch (error) {
-                console.error('Error fetching article data:', error);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', fetchArticleData);
+            document.getElementById('articleTitle').textContent = title;
+            document.getElementById('articleBody').textContent = body;
+        });
     </script>
 </body>
 </html>

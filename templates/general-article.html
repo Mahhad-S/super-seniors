@@ -29,10 +29,10 @@
 
         <div class="content-wrapper">
             <div class="main-content">
-                <form action="/saveArticleGen" method="POST" id="articleForm">
+                <form id="articleForm">
                     <div class="button-container">
                         <button type="submit" class="save-button" id="saveButton">Save</button>
-                        <a href="/viewArticle" class="view-button">View</a>
+                        <button type="button" class="view-button" onclick="viewArticle()">View</button>
                     </div>
                     <div class="article-title">
                         <p>Article Title</p>
@@ -65,22 +65,41 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const saveButton = document.getElementById('saveButton');
-            const form = document.getElementById('articleForm');
-            
-            // Add event listener to prevent form submission for non-save buttons
-            document.querySelectorAll('.section-button').forEach(button => {
-                button.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    // Logic for showing different sections can be added here
-                });
-            });
+        function viewArticle() {
+            const title = document.getElementById('title').value;
+            const body = document.getElementById('body').value;
 
-            // Prevent form submission for non-save buttons
-            form.addEventListener('submit', function(event) {
-                if (event.submitter !== saveButton) {
-                    event.preventDefault();
+            localStorage.setItem('articleTitle', title);
+            localStorage.setItem('articleBody', body);
+
+            window.location.href = '/viewArticle';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('articleForm');
+
+            form.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+
+                try {
+                    const response = await fetch('/saveArticleGen', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    if (response.ok) {
+                        window.location.href = '/dashboard';
+                    } else {
+                        console.error('Error saving article:', response.statusText);
+                    }
+                } catch (error) {
+                    console.error('Error saving article:', error);
                 }
             });
         });
