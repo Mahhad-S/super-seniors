@@ -29,9 +29,9 @@
 
         <div class="content-wrapper">
             <div class="main-content">
-                <form action="/saveArticleGen" method="POST">
+                <form action="/saveArticleGen" method="POST" id="articleForm">
                     <div class="button-container">
-                        <button type="submit" class="save-button">Save</button>
+                        <button type="submit" class="save-button" id="saveButton">Save</button>
                         <a href="/viewArticle" class="view-button">View</a>
                     </div>
                     <div class="article-title">
@@ -40,9 +40,9 @@
                         <input class="title-input" type="text" id="title" name="title" required>
                     </div>
                     <div class="section-box">
-                        <button class="section-button active">Body</button>
-                        <button class="section-button">Sidebar</button>
-                        <button class="section-button">Navigation</button>
+                        <button type="button" class="section-button active" id="bodyButton">Body</button>
+                        <button type="button" class="section-button" id="sidebarButton">Sidebar</button>
+                        <button type="button" class="section-button" id="navigationButton">Navigation</button>
                     </div>
 
                     <div class="content-box">
@@ -50,8 +50,6 @@
                             <label for="article-body">Body:</label>
                             <input class="body-input" type="text" id="body" name="body" required>
                         </div>
-
-                        
 
                         <div class="content">
                             <h2>Coming Soon in SPRINT3</h2>
@@ -65,5 +63,27 @@
     <footer class="footer">
         <p>A project for the class of COMP 380</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const saveButton = document.getElementById('saveButton');
+            const form = document.getElementById('articleForm');
+            
+            // Add event listener to prevent form submission for non-save buttons
+            document.querySelectorAll('.section-button').forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    // Logic for showing different sections can be added here
+                });
+            });
+
+            // Prevent form submission for non-save buttons
+            form.addEventListener('submit', function(event) {
+                if (event.submitter !== saveButton) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
