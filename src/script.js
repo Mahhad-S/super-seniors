@@ -47,3 +47,46 @@ function performSearch() {
     // Logic to perform search and display results
     document.getElementById('search-results').innerHTML = 'Results for: ' + query;
 }
+
+/* Quill Text Editor 
+const quill = new Quill('#editor', {
+    modules: {
+      toolbar: [
+        ['bold', 'italic',],
+        ['underline', 'strike', 'link',],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+      ],
+    },
+    theme: 'snow',
+  });
+*/
+
+var quill = new Quill('#editor', {
+    theme: 'snow'
+});
+
+document.getElementById('quillForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    // Get the content from Quill editor
+    var content = quill.root.innerHTML;
+    
+    // Set the content to the hidden input field
+    document.getElementById('content').value = content;
+    
+    // Prepare form data
+    var formData = new FormData(this);
+
+    // Send the data to the server
+    fetch('/submit', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+});

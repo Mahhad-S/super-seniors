@@ -7,6 +7,8 @@
     <title>General Article</title>
     <link rel="stylesheet" href="/Article/general-article.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+
 </head>
 <body>
     <nav class="navbar">
@@ -45,10 +47,14 @@
                         <button type="button" class="section-button" id="navigationButton">Navigation</button>
                     </div>
 
+                    <div id="editor"></div>
+
                     <div class="content-box">
                         <div class="content active">
-                            <label for="article-body">Body:</label>
-                            <input class="body-input" type="text" id="body" name="body" required>
+                            <form id="body">
+                                <input type="hidden" name="content" id="content">
+                                <button type="submit">Submit</button>
+                            </form>
                         </div>
 
                         <div class="content">
@@ -104,5 +110,7 @@
             });
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <script src="/script.js"></script>
 </body>
 </html>

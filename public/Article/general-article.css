@@ -176,19 +176,23 @@ body {
     cursor: pointer;
 }
 
-.content-box { /* Modify by the handsome Nuno */
-    padding: 0px;
-}
-
-.content-box .content { /* Modify by the handsome Nuno */
+.content-box .content {
     display: none;
+    margin-bottom: 20px; /* Added margin to create space between boxes */
 }
 
-.content-box .content.active { /* Modify by the handsome Nuno */
+.content-box .content.active {
     display: block;
+    margin-bottom: 50px;
+    color: white;
 }
 
-.article-content {
+.content-box .content.active label {
+    display: block; /* Show labels as blocks to appear above inputs */
+    margin-bottom: 5px; /* Add spacing between labels and inputs */
+}
+
+.content-box .content.active input {
     width: 100%;
     height: 300px;
     padding: 10px;
@@ -196,6 +200,25 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+/* Quill Editor CSS -- Starts */
+textarea,
+input {
+    border: 1px solid #ccc;
+  }
+ 
+textarea,
+input,
+  .ql-editor {
+    padding: 4px;
+    font-size: 14px;
+  }
+  
+#editor {
+    width: 100%;
+    height: 400px;
+}
+/* Quill Editor CSS -- Ends */
 
 .footer {
     position: fixed;
