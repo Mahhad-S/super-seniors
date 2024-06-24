@@ -227,7 +227,22 @@ input,
 
 #sttb {
     width: 100%;
-    height: 400px;
+    height: 200px;
+}
+
+#sptb {
+    width: 100%;
+    height: 200px;
+}
+
+#spbb {
+    width: 100%;
+    height: 200px;
+}
+
+#sbtb {
+    width: 100%;
+    height: 200px;
 }
 /* Quill Editor CSS -- Ends */
 

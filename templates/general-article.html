@@ -52,21 +52,21 @@
                         </div>
 
                         <div class="content">
-                            <label for="article-sttb">Sidebar: Top Text Box</label>
+                            <h3>Sidebar: Top Text Box</h2>
                             <div id="sttb"></div>
 
-                            <label for="article-sptb">Sidebar: Panel Top Text Box</label>
-                            <textarea class="sptb-input" type="text" id="sptb" name="sptb"></textarea>
+                            <h3>Sidebar: Panel Top Text Box</h3>
+                            <div id="sptb"></div>
 
-                            <label for="article-spbb">Sidebar: Panel Bottom Text Box</label>
-                            <input class="spbb-input" type="text" id="spbb" name="spbb">
+                            <h3>Sidebar: Panel Bottom Text Box</h3>
+                            <div id="spbb"></div>
 
-                            <label for="article-sbtb">Sidebar: Bottom Text Box</label>
-                            <input class="sbtb-input" type="text" id="sbtb" name="sbtb">
+                            <h3>Sidebar: Bottom Text Box</h3>
+                            <div id="sbtb"></div>
                         </div>
 
                         <div class="content">
-                            <h2>Coming Soon in SPRINT3</h2>
+                            <h2>Coming Soon...</h2>
                         </div>
                     </div>
                 </form>
@@ -87,11 +87,11 @@
                 event.preventDefault();
     
                 const title = document.getElementById('title').value;
-                const body = document.querySelector('.ql-editor').innerHTML; // Corrected selector for Quill editor content
-                const sttb = document.querySelector('.ql-editor').innerHTML;
-                const sptb = document.getElementById('sptb').value;
-                const spbb = document.getElementById('spbb').value;
-                const sbtb = document.getElementById('sbtb').value;
+                const body = document.querySelector('#editor .ql-editor').innerHTML; // Corrected selector for Quill editor content
+                const sttb = document.querySelector('#sttb .ql-editor').innerHTML;
+                const sptb = document.querySelector('#sptb .ql-editor').innerHTML;
+                const spbb = document.querySelector('#spbb .ql-editor').innerHTML;
+                const sbtb = document.querySelector('#sbtb .ql-editor').innerHTML;
     
                 const data = { title, body, sttb, sptb, spbb, sbtb };
     
@@ -117,11 +117,11 @@
     
         function viewArticle() {
             const title = document.getElementById('title').value;
-            const body = document.querySelector('.ql-editor').innerHTML; // Corrected selector for Quill editor content
-            const sttb = document.getElementById('sttb').value;
-            const sptb = document.getElementById('sptb').value;
-            const spbb = document.getElementById('spbb').value;
-            const sbtb = document.getElementById('sbtb').value;
+            const body = document.querySelector('#editor .ql-editor').innerHTML; // Corrected selector for Quill editor content
+            const sttb = document.querySelector('#sttb .ql-editor').innerHTML;
+            const sptb = document.querySelector('#sptb .ql-editor').innerHTML;
+            const spbb = document.querySelector('#spbb .ql-editor').innerHTML;
+            const sbtb = document.querySelector('#sbtb .ql-editor').innerHTML;
     
             localStorage.setItem('articleTitle', title);
             localStorage.setItem('articleBody', body);

@@ -88,6 +88,18 @@ var quill = new Quill('#sttb', {
     theme: 'snow'
 });
 
+var quill = new Quill('#sptb', {
+    theme: 'snow'
+});
+
+var quill = new Quill('#spbb', {
+    theme: 'snow'
+});
+
+var quill = new Quill('#sbtb', {
+    theme: 'snow'
+});
+
 document.getElementById('quillForm').addEventListener('submit', function(event) {
     event.preventDefault();
     
