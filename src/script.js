@@ -84,6 +84,10 @@ var quill = new Quill('#editor', {
     theme: 'snow'
 });
 
+var quill = new Quill('#sttb', {
+    theme: 'snow'
+});
+
 document.getElementById('quillForm').addEventListener('submit', function(event) {
     event.preventDefault();
     

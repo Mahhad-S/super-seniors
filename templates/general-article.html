@@ -53,10 +53,10 @@
 
                         <div class="content">
                             <label for="article-sttb">Sidebar: Top Text Box</label>
-                            <input class="sstb-input" type="text" id="sttb" name="sttb">
+                            <div id="sttb"></div>
 
                             <label for="article-sptb">Sidebar: Panel Top Text Box</label>
-                            <input class="sptb-input" type="text" id="sptb" name="sptb">
+                            <textarea class="sptb-input" type="text" id="sptb" name="sptb"></textarea>
 
                             <label for="article-spbb">Sidebar: Panel Bottom Text Box</label>
                             <input class="spbb-input" type="text" id="spbb" name="spbb">
@@ -88,7 +88,7 @@
     
                 const title = document.getElementById('title').value;
                 const body = document.querySelector('.ql-editor').innerHTML; // Corrected selector for Quill editor content
-                const sttb = document.getElementById('sttb').value;
+                const sttb = document.querySelector('.ql-editor').innerHTML;
                 const sptb = document.getElementById('sptb').value;
                 const spbb = document.getElementById('spbb').value;
                 const sbtb = document.getElementById('sbtb').value;
