@@ -5,8 +5,16 @@ const MongoStore = require("connect-mongo");
 const mongoose = require("mongoose")
 const app = express();
 const path = require("path");
+const cors = require('cors');
 
-const userModel = require('./User.js');
+const userModel = require('./User');
+const {
+    GeneralArticleCollection,
+    CharacterArticleCollection,
+    ItemsArticleCollection,
+    LocationsArticleCollection,
+    OrganizationsArticleCollection
+} = require('./mongodb');
 
 const templatePath = path.join(__dirname, '../templates');
 const publicPath = path.join(__dirname, '../public');
@@ -23,6 +31,9 @@ mongoose
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors({
+    origin: 'http://localhost:3000'
+}));
 
 // Configure session middleware
 app.use(session({
@@ -160,15 +171,110 @@ app.post("/login", async (req, res) => {
     }
 });
 
-// Middleware to check if user is authenticated
-function isAuthenticated(req, res, next) {
-    if (req.session.isAuthenticated) {
-        return next();
-    } else {
-        res.redirect('/login');
-    }
-}
+app.post("/saveArticleGen", async (req, res) => {
+    const { title, body, sttb, sptb, spbb, sbtb } = req.body;
 
+    const newArticle = new GeneralArticleCollection({
+        title,
+        body,
+        sttb,
+        sptb,
+        spbb,
+        sbtb
+    });
+
+    try {
+        await newArticle.save();
+        res.redirect('/dashboard');
+    } catch (error) {
+        console.error("Error saving article:", error);
+        res.redirect('/general-article');
+    }
+});
+
+app.post("/saveArticleItem", async (req, res) => {
+    const { title, body, sttb, sptb, spbb, sbtb } = req.body;
+
+    const newArticle = new ItemsArticleCollection({
+        title,
+        body,
+        sttb,
+        sptb,
+        spbb,
+        sbtb
+    });
+
+    try {
+        await newArticle.save();
+        res.redirect('/dashboard');
+    } catch (error) {
+        console.error("Error saving article:", error);
+        res.redirect('/items-article');
+    }
+});
+
+app.post("/saveArticleCharacter", async (req, res) => {
+    const { title, body, sttb, sptb, spbb, sbtb } = req.body;
+
+    const newArticle = new CharacterArticleCollection({
+        title,
+        body,
+        sttb,
+        sptb,
+        spbb,
+        sbtb
+    });
+
+    try {
+        await newArticle.save();
+        res.redirect('/dashboard');
+    } catch (error) {
+        console.error("Error saving article:", error);
+        res.redirect('/character-article');
+    }
+});
+
+app.post("/saveArticleOrg", async (req, res) => {
+    const { title, body, sttb, sptb, spbb, sbtb } = req.body;
+
+    const newArticle = new OrganizationsArticleCollection({
+        title,
+        body,
+        sttb,
+        sptb,
+        spbb,
+        sbtb
+    });
+
+    try {
+        await newArticle.save();
+        res.redirect('/dashboard');
+    } catch (error) {
+        console.error("Error saving article:", error);
+        res.redirect('/Orgs-article');
+    }
+});
+
+app.post("/saveArticleLocation", async (req, res) => {
+    const { title, body, sttb, sptb, spbb, sbtb } = req.body;
+
+    const newArticle = new LocationsArticleCollection({
+        title,
+        body,
+        sttb,
+        sptb,
+        spbb,
+        sbtb
+    });
+
+    try {
+        await newArticle.save();
+        res.redirect('/dashboard');
+    } catch (error) {
+        console.error("Error saving article:", error);
+        res.redirect('/locations-article');
+    }
+});
 
 app.use("/login", (req, res, next) => {
     if (req.query.error) {
@@ -193,8 +299,56 @@ app.get("/navbar-logo", (req, res) => {
     }
 });
 
+app.get("/viewArticleGen", async (req, res) => {
+    try {
+        const articles = await GeneralArticleCollection.find({});
+        res.json(articles);
+    } catch (error) {
+        console.error("Error fetching articles:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+app.get("/viewArticleItem", async (req, res) => {
+    try {
+        const articles = await ItemsArticleCollection.find({});
+        res.json(articles);
+    } catch (error) {
+        console.error("Error fetching articles:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+app.get("/viewArticleOrgs", async (req, res) => {
+    try {
+        const articles = await OrganizationsArticleCollection.find({});
+        res.json(articles);
+    } catch (error) {
+        console.error("Error fetching articles:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+app.get("/viewArticleCharacter", async (req, res) => {
+    try {
+        const articles = await CharacterArticleCollection.find({});
+        res.json(articles);
+    } catch (error) {
+        console.error("Error fetching articles:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+app.get("/viewArticleLocation", async (req, res) => {
+    try {
+        const articles = await LocationsArticleCollection.find({});
+        res.json(articles);
+    } catch (error) {
+        console.error("Error fetching articles:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
 });
-
-

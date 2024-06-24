@@ -7,17 +7,18 @@
     <title>General Article</title>
     <link rel="stylesheet" href="/Article/general-article.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+
 </head>
 <body>
-    
     <nav class="navbar">
         <div class="container-fluid">
             <a class="navbar-logo" href="/dashboard" alt="Logo">
                 <img src="/css/imgAssets/project_Logo.png" alt="Logo" class="Logo">
             </a>
-            <div class="nav-buttons" id="nav-buttons">
-                <a href="/" class="nav-button signout-button" onclick="handleLogout()">Sign Out</a>
-            </div>
+            <form class="nav-buttons" id="nav-buttons" action="/logout" method="post">
+                <button class="nav-button">Sign Out</button>
+            </form>
         </div>
     </nav>
 
@@ -30,56 +31,102 @@
 
         <div class="content-wrapper">
             <div class="main-content">
-                <div class="button-container">
-                    <button href="/browser" class="save-button">Save</button>
-                    <button href="/viewArticle" class="view-button">View</button>
-                </div>
-                <div class="article-title">
-                    <p>Article Title</p>
-                    <label for="title"></label>
-                    <input class="title-input" type="text" id="title" name="title" required>
-                </div>
-                <div class="section-box">
-                    <button class="section-button active">Body</button>
-                    <button class="section-button">Sidebar</button>
-                    <button class="section-button">Navigation</button>
-                </div>
-
-                <div class="content-box">
-                    <div class="content active">
-                        <label for="article-body">Body:</label>
-                        <input class="body-input" type="text" id="body" name="body" required>
+                <form id="articleForm">
+                    <div class="button-container">
+                        <button type="submit" class="save-button" id="saveButton">Save</button>
+                        <button type="button" class="view-button" onclick="viewArticle()">View</button>
+                    </div>
+                    <div class="article-title">
+                        <p>Article Title</p>
+                        <label for="title"></label>
+                        <input class="title-input" type="text" id="title" name="title" required>
+                    </div>
+                    <div class="section-box">
+                        <button type="button" class="section-button active" id="bodyButton">Body</button>
+                        <button type="button" class="section-button" id="sidebarButton">Sidebar</button>
+                        <button type="button" class="section-button" id="navigationButton">Navigation</button>
                     </div>
 
-                    <div class="content">
-                        <label for="article-sttb">Sidebar: Top Text Box</label>
-                        <input class="sstb-input" type="text" id="sttb" name="sttb" required>
+                    
 
-                        <label for="article-sptb">Sidebar: Panel Top Text Box</label>
-                        <input class="sptb-input" type="text" id="sptb" name="sptb" required>
-
-                        <label for="article-spbb">Sidebar: Panel Bottom Text Box</label>
-                        <input class="spbb-input" type="text" id="spbb" name="spbb" required>
+                    <div class="content-box">
                         
-                        <label for="article-sbtb">Sidebar: Bottom Text Box</label>
-                        <input class="sbtb-input" type="text" id="sbtb" name="sbtb" required>
-                    </div>
+                        <div class="content active">
+                            <div id="editor"></div>
+                            <form id="body">
+                                <input type="hidden" name="content" id="content">
+                                <button type="submit">Submit</button>
+                            </form>
+                        </div>
 
-                    <div class="content">
-                        <h2>Coming Soon in SPRINT3</h2>
-                    </div>
+                        <div class="content">
+                            <label for="article-sttb">Sidebar: Top Text Box</label>
+                            <input class="sstb-input" type="text" id="sttb" name="sttb" required>
+    
+                            <label for="article-sptb">Sidebar: Panel Top Text Box</label>
+                            <input class="sptb-input" type="text" id="sptb" name="sptb" required>
 
-                </div>
+                            <label for="article-spbb">Sidebar: Panel Bottom Text Box</label>
+                            <input class="spbb-input" type="text" id="spbb" name="spbb" required>
+
+                            <label for="article-sbtb">Sidebar: Bottom Text Box</label>
+                            <input class="sbtb-input" type="text" id="sbtb" name="sbtb" required>
+                        </div>
+
+                        <div class="content">
+                            <h2>Coming Soon in SPRINT3</h2>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-        
     </div>
 
     <footer class="footer">
         <p>A project for the class of COMP 380</p>
     </footer>
 
-    <script src="/script.js"></script>
+    <script>
+        function viewArticle() {
+            const title = document.getElementById('title').value;
+            const body = document.getElementById('body').value;
 
+            localStorage.setItem('articleTitle', title);
+            localStorage.setItem('articleBody', body);
+
+            window.location.href = '/viewArticle';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('articleForm');
+
+            form.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+
+                try {
+                    const response = await fetch('/saveArticleGen', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    if (response.ok) {
+                        window.location.href = '/dashboard';
+                    } else {
+                        console.error('Error saving article:', response.statusText);
+                    }
+                } catch (error) {
+                    console.error('Error saving article:', error);
+                }
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <script src="/script.js"></script>
 </body>
 </html>

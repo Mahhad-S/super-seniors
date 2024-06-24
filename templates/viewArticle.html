@@ -3,23 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>View Articles</title>
+    <link rel="stylesheet" href="/Article/viewArticle.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <h1 id="articleTitle"></h1>
-    <p id="articleBody"></p>
+    <div id="articlesContainer">
+        <div class="article">
+            <h1 id="articleTitle"></h1>
+            <p id="articleBody"></p>
+        </div>
+    </div>
 
     <footer class="footer">
         <p>A project for the class of COMP 380</p>
     </footer>
 
     <script>
-        window.onload = function() {
-            var title = sessionStorage.getItem('articleTitle');
-            var body = sessionStorage.getItem('articleBody');
+        document.addEventListener('DOMContentLoaded', function() {
+            const title = localStorage.getItem('articleTitle');
+            const body = localStorage.getItem('articleBody');
+
             document.getElementById('articleTitle').textContent = title;
             document.getElementById('articleBody').textContent = body;
-        };
+        });
     </script>
 </body>
 </html>

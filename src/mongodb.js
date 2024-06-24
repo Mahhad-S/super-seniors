@@ -1,15 +1,6 @@
 // Import mongoose module
 const mongoose=require("mongoose")
 
-// Connect to MongoDB database
-mongoose.connect("mongodb://localhost:27017/SuperSeniors")
-.then(()=>{
-    console.log("MongoDB Connected")
-})
-.catch((error)=>{
-    console.log("Failed to Connect",error)
-})
-
 // Define the schema for login credentials
 const LogInSchema=new mongoose.Schema({
     name:{
@@ -21,16 +12,92 @@ const LogInSchema=new mongoose.Schema({
         required:true
     }
 })
-// Create a model based on the schema
-const collection=new mongoose.model("Collection1",LogInSchema)
 
-// Define the schema for articles
-const articleSchemaGen = new mongoose.Schema({
-    title: String,
-    content: String
-  });
+const GeneralArticleSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    body: {
+        type: String,
+        required: true
+    },
+    sttb: String,
+    sptb: String,
+    spbb: String,
+    sbtb: String
+});
 
-const Article = mongoose.model('Article', articleSchemaGen, 'General Articles');
+const CharacterArticleSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    body: {
+        type: String,
+        required: true
+    },
+    sttb: String,
+    sptb: String,
+    spbb: String,
+    sbtb: String
+});
 
-// Export the collection model
-module.exports=collection
+const ItemsArticleSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    body: {
+        type: String,
+        required: true
+    },
+    sttb: String,
+    sptb: String,
+    spbb: String,
+    sbtb: String
+});
+
+LocationsArticleSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    body: {
+        type: String,
+        required: true
+    },
+    sttb: String,
+    sptb: String,
+    spbb: String,
+    sbtb: String
+});
+
+OrganizationsArticleSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    body: {
+        type: String,
+        required: true
+    },
+    sttb: String,
+    sptb: String,
+    spbb: String,
+    sbtb: String
+});
+
+const GeneralArticleCollection = mongoose.model("GeneralArticles", GeneralArticleSchema);
+const CharacterArticleCollection = mongoose.model("CharacterArticles", CharacterArticleSchema);
+const ItemsArticleCollection = mongoose.model("ItemsArticles", ItemsArticleSchema);
+const LocationsArticleCollection = mongoose.model("LocationsArticles", LocationsArticleSchema);
+const OrganizationsArticleCollection = mongoose.model("OrganizationsArticles", OrganizationsArticleSchema);
+
+module.exports = {
+    GeneralArticleCollection,
+    CharacterArticleCollection,
+    ItemsArticleCollection,
+    LocationsArticleCollection,
+    OrganizationsArticleCollection,
+};

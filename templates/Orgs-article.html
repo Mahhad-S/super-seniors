@@ -4,20 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organizations Article</title>
-    <link rel="stylesheet" href="/Article/Orgs-article.css">
+    <title>Organization Article</title>
+    <link rel="stylesheet" href="/Article/general-article.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    
     <nav class="navbar">
         <div class="container-fluid">
             <a class="navbar-logo" href="/dashboard" alt="Logo">
                 <img src="/css/imgAssets/project_Logo.png" alt="Logo" class="Logo">
             </a>
-            <div class="nav-buttons" id="nav-buttons">
-                <a href="/" class="nav-button signout-button" onclick="handleLogout()">Sign Out</a>
-            </div>
+            <form class="nav-buttons" id="nav-buttons" action="/logout" method="post">
+                <button class="nav-button">Sign Out</button>
+            </form>
         </div>
     </nav>
 
@@ -30,30 +29,80 @@
 
         <div class="content-wrapper">
             <div class="main-content">
-                <div class="button-container">
-                    <button href= "/browser" class="save-button">Save</button>
-                    <button href= "/viewArticle" class="view-button">View</button>
-                </div>
-                <div class="article-title">
-                    <p>Article Title</p>
-                    <input type="text" class="title-input" id="articleTitle" placeholder="Enter article title">
-                </div>
-                <div class="section-buttons">
-                    <button class="section-button">Body</button>
-                    <button class="section-button">Sidebar</button>
-                    <button class="section-button">Navigation</button>
-                </div>
-                <textarea class="article-content" id="articleContent" placeholder="Enter your article content here"></textarea>
+                <form id="articleForm">
+                    <div class="button-container">
+                        <button type="submit" class="save-button" id="saveButton">Save</button>
+                        <button type="button" class="view-button" onclick="viewArticle()">View</button>
+                    </div>
+                    <div class="article-title">
+                        <p>Article Title</p>
+                        <label for="title"></label>
+                        <input class="title-input" type="text" id="title" name="title" required>
+                    </div>
+                    <div class="section-box">
+                        <button type="button" class="section-button active" id="bodyButton">Body</button>
+                        <button type="button" class="section-button" id="sidebarButton">Sidebar</button>
+                        <button type="button" class="section-button" id="navigationButton">Navigation</button>
+                    </div>
+
+                    <div class="content-box">
+                        <div class="content active">
+                            <label for="article-body">Body:</label>
+                            <input class="body-input" type="text" id="body" name="body" required>
+                        </div>
+
+                        <div class="content">
+                            <h2>Coming Soon in SPRINT3</h2>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-        
     </div>
 
     <footer class="footer">
         <p>A project for the class of COMP 380</p>
     </footer>
 
-    <script src="/script.js"></script>
+    <script>
+        function viewArticle() {
+            const title = document.getElementById('title').value;
+            const body = document.getElementById('body').value;
 
+            localStorage.setItem('articleTitle', title);
+            localStorage.setItem('articleBody', body);
+
+            window.location.href = '/viewArticle';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('articleForm');
+
+            form.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+
+                try {
+                    const response = await fetch('/saveArticleOrg', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    if (response.ok) {
+                        window.location.href = '/dashboard';
+                    } else {
+                        console.error('Error saving article:', response.statusText);
+                    }
+                } catch (error) {
+                    console.error('Error saving article:', error);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
