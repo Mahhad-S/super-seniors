@@ -287,15 +287,15 @@ app.use("/login", (req, res, next) => {
 app.post("/logout", isAuthenticated, (req, res) => {
     req.session.destroy((err) => {
         if (err) throw err;
-        res.redirect("/login");
-      });
+        res.redirect("/");
+    });
 });
 
 app.get("/navbar-logo", (req, res) => {
-    if (req.session.user) {
-    res.redirect("/dashboard");
+    if (req.session.isAuthenticated) {
+        res.redirect("/dashboard");
     } else {
-    res.redirect("/");
+        res.redirect("/");
     }
 });
 
