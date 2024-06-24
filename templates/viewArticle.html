@@ -11,7 +11,11 @@
     <div id="articlesContainer">
         <div class="article">
             <h1 id="articleTitle"></h1>
-            <p id="articleBody"></p>
+            <div id="articleBody"></div>
+            <p id="articleSttb"></p>
+            <p id="articleSptb"></p>
+            <p id="articleSpbb"></p>
+            <p id="articleSbtb"></p>
         </div>
     </div>
 
@@ -23,9 +27,17 @@
         document.addEventListener('DOMContentLoaded', function() {
             const title = localStorage.getItem('articleTitle');
             const body = localStorage.getItem('articleBody');
+            const sttb = localStorage.getItem('articleSttb');
+            const sptb = localStorage.getItem('articleSptb');
+            const spbb = localStorage.getItem('articleSpbb');
+            const sbtb = localStorage.getItem('articleSbtb');
 
             document.getElementById('articleTitle').textContent = title;
-            document.getElementById('articleBody').textContent = body;
+            document.getElementById('articleBody').innerHTML = body;  // Use innerHTML to render HTML content
+            document.getElementById('articleSttb').textContent = sttb;
+            document.getElementById('articleSptb').textContent = sptb;
+            document.getElementById('articleSpbb').textContent = spbb;
+            document.getElementById('articleSbtb').textContent = sbtb;
         });
     </script>
 </body>

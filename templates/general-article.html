@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/Article/general-article.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
-
 </head>
 <body>
     <nav class="navbar">
@@ -47,30 +46,23 @@
                         <button type="button" class="section-button" id="navigationButton">Navigation</button>
                     </div>
 
-                    
-
                     <div class="content-box">
-                        
                         <div class="content active">
                             <div id="editor"></div>
-                            <form id="body">
-                                <input type="hidden" name="content" id="content">
-                                <button type="submit">Submit</button>
-                            </form>
                         </div>
 
                         <div class="content">
                             <label for="article-sttb">Sidebar: Top Text Box</label>
-                            <input class="sstb-input" type="text" id="sttb" name="sttb" required>
-    
+                            <input class="sstb-input" type="text" id="sttb" name="sttb">
+
                             <label for="article-sptb">Sidebar: Panel Top Text Box</label>
-                            <input class="sptb-input" type="text" id="sptb" name="sptb" required>
+                            <input class="sptb-input" type="text" id="sptb" name="sptb">
 
                             <label for="article-spbb">Sidebar: Panel Bottom Text Box</label>
-                            <input class="spbb-input" type="text" id="spbb" name="spbb" required>
+                            <input class="spbb-input" type="text" id="spbb" name="spbb">
 
                             <label for="article-sbtb">Sidebar: Bottom Text Box</label>
-                            <input class="sbtb-input" type="text" id="sbtb" name="sbtb" required>
+                            <input class="sbtb-input" type="text" id="sbtb" name="sbtb">
                         </div>
 
                         <div class="content">
@@ -87,25 +79,22 @@
     </footer>
 
     <script>
-        function viewArticle() {
-            const title = document.getElementById('title').value;
-            const body = document.getElementById('body').value;
-
-            localStorage.setItem('articleTitle', title);
-            localStorage.setItem('articleBody', body);
-
-            window.location.href = '/viewArticle';
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('articleForm');
-
-            form.addEventListener('submit', async function(event) {
+            const saveButton = document.getElementById('saveButton');
+    
+            saveButton.addEventListener('click', async function(event) {
                 event.preventDefault();
-
-                const formData = new FormData(form);
-                const data = Object.fromEntries(formData);
-
+    
+                const title = document.getElementById('title').value;
+                const body = document.querySelector('.ql-editor').innerHTML; // Corrected selector for Quill editor content
+                const sttb = document.getElementById('sttb').value;
+                const sptb = document.getElementById('sptb').value;
+                const spbb = document.getElementById('spbb').value;
+                const sbtb = document.getElementById('sbtb').value;
+    
+                const data = { title, body, sttb, sptb, spbb, sbtb };
+    
                 try {
                     const response = await fetch('/saveArticleGen', {
                         method: 'POST',
@@ -114,7 +103,7 @@
                         },
                         body: JSON.stringify(data)
                     });
-
+    
                     if (response.ok) {
                         window.location.href = '/dashboard';
                     } else {
@@ -125,6 +114,24 @@
                 }
             });
         });
+    
+        function viewArticle() {
+            const title = document.getElementById('title').value;
+            const body = document.querySelector('.ql-editor').innerHTML; // Corrected selector for Quill editor content
+            const sttb = document.getElementById('sttb').value;
+            const sptb = document.getElementById('sptb').value;
+            const spbb = document.getElementById('spbb').value;
+            const sbtb = document.getElementById('sbtb').value;
+    
+            localStorage.setItem('articleTitle', title);
+            localStorage.setItem('articleBody', body);
+            localStorage.setItem('articleSttb', sttb);
+            localStorage.setItem('articleSptb', sptb);
+            localStorage.setItem('articleSpbb', spbb);
+            localStorage.setItem('articleSbtb', sbtb);
+    
+            window.open('/viewArticle', '_blank');
+        }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
     <script src="/script.js"></script>
