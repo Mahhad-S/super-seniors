@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar">
         <div class="container-fluid">
-            <a class="navbar-logo" href="/dashboard" alt="Logo">
+            <a class="navbar-logo" href="/navbar-logo" alt="Logo">
                 <img src="/css/imgAssets/project_Logo.png" alt="Logo" class="Logo">
             </a>
             <form class="nav-buttons" id="nav-buttons" action="/logout" method="post">
@@ -82,19 +82,19 @@
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('articleForm');
             const saveButton = document.getElementById('saveButton');
-    
+
             saveButton.addEventListener('click', async function(event) {
                 event.preventDefault();
-    
+
                 const title = document.getElementById('title').value;
-                const body = document.querySelector('.ql-editor').innerHTML; // Corrected selector for Quill editor content
-                const sttb = document.querySelector('.ql-editor').innerHTML;
+                const body = document.querySelector('#editor .ql-editor').innerHTML; // Corrected selector for body editor content
+                const sttb = document.querySelector('#sttb .ql-editor').innerHTML; // Corrected selector for sttb editor content
                 const sptb = document.getElementById('sptb').value;
                 const spbb = document.getElementById('spbb').value;
                 const sbtb = document.getElementById('sbtb').value;
-    
+
                 const data = { title, body, sttb, sptb, spbb, sbtb };
-    
+
                 try {
                     const response = await fetch('/saveArticleGen', {
                         method: 'POST',
@@ -103,9 +103,9 @@
                         },
                         body: JSON.stringify(data)
                     });
-    
-                    if (response.ok) {
-                        window.location.href = '/dashboard';
+
+                        if (response.ok) {
+                    window.location.href = '/dashboard';
                     } else {
                         console.error('Error saving article:', response.statusText);
                     }
@@ -117,8 +117,8 @@
     
         function viewArticle() {
             const title = document.getElementById('title').value;
-            const body = document.querySelector('.ql-editor').innerHTML; // Corrected selector for Quill editor content
-            const sttb = document.getElementById('sttb').value;
+            const body = document.querySelector('#editor .ql-editor').innerHTML; // Corrected selector for Quill editor content
+            const sttb = document.querySelector('#sttb .ql-editor').innerHTML;
             const sptb = document.getElementById('sptb').value;
             const spbb = document.getElementById('spbb').value;
             const sbtb = document.getElementById('sbtb').value;
