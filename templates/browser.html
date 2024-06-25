@@ -30,20 +30,67 @@
 
         <div class="main-content">
             <div class="browser-content">
-                <input type="text" id="search-bar" class="search-bar" placeholder="Search...">
-                <button class="search-button" onclick="performSearch()">Search</button>
-                <div id="search-results" class="search-results">
-                    <!-- Search results will be displayed here -->
+                <div class="category-toggle">Category ▼</div>
+                <div class="category1-toggle hidden">Category 1 ▶</div>
+                <div class="category2-toggle hidden">Category 2 ▶</div>
+                <div class="category3-toggle hidden">Category 3 ▶</div>
+                <div class="category4-toggle hidden">Category 4 ▶</div>
+                <div class="no-category-toggle">No Category ▼</div>
+
+                <div class="article-container category1-toggle hidden">
+                    <!-- Articles for Category 1 -->
+                    <div class="article">
+                        <div>Article 1</div>
+                        <div>
+                            <button class="edit-button">Edit</button>
+                            <button class="delete-button">Delete</button>
+                        </div>
+                    </div>
+                    <div class="article">
+                        <div>Article 2</div>
+                        <div>
+                            <button class="edit-button">Edit</button>
+                            <button class="delete-button">Delete</button>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="article-container category2-toggle hidden">
+                    <!-- Articles for Category 2 -->
+                    <div class="article">
+                        <div>Article 3</div>
+                        <div>
+                            <button class="edit-button">Edit</button>
+                            <button class="delete-button">Delete</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Repeat the structure for other categories as needed -->
+
             </div>
         </div>
+    
+        <footer class="footer">
+            <p>A project for the class of COMP 380</p>
+        </footer>
     </div>
 
-    <footer class="footer">
-        <p>A project for the class of COMP 380</p>
-    </footer>
-
-    <script src="/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const categoryToggles = document.querySelectorAll('.category-toggle');
+            categoryToggles.forEach(toggle => {
+                toggle.addEventListener('click', function () {
+                    const targetClass = toggle.textContent.trim().replace(' ▼', '-toggle');
+                    const targetContainer = document.querySelector(`.${targetClass}`);
+                    if (targetContainer) {
+                        targetContainer.classList.toggle('hidden');
+                        toggle.textContent = toggle.textContent.includes('▼') ? toggle.textContent.replace('▼', '▶') : toggle.textContent.replace('▶', '▼');
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
