@@ -299,29 +299,9 @@ app.get("/navbar-logo", (req, res) => {
     }
 });
 
-app.get("/viewArticleGen", async (req, res) => {
+app.get("/viewArticleGeneral", async (req, res) => {
     try {
         const articles = await GeneralArticleCollection.find({});
-        res.json(articles);
-    } catch (error) {
-        console.error("Error fetching articles:", error);
-        res.status(500).send("Internal Server Error");
-    }
-});
-
-app.get("/viewArticleItem", async (req, res) => {
-    try {
-        const articles = await ItemsArticleCollection.find({});
-        res.json(articles);
-    } catch (error) {
-        console.error("Error fetching articles:", error);
-        res.status(500).send("Internal Server Error");
-    }
-});
-
-app.get("/viewArticleOrgs", async (req, res) => {
-    try {
-        const articles = await OrganizationsArticleCollection.find({});
         res.json(articles);
     } catch (error) {
         console.error("Error fetching articles:", error);
@@ -339,7 +319,17 @@ app.get("/viewArticleCharacter", async (req, res) => {
     }
 });
 
-app.get("/viewArticleLocation", async (req, res) => {
+app.get("/viewArticleItems", async (req, res) => {
+    try {
+        const articles = await ItemsArticleCollection.find({});
+        res.json(articles);
+    } catch (error) {
+        console.error("Error fetching articles:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+app.get("/viewArticleLocations", async (req, res) => {
     try {
         const articles = await LocationsArticleCollection.find({});
         res.json(articles);
@@ -348,6 +338,17 @@ app.get("/viewArticleLocation", async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
+
+app.get("/viewArticleOrganizations", async (req, res) => {
+    try {
+        const articles = await OrganizationsArticleCollection.find({});
+        res.json(articles);
+    } catch (error) {
+        console.error("Error fetching articles:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
 
 app.listen(3000, () => {
     console.log("Server is running on port 3000");

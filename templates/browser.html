@@ -7,9 +7,21 @@
     <title>Browser</title>
     <link rel="stylesheet" href="/css/browser.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .hidden {
+            display: none;
+        }
+        .article {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .article div {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
-    
     <nav class="navbar">
         <div class="container-fluid">
             <a class="navbar-logo" href="/" alt="Logo">
@@ -30,47 +42,33 @@
 
         <div class="main-content">
             <div class="browser-content">
-                <div class="category-toggle">Category ▼</div>
-                <div class="category1-toggle hidden">Category 1 ▶</div>
-                <div class="category2-toggle hidden">Category 2 ▶</div>
-                <div class="category3-toggle hidden">Category 3 ▶</div>
-                <div class="category4-toggle hidden">Category 4 ▶</div>
-                <div class="no-category-toggle">No Category ▼</div>
-
-                <div class="article-container category1-toggle hidden">
-                    <!-- Articles for Category 1 -->
-                    <div class="article">
-                        <div>Article 1</div>
-                        <div>
-                            <button class="edit-button">Edit</button>
-                            <button class="delete-button">Delete</button>
-                        </div>
-                    </div>
-                    <div class="article">
-                        <div>Article 2</div>
-                        <div>
-                            <button class="edit-button">Edit</button>
-                            <button class="delete-button">Delete</button>
-                        </div>
-                    </div>
+                <div class="category-toggle" data-category="general">General Articles ▼</div>
+                <div class="article-container general hidden">
+                    <!-- Articles for General Category will be dynamically loaded here -->
                 </div>
 
-                <div class="article-container category2-toggle hidden">
-                    <!-- Articles for Category 2 -->
-                    <div class="article">
-                        <div>Article 3</div>
-                        <div>
-                            <button class="edit-button">Edit</button>
-                            <button class="delete-button">Delete</button>
-                        </div>
-                    </div>
+                <div class="category-toggle" data-category="character">Character Articles ▼</div>
+                <div class="article-container character hidden">
+                    <!-- Articles for Character Category will be dynamically loaded here -->
                 </div>
 
-                <!-- Repeat the structure for other categories as needed -->
+                <div class="category-toggle" data-category="items">Item Articles ▼</div>
+                <div class="article-container items hidden">
+                    <!-- Articles for Item Category will be dynamically loaded here -->
+                </div>
 
+                <div class="category-toggle" data-category="locations">Location Articles ▼</div>
+                <div class="article-container locations hidden">
+                    <!-- Articles for Location Category will be dynamically loaded here -->
+                </div>
+
+                <div class="category-toggle" data-category="organizations">Organization Articles ▼</div>
+                <div class="article-container organizations hidden">
+                    <!-- Articles for Organization Category will be dynamically loaded here -->
+                </div>
             </div>
         </div>
-    
+
         <footer class="footer">
             <p>A project for the class of COMP 380</p>
         </footer>
@@ -81,14 +79,42 @@
             const categoryToggles = document.querySelectorAll('.category-toggle');
             categoryToggles.forEach(toggle => {
                 toggle.addEventListener('click', function () {
-                    const targetClass = toggle.textContent.trim().replace(' ▼', '-toggle');
-                    const targetContainer = document.querySelector(`.${targetClass}`);
+                    const category = toggle.getAttribute('data-category');
+                    const targetContainer = document.querySelector(`.article-container.${category}`);
                     if (targetContainer) {
                         targetContainer.classList.toggle('hidden');
                         toggle.textContent = toggle.textContent.includes('▼') ? toggle.textContent.replace('▼', '▶') : toggle.textContent.replace('▶', '▼');
                     }
                 });
             });
+
+            async function loadArticles(category) {
+                const response = await fetch(`/viewArticle${capitalizeFirstLetter(category)}`);
+                const articles = await response.json();
+                const container = document.querySelector(`.article-container.${category}`);
+                container.innerHTML = '';
+                articles.forEach(article => {
+                    const articleRow = document.createElement('div');
+                    articleRow.className = 'article';
+                    articleRow.innerHTML = `
+                        <div>${article.title}</div>
+                        <div>
+                            <button class="view-button" data-id="${article._id}">View</button>
+                            <button class="edit-button" data-id="${article._id}">Edit</button>
+                            <button class="delete-button" data-id="${article._id}">Delete</button>
+                        </div>
+                    `;
+                    container.appendChild(articleRow);
+                });
+            }
+
+            ['general', 'character', 'items', 'locations', 'organizations'].forEach(category => {
+                loadArticles(category);
+            });
+
+            function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
         });
     </script>
 
