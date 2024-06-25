@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>General Article</title>
-    <link rel="stylesheet" href="/Article/general-article.css">
+    <title>Items Article</title>
+    <link rel="stylesheet" href="/Article/items-article.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
 </head>
@@ -78,6 +78,7 @@
         <p>A project for the class of COMP 380</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('articleForm');
@@ -87,8 +88,8 @@
                 event.preventDefault();
 
                 const title = document.getElementById('title').value;
-                const body = document.querySelector('#editor #editor .ql-editor').innerHTML; // Corrected selector for body editor content
-                const sttb = document.querySelector('#sttb #sttb .ql-editor').innerHTML; // Corrected selector for sttb editor content
+                const body = document.querySelector('#editor .ql-editor').innerHTML; 
+                const sttb = document.querySelector('#sttb .ql-editor').innerHTML; 
                 const sptb = document.querySelector('#sptb .ql-editor').innerHTML;
                 const spbb = document.querySelector('#spbb .ql-editor').innerHTML;
                 const sbtb = document.querySelector('#sbtb .ql-editor').innerHTML;
@@ -96,7 +97,7 @@
                 const data = { title, body, sttb, sptb, spbb, sbtb };
 
                 try {
-                    const response = await fetch('/saveArticleGen', {
+                    const response = await fetch('/saveArticleItem', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -117,7 +118,7 @@
     
         function viewArticle() {
             const title = document.getElementById('title').value;
-            const body = document.querySelector('#editor .ql-editor').innerHTML; // Corrected selector for Quill editor content
+            const body = document.querySelector('#editor .ql-editor').innerHTML;
             const sttb = document.querySelector('#sttb .ql-editor').innerHTML;
             const sptb = document.querySelector('#sptb .ql-editor').innerHTML;
             const spbb = document.querySelector('#spbb .ql-editor').innerHTML;
@@ -133,7 +134,7 @@
             window.open('/viewArticle', '_blank');
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
     <script src="/script.js"></script>
+    
 </body>
 </html>

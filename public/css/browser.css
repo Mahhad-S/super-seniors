@@ -130,6 +130,7 @@ a {
     overflow: auto;
     margin: 0 70px;
     min-width: calc(300px - 140px);
+    justify-content: center;
 }
 
 h1 {
@@ -141,12 +142,17 @@ h1 {
     color: white;
     padding: 5em;
     border: 20px solid rgb(95, 95, 97);
-    width:77em;
+    width: 100%;
     box-sizing: border-box;
-    border-style:inset;
+    border-style: inset;
 }
+
 .category {
     margin-bottom: 10px;
+}
+
+.category-toggle {
+    cursor: pointer;
 }
 .category:before {
     content: '▶'; /* Default arrow is pointing right */
@@ -166,7 +172,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 5px 0;
+    margin: 5px 20px;
 }
 .edit-button, .delete-button {
     padding: 5px 10px;

@@ -159,12 +159,21 @@ body {
     border-radius: 5px;
 }
 
-.section-buttons {
+.section-box { /* Modify by the handsome Nuno */
     display: flex;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
 }
 
-.section-button {
+.section-box .section-button { /* Modify by the handsome Nuno */
+    width: 150px;
+    padding: 10px 20px;
+    background-color: #2e2e2e80;
+    color: #fff;
+    border: 1px solid rgb(19, 19, 19);
+    cursor: pointer;
+}
+
+.section-box .section-button.active { /* Modify by the handsome Nuno */
     width: 150px;
     padding: 10px 20px;
     background-color: #2e2e2e;
@@ -173,14 +182,78 @@ body {
     cursor: pointer;
 }
 
-.article-content {
+.content-box .content {
+    display: none;
+    background-color: white;
+    color: black;
+}
+
+.content-box .content.active {
+    display: block;
+    margin-bottom: 50px;
+    background-color: white;
+    color: black;
+}
+
+.content-box .content.active h3 {
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #575757;
+}
+
+.content-box .content.active label {
+    display: block; /* Show labels as blocks to appear above inputs */
+    margin-bottom: 5px; /* Add spacing between labels and inputs */
+}
+
+.content-box .content.active input {
     width: 100%;
     height: 300px;
     padding: 10px;
+    margin-top: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    resize: vertical;
 }
+
+/* Quill Editor CSS -- Starts */
+textarea,
+input {
+    border: 1px solid #ccc;
+  }
+ 
+textarea,
+input,
+  .ql-editor {
+    padding: 4px;
+    font-size: 14px;
+  }
+  
+#editor {
+    width: 100%;
+    height: 400px;
+}
+
+#sttb {
+    width: 100%;
+    height: 200px;
+}
+
+#sptb {
+    width: 100%;
+    height: 200px;
+}
+
+#spbb {
+    width: 100%;
+    height: 200px;
+}
+
+#sbtb {
+    width: 100%;
+    height: 200px;
+}
+/* Quill Editor CSS -- Ends */
 
 .footer {
     position: fixed;
@@ -195,6 +268,7 @@ body {
     font-size: 14px;
 }
 
+/*adjust for page sizing*/
 @media (max-width: 768px) {
     .main-content {
         padding: 10px 20px;
@@ -216,4 +290,3 @@ body {
         text-align: center;
     }
 }
-
