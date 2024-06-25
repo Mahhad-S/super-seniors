@@ -120,6 +120,10 @@ a {
 
 /* Main Content Styles */
 .main-content {
+    background-image: url(/css/imgAssets/old-paper.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     margin-left: 70px;
     margin-right: 70px;
     margin-top: 0;
@@ -130,6 +134,7 @@ a {
     overflow: auto;
     margin: 0 70px;
     min-width: calc(300px - 140px);
+    justify-content: center;
 }
 
 h1 {
@@ -137,16 +142,23 @@ h1 {
 }
 
 .browser-content {
-    background-color: #444;
-    color: white;
-    padding: 5em;
-    border: 20px solid rgb(95, 95, 97);
-    width:77em;
+    color: #000; /* Adjusted for better contrast, consider even darker shades if needed */
+    font-size: 22px; /* Slightly larger for better visibility */
+    font-weight: bold; /* Keeps it bold for emphasis */
+    padding: 20px;
+    width: 100%;
     box-sizing: border-box;
-    border-style:inset;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.7); /* Subtle shadow for depth */
+    line-height: 1.6; /* Improved line spacing for readability */
+    font-family: 'Arial', sans-serif; /* A readable and widely supported font */
 }
+
 .category {
     margin-bottom: 10px;
+}
+
+.category-toggle {
+    cursor: pointer;
 }
 .category:before {
     content: '▶'; /* Default arrow is pointing right */
@@ -166,26 +178,45 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 5px 0;
-}
-.edit-button, .delete-button {
-    padding: 5px 10px;
-    margin-left: 5px;
-    cursor: pointer;
-}
-.edit-button {
-    background-color: rgba(0, 0, 255, 0.438);
-    color: white;
-    border: solid;
-    border-color: #333;
-}
-.delete-button {
-    background-color: rgba(255, 0, 0, 0.377);
-    color: white;
-    border:solid;
-    border-color:#333
+    margin: 5px 20px;
+    color: #000000; /* Deep brown, resembling old ink */
+    font-family: 'Times New Roman', serif; /* Serif font for a vintage look */
+    font-size: 20px; /* Slightly larger for readability */
+    font-weight: normal; /* Adjust as needed */
+    text-shadow: 1px 1px 1px #FFF8DC; /* Subtle shadow for depth */
+    line-height: 1.6; /* Improved line spacing */
 }
 
+.browser-button {
+    padding: 8px 15px;
+    font-size: 16px;
+    border: 1px solid #8B4513; /* Styled border */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 5px;
+    background-color: #F4A460; /* Sandy brown */
+    color: #5A3825; /* Darker brown for text */
+    font-family: 'Times New Roman', serif; /* Font that mimics old print */
+    text-shadow: 1px 1px 1px #FFF8DC; /* Subtle text shadow for depth */
+    margin-right: 5px; /* Space between buttons */
+}
+
+.view-button {
+    background-color: #F4A460; /* Consistent with the theme */
+}
+
+.edit-button {
+    background-color: #DEB887; /* Burlywood, slightly lighter */
+}
+
+.delete-button {
+    background-color: #CD853F; /* Peru, for a bit of variation */
+}
+
+.browser-button:hover {
+    opacity: 0.9;
+    color: #8B4513; /* Darken text on hover */
+}
 /* Footer Styles */
 .footer {
     position: fixed;

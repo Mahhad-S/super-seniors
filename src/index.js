@@ -81,23 +81,23 @@ app.get("/register", (req, res) => {
 });
 
 app.get("/general-article",(req, res) => {
-    res.sendFile(path.join(__dirname, '../templates/general-article.html'));
+    res.sendFile(path.join(__dirname, '../templates/Article/general-article.html'));
 });
 
 app.get("/character-article",(req, res) => {
-    res.sendFile(path.join(__dirname, '../templates/character-article.html'));
+    res.sendFile(path.join(__dirname, '../templates/Article/character-article.html'));
 });
 
 app.get("/locations-article",(req, res) => {
-    res.sendFile(path.join(__dirname, '../templates/locations-article.html'));
+    res.sendFile(path.join(__dirname, '../templates/Article/locations-article.html'));
 });
 
 app.get("/Orgs-article",(req, res) => {
-    res.sendFile(path.join(__dirname, '../templates/Orgs-article.html'));
+    res.sendFile(path.join(__dirname, '../templates/Article/orgs-article.html'));
 });
 
 app.get("/items-article",(req, res) => {
-    res.sendFile(path.join(__dirname, '../templates/items-article.html'));
+    res.sendFile(path.join(__dirname, '../templates/Article/items-article.html'));
 });
 
 app.get('/viewArticle',(req, res) => {

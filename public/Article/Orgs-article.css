@@ -7,13 +7,18 @@
     font-family: "Poppins", sans-serif;
 }
 
+body.tab-active-bg {
+    background-position: center; /* Keep the background image centered */
+}
+
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     background-image: url(/css/imgAssets/background-2.png);
-    background-size: cover;
-    background-position: center;
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat;
 }
 
 .navbar{
@@ -76,6 +81,8 @@ body {
     margin-top: 70px;
     background-color: rgba(167, 167, 167, 0.9);
     overflow: hidden;
+    /*adjust for page sizing*/
+    min-width: 300px; /* Set a minimum width for the container */
 }
 
 .sidebar {
@@ -106,6 +113,8 @@ body {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    /*adjust for page sizing*/
+    overflow: auto;
 }
 
 .main-content {
@@ -115,6 +124,10 @@ body {
     flex: 1;
     background-color: #575757;
     padding: 20px 50px;
+    /*adjust for page sizing*/
+    overflow: auto;
+    margin: 0 70px;
+    min-width: calc(300px - 140px);
 }
 
 .button-container {
@@ -146,12 +159,21 @@ body {
     border-radius: 5px;
 }
 
-.section-buttons {
+.section-box { /* Modify by the handsome Nuno */
     display: flex;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
 }
 
-.section-button {
+.section-box .section-button { /* Modify by the handsome Nuno */
+    width: 150px;
+    padding: 10px 20px;
+    background-color: #2e2e2e80;
+    color: #fff;
+    border: 1px solid rgb(19, 19, 19);
+    cursor: pointer;
+}
+
+.section-box .section-button.active { /* Modify by the handsome Nuno */
     width: 150px;
     padding: 10px 20px;
     background-color: #2e2e2e;
@@ -160,14 +182,78 @@ body {
     cursor: pointer;
 }
 
-.article-content {
+.content-box .content {
+    display: none;
+    background-color: white;
+    color: black;
+}
+
+.content-box .content.active {
+    display: block;
+    margin-bottom: 50px;
+    background-color: white;
+    color: black;
+}
+
+.content-box .content.active h3 {
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #575757;
+}
+
+.content-box .content.active label {
+    display: block; /* Show labels as blocks to appear above inputs */
+    margin-bottom: 5px; /* Add spacing between labels and inputs */
+}
+
+.content-box .content.active input {
     width: 100%;
     height: 300px;
     padding: 10px;
+    margin-top: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    resize: vertical;
 }
+
+/* Quill Editor CSS -- Starts */
+textarea,
+input {
+    border: 1px solid #ccc;
+  }
+ 
+textarea,
+input,
+  .ql-editor {
+    padding: 4px;
+    font-size: 14px;
+  }
+  
+#editor {
+    width: 100%;
+    height: 400px;
+}
+
+#sttb {
+    width: 100%;
+    height: 200px;
+}
+
+#sptb {
+    width: 100%;
+    height: 200px;
+}
+
+#spbb {
+    width: 100%;
+    height: 200px;
+}
+
+#sbtb {
+    width: 100%;
+    height: 200px;
+}
+/* Quill Editor CSS -- Ends */
 
 .footer {
     position: fixed;
@@ -180,4 +266,27 @@ body {
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     font-size: 14px;
+}
+
+/*adjust for page sizing*/
+@media (max-width: 768px) {
+    .main-content {
+        padding: 10px 20px;
+        margin: 0 20px 0 20px; /* Adjust horizontal margin */
+    }
+
+    .title-input, .article-content {
+        width: 100%;
+    }
+
+    .button-container, .section-buttons {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .save-button, .view-button, .section-button {
+        width: 100%;
+        text-align: center;
+    }
 }

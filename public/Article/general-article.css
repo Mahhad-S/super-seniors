@@ -161,7 +161,7 @@ body {
 
 .section-box { /* Modify by the handsome Nuno */
     display: flex;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
 }
 
 .section-box .section-button { /* Modify by the handsome Nuno */
@@ -184,13 +184,22 @@ body {
 
 .content-box .content {
     display: none;
-    margin-bottom: 20px; /* Added margin to create space between boxes */
+    background-color: white;
+    color: black;
 }
 
 .content-box .content.active {
     display: block;
     margin-bottom: 50px;
+    background-color: white;
+    color: black;
+}
+
+.content-box .content.active h3 {
     color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #575757;
 }
 
 .content-box .content.active label {
