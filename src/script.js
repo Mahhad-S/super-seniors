@@ -81,22 +81,57 @@ const quill = new Quill('#editor', {
 /* Quill Text Editor and Functions -- Starts  */
 
 var quill = new Quill('#editor', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
     theme: 'snow'
 });
 
 var quill = new Quill('#sttb', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
     theme: 'snow'
 });
 
 var quill = new Quill('#sptb', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
     theme: 'snow'
 });
 
 var quill = new Quill('#spbb', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
     theme: 'snow'
 });
 
 var quill = new Quill('#sbtb', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
     theme: 'snow'
 });
 
