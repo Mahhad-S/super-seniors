@@ -255,6 +255,66 @@ input,
 }
 /* Quill Editor CSS -- Ends */
 
+/* Template Prompt Button -- Starts */
+.acc_buttons {
+    display: flex;
+    padding-bottom: 20px;
+}
+
+.acc_buttons .acc-button{ 
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #2e2e2e80;
+    color: #fff;
+    border: 1px solid rgb(19, 19, 19);
+    cursor: pointer;
+}
+
+.acc_buttons .acc-button.active{ 
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #2e2e2e;
+    color: #fff;
+    border: 1px solid rgb(19, 19, 19);
+    cursor: pointer;
+}
+
+.acc_section .acc_content {
+    display: none;
+    background-color: white;
+    color: black;
+}
+
+.acc_section .acc_content.active {
+    display: block;
+    margin-bottom: 50px;
+    background-color: white;
+    color: black;
+}
+
+.acc_section .acc_content.active h3 {
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    background-color: #575757;
+}
+
+.acc_section .acc_content.active h4 {
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    background-color: #575757;
+}
+
+.acc_section .acc_content.active h6 {
+    color: rgb(179, 179, 179);
+    padding-top: 1px;
+    padding-bottom: 20px;
+    background-color: #575757;
+}
+
+/* Template Prompt Button -- Ends */
+
 .footer {
     position: fixed;
     bottom: 0;
