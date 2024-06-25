@@ -137,39 +137,53 @@ h1 {
 }
 
 .browser-content {
-    margin-top: 20px;
+    background-color: #444;
+    color: white;
+    padding: 5em;
+    border: 20px solid rgb(95, 95, 97);
+    width:77em;
+    box-sizing: border-box;
+    border-style:inset;
+}
+.category {
+    margin-bottom: 10px;
+}
+.category:before {
+    content: '▶'; /* Default arrow is pointing right */
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease; /* Smooth transition for arrow rotation */
 }
 
-.search-bar {
-    width: calc(100% - 120px);
-    padding: 0.5em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 120px;
-    font-size: 1em;
+.category.expanded:before {
+    transform: translateY(-50%) rotate(90deg); /* Rotated arrow when category is expanded */
 }
 
-.search-button {
-    padding: 0.5em 1em;
-    border: none;
-    background-color: #007BFF;
-    color: #fff;
-    border-radius: 4px;
+
+.article {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
+}
+.edit-button, .delete-button {
+    padding: 5px 10px;
+    margin-left: 5px;
     cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
 }
-
-.search-button:hover {
-    background-color: #0056b3;
+.edit-button {
+    background-color: rgba(0, 0, 255, 0.438);
+    color: white;
+    border: solid;
+    border-color: #333;
 }
-
-.search-results {
-    margin-top: 20px;
-    padding: 1em;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.delete-button {
+    background-color: rgba(255, 0, 0, 0.377);
+    color: white;
+    border:solid;
+    border-color:#333
 }
 
 /* Footer Styles */
@@ -185,6 +199,7 @@ h1 {
     z-index: 1000;
     font-size: 14px;
 }
+
 
 @media (max-width: 768px) {
     .main-content {
