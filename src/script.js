@@ -38,6 +38,7 @@ window.onload = function() {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Handle .section-button and .content
     const tabs = document.querySelectorAll('.section-button');
     const allContent = document.querySelectorAll('.content');
 
@@ -50,6 +51,26 @@ document.addEventListener("DOMContentLoaded", () => {
             // Add 'active' class to the clicked tab and corresponding content
             tab.classList.add('active');
             allContent[index].classList.add('active');
+        });
+    });
+    
+    // Handle .acc-button and .acc_content
+    const slider = document.querySelectorAll('.acc-button');
+    const allCont = document.querySelectorAll('.acc_content');
+
+    slider.forEach((slide, index) => {
+        slide.addEventListener('click', () => {
+            const isActive = slide.classList.contains('active');
+
+            // Remove 'active' class from all tabs and content
+            slider.forEach(slide => { slide.classList.remove('active') });
+            allCont.forEach(content => { content.classList.remove('active') });
+
+            // If the clicked tab was not active, add 'active' class to the clicked tab and corresponding content
+            if (!isActive) {
+                slide.classList.add('active');
+                allCont[index].classList.add('active');
+            }
         });
     });
 });
