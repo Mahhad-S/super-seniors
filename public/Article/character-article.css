@@ -311,6 +311,13 @@ input,
     background-color: #575757;
 }
 
+.acc_section .acc_content.active h6 {
+    color: rgb(179, 179, 179);
+    padding-top: 1px;
+    padding-bottom: 20px;
+    background-color: #575757;
+}
+
 /* Template Prompt Button -- Ends */
 
 .footer {
