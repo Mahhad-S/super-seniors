@@ -349,6 +349,7 @@ app.get("/viewArticleOrganizations", async (req, res) => {
     }
 });
 
+// this route will be used to get a specific article based on the category and id of the article from the browser for viewing
 app.get("/getArticle/:category/:id", async (req, res) => {
     const { category, id } = req.params;
     let collection;
@@ -378,6 +379,40 @@ app.get("/getArticle/:category/:id", async (req, res) => {
         res.json(article);
     } catch (error) {
         console.error("Error fetching article:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+// this route will be used to get a specific article based on the category and id of the article from the browser and delete it
+app.delete("/deleteArticle/:category/:id", async (req, res) => {
+    const { category, id } = req.params;
+    let collection;
+
+    switch (category) {
+        case 'general':
+            collection = GeneralArticleCollection;
+            break;
+        case 'character':
+            collection = CharacterArticleCollection;
+            break;
+        case 'items':
+            collection = ItemsArticleCollection;
+            break;
+        case 'locations':
+            collection = LocationsArticleCollection;
+            break;
+        case 'organizations':
+            collection = OrganizationsArticleCollection;
+            break;
+        default:
+            return res.status(400).send("Invalid category");
+    }
+
+    try {
+        await collection.findByIdAndDelete(id);
+        res.sendStatus(200);
+    } catch (error) {
+        console.error("Error deleting article:", error);
         res.status(500).send("Internal Server Error");
     }
 });

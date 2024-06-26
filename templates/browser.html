@@ -84,7 +84,7 @@
                     if (targetContainer) {
                         targetContainer.classList.toggle('hidden');
                         toggle.textContent = toggle.textContent.includes('▶') ? toggle.textContent.replace('▶', '▼') : toggle.textContent.replace('▼', '▶');
-                    }
+                    } // ▼ 
                 });
             });
     
@@ -101,7 +101,7 @@
                         <div>
                             <button class="browser-button view-button" data-id="${article._id}" data-category="${category}">View</button>
                             <button class="browser-button edit-button" data-id="${article._id}">Edit</button>
-                            <button class="browser-button delete-button" data-id="${article._id}">Delete</button>
+                            <button class="browser-button delete-button" data-id="${article._id}" data-category="${category}">Delete</button>
                         </div>
                     `;
                     container.appendChild(articleRow);
@@ -122,6 +122,24 @@
                         window.open('/viewArticle', '_blank');
                     });
                 });
+    
+                container.querySelectorAll('.delete-button').forEach(button => {
+                    button.addEventListener('click', async function () {
+                        const id = this.getAttribute('data-id');
+                        const category = this.getAttribute('data-category');
+                        if (confirm('Are you sure you want to delete this article?')) {
+                            const response = await fetch(`/deleteArticle/${category}/${id}`, {
+                                method: 'DELETE'
+                            });
+                            if (response.ok) {
+                                this.closest('.article').remove();
+                                alert('Article deleted successfully');
+                            } else {
+                                alert('Failed to delete article');
+                            }
+                        }
+                    });
+                });
             }
     
             ['general', 'character', 'items', 'locations', 'organizations'].forEach(category => {
@@ -132,7 +150,7 @@
                 return string.charAt(0).toUpperCase() + string.slice(1);
             }
         });
-    </script>    
+    </script>     
 
 </body>
 </html>
