@@ -349,6 +349,38 @@ app.get("/viewArticleOrganizations", async (req, res) => {
     }
 });
 
+app.get("/getArticle/:category/:id", async (req, res) => {
+    const { category, id } = req.params;
+    let collection;
+
+    switch (category) {
+        case 'general':
+            collection = GeneralArticleCollection;
+            break;
+        case 'character':
+            collection = CharacterArticleCollection;
+            break;
+        case 'items':
+            collection = ItemsArticleCollection;
+            break;
+        case 'locations':
+            collection = LocationsArticleCollection;
+            break;
+        case 'organizations':
+            collection = OrganizationsArticleCollection;
+            break;
+        default:
+            return res.status(400).send("Invalid category");
+    }
+
+    try {
+        const article = await collection.findById(id);
+        res.json(article);
+    } catch (error) {
+        console.error("Error fetching article:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
 
 app.listen(3000, () => {
     console.log("Server is running on port 3000");

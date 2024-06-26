@@ -83,11 +83,11 @@
                     const targetContainer = document.querySelector(`.article-container.${category}`);
                     if (targetContainer) {
                         targetContainer.classList.toggle('hidden');
-                        toggle.textContent = toggle.textContent.includes('▼') ? toggle.textContent.replace('▼', '▶') : toggle.textContent.replace('▶', '▼');
+                        toggle.textContent = toggle.textContent.includes('▶') ? toggle.textContent.replace('▶', '▼') : toggle.textContent.replace('▼', '▶');
                     }
                 });
             });
-
+    
             async function loadArticles(category) {
                 const response = await fetch(`/viewArticle${capitalizeFirstLetter(category)}`);
                 const articles = await response.json();
@@ -99,24 +99,40 @@
                     articleRow.innerHTML = `
                         <div>${article.title}</div>
                         <div>
-                            <button class="browser-button view-button" data-id="${article._id}">View</button>
+                            <button class="browser-button view-button" data-id="${article._id}" data-category="${category}">View</button>
                             <button class="browser-button edit-button" data-id="${article._id}">Edit</button>
                             <button class="browser-button delete-button" data-id="${article._id}">Delete</button>
                         </div>
                     `;
                     container.appendChild(articleRow);
                 });
+    
+                container.querySelectorAll('.view-button').forEach(button => {
+                    button.addEventListener('click', async function () {
+                        const id = this.getAttribute('data-id');
+                        const category = this.getAttribute('data-category');
+                        const response = await fetch(`/getArticle/${category}/${id}`);
+                        const article = await response.json();
+                        localStorage.setItem('articleTitle', article.title);
+                        localStorage.setItem('articleBody', article.body);
+                        localStorage.setItem('articleSttb', article.sttb || '');
+                        localStorage.setItem('articleSptb', article.sptb || '');
+                        localStorage.setItem('articleSpbb', article.spbb || '');
+                        localStorage.setItem('articleSbtb', article.sbtb || '');
+                        window.open('/viewArticle', '_blank');
+                    });
+                });
             }
-
+    
             ['general', 'character', 'items', 'locations', 'organizations'].forEach(category => {
                 loadArticles(category);
             });
-
+    
             function capitalizeFirstLetter(string) {
                 return string.charAt(0).toUpperCase() + string.slice(1);
             }
         });
-    </script>
+    </script>    
 
 </body>
 </html>
