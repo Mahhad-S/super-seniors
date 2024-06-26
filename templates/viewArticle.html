@@ -8,14 +8,44 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <div id="articlesContainer">
-        <div class="article">
-            <h1 id="articleTitle"></h1>
-            <div id="articleBody"></div>
-            <p id="articleSttb"></p>
-            <p id="articleSptb"></p>
-            <p id="articleSpbb"></p>
-            <p id="articleSbtb"></p>
+
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-logo" href="/navbar-logo" alt="Logo">
+                <img src="/css/imgAssets/project_Logo.png" alt="Logo" class="Logo">
+            </a>
+            <form class="nav-buttons" id="nav-buttons" action="/logout" method="post">
+                <button class="nav-button">Sign Out</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="main-content">
+                
+                <div class="article-header">
+                    <h1 id="articleTitle"></h1>
+                    <div class="header-buttons">
+                        <a href="/dashboard" class="header-button">Dashboard</a>
+                        <a href="/browser" class="header-button">Browser</a>
+                        <a href="#" class="header-button">Edit</a>
+                    </div>
+                </div>
+
+                <div class="article-content">
+                    <div id="articleBody"></div>
+                    <div class="sidebar">
+                        <p id="articleSttb"></p>
+                        <div class="sidebar-panel">
+                            <p id="articleSptb"></p>
+                            <p id="articleSpbb"></p>
+                        </div>
+                        <p id="articleSbtb"></p>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 
@@ -40,5 +70,7 @@
             document.getElementById('articleSbtb').innerHTML = sbtb;
         });
     </script>
+    <script src="/script.js"></script>
+    
 </body>
 </html>
