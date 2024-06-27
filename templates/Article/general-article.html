@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>General Article</title>
     <link rel="stylesheet" href="/Article/general-article.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
 </head>
 <body>
@@ -50,9 +49,8 @@
                         <div class="content active">
                             <div id="editor"></div>
                         </div>
-
                         <div class="content">
-                            <h3>Sidebar: Top Text Box</h2>
+                            <h3>Sidebar: Top Text Box</h3>
                             <div id="sttb"></div>
 
                             <h3>Sidebar: Panel Top Text Box</h3>
@@ -64,7 +62,6 @@
                             <h3>Sidebar: Bottom Text Box</h3>
                             <div id="sbtb"></div>
                         </div>
-
                         <div class="content">
                             <h2>Coming Soon...</h2>
                         </div>
@@ -80,42 +77,75 @@
 
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('articleForm');
-            const saveButton = document.getElementById('saveButton');
+        document.addEventListener('DOMContentLoaded', async function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const articleId = urlParams.get('id');
+            const category = 'general'; // Or dynamically determine the category based on the page
 
-            saveButton.addEventListener('click', async function(event) {
-                event.preventDefault();
-
-                const title = document.getElementById('title').value;
-                const body = document.querySelector('#editor .ql-editor').innerHTML; 
-                const sttb = document.querySelector('#sttb .ql-editor').innerHTML; 
-                const sptb = document.querySelector('#sptb .ql-editor').innerHTML;
-                const spbb = document.querySelector('#spbb .ql-editor').innerHTML;
-                const sbtb = document.querySelector('#sbtb .ql-editor').innerHTML;
-
-                const data = { title, body, sttb, sptb, spbb, sbtb };
-
+            if (articleId) {
                 try {
-                    const response = await fetch('/saveArticleGen', {
+                    const response = await fetch(`/getArticleDetails/${category}/${articleId}`);
+                    const article = await response.json();
+                    
+                    document.getElementById('title').value = article.title;
+                    document.querySelector('#editor .ql-editor').innerHTML = article.body;
+                    document.querySelector('#sttb .ql-editor').innerHTML = article.sttb;
+                    document.querySelector('#sptb .ql-editor').innerHTML = article.sptb;
+                    document.querySelector('#spbb .ql-editor').innerHTML = article.spbb;
+                    document.querySelector('#sbtb .ql-editor').innerHTML = article.sbtb;
+                } catch (error) {
+                    console.error('Error loading article details:', error);
+                }
+            }
+        });
+
+        document.getElementById('saveButton').addEventListener('click', async function(event) {
+            event.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const body = document.querySelector('#editor .ql-editor').innerHTML;
+            const sttb = document.querySelector('#sttb .ql-editor').innerHTML;
+            const sptb = document.querySelector('#sptb .ql-editor').innerHTML;
+            const spbb = document.querySelector('#spbb .ql-editor').innerHTML;
+            const sbtb = document.querySelector('#sbtb .ql-editor').innerHTML;
+
+            const data = { title, body, sttb, sptb, spbb, sbtb };
+            const urlParams = new URLSearchParams(window.location.search);
+            const articleId = urlParams.get('id');
+            const category = 'general'; // Or dynamically determine the category based on the page
+
+            try {
+                let response;
+                if (articleId) {
+                    // Update existing article
+                    response = await fetch(`/updateArticle/${category}/${articleId}`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify(data)
                     });
-
-                        if (response.ok) {
-                    window.location.href = '/dashboard';
-                    } else {
-                        console.error('Error saving article:', response.statusText);
-                    }
-                } catch (error) {
-                    console.error('Error saving article:', error);
+                } else {
+                    // Create new article
+                    response = await fetch(`/saveArticleGen`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
                 }
-            });
+
+                if (response.ok) {
+                    window.location.href = '/dashboard';
+                } else {
+                    console.error('Error saving article:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error saving article:', error);
+            }
         });
-    
+
         function viewArticle() {
             const title = document.getElementById('title').value;
             const body = document.querySelector('#editor .ql-editor').innerHTML;
@@ -123,18 +153,17 @@
             const sptb = document.querySelector('#sptb .ql-editor').innerHTML;
             const spbb = document.querySelector('#spbb .ql-editor').innerHTML;
             const sbtb = document.querySelector('#sbtb .ql-editor').innerHTML;
-    
+
             localStorage.setItem('articleTitle', title);
             localStorage.setItem('articleBody', body);
             localStorage.setItem('articleSttb', sttb);
             localStorage.setItem('articleSptb', sptb);
             localStorage.setItem('articleSpbb', spbb);
             localStorage.setItem('articleSbtb', sbtb);
-    
+
             window.open('/viewArticle', '_blank');
         }
     </script>
     <script src="/script.js"></script>
-    
 </body>
 </html>
