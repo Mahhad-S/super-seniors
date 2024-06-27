@@ -94,7 +94,7 @@
                     if (targetContainer) {
                         targetContainer.classList.toggle('hidden');
                         toggle.textContent = toggle.textContent.includes('▶') ? toggle.textContent.replace('▶', '▼') : toggle.textContent.replace('▼', '▶');
-                    } // ▼ 
+                    }
                 });
             });
     
@@ -110,7 +110,7 @@
                         <div>${article.title}</div>
                         <div>
                             <button class="browser-button view-button" data-id="${article._id}" data-category="${category}">View</button>
-                            <button class="browser-button edit-button" data-id="${article._id}">Edit</button>
+                            <button class="browser-button edit-button" data-id="${article._id}" data-category="${category}">Edit</button>
                             <button class="browser-button delete-button" data-id="${article._id}" data-category="${category}">Delete</button>
                         </div>
                     `;
@@ -130,6 +130,14 @@
                         localStorage.setItem('articleSpbb', article.spbb || '');
                         localStorage.setItem('articleSbtb', article.sbtb || '');
                         window.open('/viewArticle', '_blank');
+                    });
+                });
+    
+                container.querySelectorAll('.edit-button').forEach(button => {
+                    button.addEventListener('click', function () {
+                        const id = this.getAttribute('data-id');
+                        const category = this.getAttribute('data-category');
+                        window.location.href = `/${category}-article?id=${id}`;
                     });
                 });
     
@@ -171,7 +179,7 @@
                 return string.charAt(0).toUpperCase() + string.slice(1);
             }
         });
-    </script>     
+    </script>    
 
 </body>
 </html>

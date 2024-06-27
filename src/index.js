@@ -171,7 +171,7 @@ app.post("/login", async (req, res) => {
     }
 });
 
-app.post("/saveArticleGen", async (req, res) => {
+app.post('/saveArticleGen', async (req, res) => {
     const { title, body, sttb, sptb, spbb, sbtb } = req.body;
 
     const newArticle = new GeneralArticleCollection({
@@ -188,7 +188,7 @@ app.post("/saveArticleGen", async (req, res) => {
         res.redirect('/dashboard');
     } catch (error) {
         console.error("Error saving article:", error);
-        res.redirect('/general-article');
+        res.status(500).send("Internal Server Error");
     }
 });
 
@@ -413,6 +413,74 @@ app.delete("/deleteArticle/:category/:id", async (req, res) => {
         res.sendStatus(200);
     } catch (error) {
         console.error("Error deleting article:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+// this route will be used to get a specific article based on the category and id of the article from the browser and update it
+app.get('/getArticleDetails/:category/:id', async (req, res) => {
+    const { category, id } = req.params;
+    let collection;
+
+    switch (category) {
+        case 'general':
+            collection = GeneralArticleCollection;
+            break;
+        case 'character':
+            collection = CharacterArticleCollection;
+            break;
+        case 'items':
+            collection = ItemsArticleCollection;
+            break;
+        case 'locations':
+            collection = LocationsArticleCollection;
+            break;
+        case 'organizations':
+            collection = OrganizationsArticleCollection;
+            break;
+        default:
+            return res.status(400).send("Invalid category");
+    }
+
+    try {
+        const article = await collection.findById(id);
+        res.json(article);
+    } catch (error) {
+        console.error("Error fetching article details:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+app.post('/updateArticle/:category/:id', async (req, res) => {
+    const { category, id } = req.params;
+    const { title, body, sttb, sptb, spbb, sbtb } = req.body;
+    let collection;
+
+    switch (category) {
+        case 'general':
+            collection = GeneralArticleCollection;
+            break;
+        case 'character':
+            collection = CharacterArticleCollection;
+            break;
+        case 'items':
+            collection = ItemsArticleCollection;
+            break;
+        case 'locations':
+            collection = LocationsArticleCollection;
+            break;
+        case 'organizations':
+            collection = OrganizationsArticleCollection;
+            break;
+        default:
+            return res.status(400).send("Invalid category");
+    }
+
+    try {
+        await collection.findByIdAndUpdate(id, { title, body, sttb, sptb, spbb, sbtb });
+        res.redirect('/dashboard');
+    } catch (error) {
+        console.error("Error updating article:", error);
         res.status(500).send("Internal Server Error");
     }
 });
