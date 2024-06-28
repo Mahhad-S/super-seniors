@@ -40,7 +40,18 @@ const CharacterArticleSchema = new mongoose.Schema({
     sttb: String,
     sptb: String,
     spbb: String,
-    sbtb: String
+    sbtb: String,
+    ch_hair: String,
+    ch_skin: String,
+    ch_eyes: String,
+    ch_height: String,
+    ch_weight: String,
+    ch_sex: String,
+    ch_gender: String,
+    ch_race: String,
+    ch_eth: String,
+    ch_nationality:String,
+    ch_age: String
 });
 
 const ItemsArticleSchema = new mongoose.Schema({
