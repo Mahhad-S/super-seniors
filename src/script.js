@@ -244,27 +244,6 @@ var poisQuill = new Quill('#pois', {
     theme: 'snow'
 });
 
-var simbQuill = new Quill('#simb', {
-    modules: {
-        toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike', ],
-            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-        ],
-      },
-    theme: 'snow'
-});
-
-var inWorkQuill = new Quill('#inWork', {
-    modules: {
-        toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike', ],
-            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-        ],
-      },
-    theme: 'snow'
-});
 
 document.getElementById('quillForm').addEventListener('submit', function(event) {
     event.preventDefault();
