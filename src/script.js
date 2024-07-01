@@ -100,175 +100,60 @@ const quill = new Quill('#editor', {
 */
 
 /* Quill Text Editor and Functions -- Starts  */
-
-var editorQuill = new Quill('#editor', {
-    modules: {
-        toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike', ],
-            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-        ],
-      },
-    theme: 'snow'
-});
-
-var sttbQuill = new Quill('#sttb', {
-    modules: {
-        toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike', ],
-            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-        ],
-      },
-    theme: 'snow'
-});
-
-var sptbQuill = new Quill('#sptb', {
-    modules: {
-        toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike', ],
-            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-        ],
-      },
-    theme: 'snow'
-});
-
-var spbbQuill = new Quill('#spbb', {
-    modules: {
-        toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike', ],
-            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-        ],
-      },
-    theme: 'snow'
-});
-
-var sbtbQuill = new Quill('#sbtb', {
-    modules: {
-        toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike', ],
-            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-        ],
-      },
-    theme: 'snow'
-});
-
-var orgStrQuill = new Quill('#orgStr', {
-    modules: {
-        toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike', ],
-            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-        ],
-      },
-    theme: 'snow'
-});
-
-var pubAgendaQuill = new Quill('#pubAgenda', {
-    modules: {
-        toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike', ],
-            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-        ],
-      },
-    theme: 'snow'
-});
-
-var histQuill = new Quill('#hist', {
-    modules: {
-        toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike', ],
-            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-        ],
-      },
-    theme: 'snow'
-});
-
-var disbQuill = new Quill('#disb', {
-    modules: {
-        toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike', ],
-            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-        ],
-      },
-    theme: 'snow'
-});
-
-var govQuill = new Quill('#gov', {
-    modules: {
-        toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike', ],
-            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-        ],
-      },
-    theme: 'snow'
-});
-
-var demoQuill = new Quill('#demo', {
-    modules: {
-        toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike', ],
-            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-        ],
-      },
-    theme: 'snow'
-});
-
-var distQuill = new Quill('#dist', {
-    modules: {
-        toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike', ],
-            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-        ],
-      },
-    theme: 'snow'
-});
-
-var poisQuill = new Quill('#pois', {
-    modules: {
-        toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike', ],
-            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-        ],
-      },
-    theme: 'snow'
-});
-
-
-document.getElementById('quillForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    // Get the content from Quill editor
-    var content = quill.root.innerHTML;
-    
-    // Set the content to the hidden input field
-    document.getElementById('content').value = content;
-    
-    // Prepare form data
-    var formData = new FormData(this);
-
-    // Send the data to the server
-    fetch('/submit', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
+    var editorQuill = new Quill('#editor', {
+        modules: {
+            toolbar: [
+                [{ header: [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike', ],
+                [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+            ],
+          },
+        theme: 'snow'
     });
-});
+    
+    var sttbQuill = new Quill('#sttb', {
+        modules: {
+            toolbar: [
+                [{ header: [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike', ],
+                [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+            ],
+          },
+        theme: 'snow'
+    });
+    
+    var sptbQuill = new Quill('#sptb', {
+        modules: {
+            toolbar: [
+                [{ header: [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike', ],
+                [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+            ],
+          },
+        theme: 'snow'
+    });
+    
+    var spbbQuill = new Quill('#spbb', {
+        modules: {
+            toolbar: [
+                [{ header: [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike', ],
+                [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+            ],
+          },
+        theme: 'snow'
+    });
+    
+    var sbtbQuill = new Quill('#sbtb', {
+        modules: {
+            toolbar: [
+                [{ header: [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike', ],
+                [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+            ],
+          },
+        theme: 'snow'
+    });
+
 
 /* Quill Text Editor and Functions -- Ends  */

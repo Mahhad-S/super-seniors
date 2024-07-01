@@ -59,34 +59,22 @@
                                     <div class="acc_content">
                                         <div class="primary_content">
                                             <h4>Population</h4>
-                                            <input class="ch_pop_inp" type="text" id="ch_hair" name="ch_hair" placeholder="Write here...">
+                                            <input class="ch_pop_inp" type="text" id="ch_pop_inp" name="ch_pop_inp" placeholder="Write here...">
                                             <h6>Color, length, styling, quality</h6>
 
                                             <h4>Denonym</h4>
-                                            <input class="ch_denonym_inp" type="text" id="ch_race" name="ch_race" placeholder="Write here...">
+                                            <input class="ch_denonym_inp" type="text" id="ch_denonym_inp" name="ch_denonym_inp" placeholder="Write here...">
                                             <h6>Color, length, styling, quality</h6>
             
                                             <h4>Alternative Name</h4>
-                                            <input class="ch_altName_inp" type="text" id="ch_eth" name="ch_eth" placeholder="Write here...">
+                                            <input class="ch_altName_inp" type="text" id="ch_altName_inp" name="ch_altName_inp" placeholder="Write here...">
                                             <h6>Color, size, direction, blemishes</h6>
-                                        </div>
-            
-                                        <div class="secd_content">
-                                            <h4>Founding Date</h4>
-                                            <input class="ch_fDate_inp" type="text" id="ch_skin" name="ch_skin" placeholder="Write here...">
-                                            <h6>Color, size, direction, blemishes</h6>
-
-                                            <h4>Doom Date</h4>
-                                            <input class="ch_dDate_inp" type="text" id="ch_skin" name="ch_skin" placeholder="Write here...">
-                                            <h6>Color, size, direction, blemishes</h6>
-                                        </div>
-
-                                        <div class="third_content">
+                                        
                                             <h4>Government</h4>
                                             <div id="gov"></div>
 
                                             <h4>History</h4>
-                                            <div id="hist"></div>
+                                            <div id="loc_hist"></div>
 
                                             <h4>Demographics</h4>
                                             <div id="demo"></div>
@@ -97,6 +85,17 @@
                                             <h4>Points of Interest</h4>
                                             <div id="pois"></div>
                                         </div>
+            
+                                        <div class="secd_content">
+                                            <h4>Founding Date</h4>
+                                            <input class="ch_fDate_inp" type="text" id="ch_fDate_inp" name="ch_fDate_inp" placeholder="Write here...">
+                                            <h6>Color, size, direction, blemishes</h6>
+
+                                            <h4>Doom Date</h4>
+                                            <input class="ch_dDate_inp" type="text" id="ch_dDate_inp" name="ch_dDate_inp" placeholder="Write here...">
+                                            <h6>Color, size, direction, blemishes</h6>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -131,6 +130,62 @@
 
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
     <script>
+
+var goveQuill = new Quill('#gov', {
+        modules: {
+            toolbar: [
+                [{ header: [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike', ],
+                [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+            ],
+          },
+        theme: 'snow'
+    });
+    
+    var loc_histQuill = new Quill('#loc_hist', {
+        modules: {
+            toolbar: [
+                [{ header: [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike', ],
+                [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+            ],
+          },
+        theme: 'snow'
+    });
+    
+    var demoQuill = new Quill('#demo', {
+        modules: {
+            toolbar: [
+                [{ header: [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike', ],
+                [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+            ],
+          },
+        theme: 'snow'
+    });
+    
+    var distQuill = new Quill('#dist', {
+        modules: {
+            toolbar: [
+                [{ header: [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike', ],
+                [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+            ],
+          },
+        theme: 'snow'
+    });
+    
+    var poisQuill = new Quill('#pois', {
+        modules: {
+            toolbar: [
+                [{ header: [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike', ],
+                [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+            ],
+          },
+        theme: 'snow'
+    });
+    
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('articleForm');
             const saveButton = document.getElementById('saveButton');
