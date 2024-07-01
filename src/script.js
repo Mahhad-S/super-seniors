@@ -101,7 +101,7 @@ const quill = new Quill('#editor', {
 
 /* Quill Text Editor and Functions -- Starts  */
 
-var quill = new Quill('#editor', {
+var editorQuill = new Quill('#editor', {
     modules: {
         toolbar: [
             [{ header: [1, 2, 3, false] }],
@@ -112,7 +112,7 @@ var quill = new Quill('#editor', {
     theme: 'snow'
 });
 
-var quill = new Quill('#sttb', {
+var sttbQuill = new Quill('#sttb', {
     modules: {
         toolbar: [
             [{ header: [1, 2, 3, false] }],
@@ -123,7 +123,7 @@ var quill = new Quill('#sttb', {
     theme: 'snow'
 });
 
-var quill = new Quill('#sptb', {
+var sptbQuill = new Quill('#sptb', {
     modules: {
         toolbar: [
             [{ header: [1, 2, 3, false] }],
@@ -134,7 +134,7 @@ var quill = new Quill('#sptb', {
     theme: 'snow'
 });
 
-var quill = new Quill('#spbb', {
+var spbbQuill = new Quill('#spbb', {
     modules: {
         toolbar: [
             [{ header: [1, 2, 3, false] }],
@@ -145,7 +145,7 @@ var quill = new Quill('#spbb', {
     theme: 'snow'
 });
 
-var quill = new Quill('#sbtb', {
+var sbtbQuill = new Quill('#sbtb', {
     modules: {
         toolbar: [
             [{ header: [1, 2, 3, false] }],
@@ -156,7 +156,7 @@ var quill = new Quill('#sbtb', {
     theme: 'snow'
 });
 
-var quill = new Quill('#orgStr', {
+var orgStrQuill = new Quill('#orgStr', {
     modules: {
         toolbar: [
             [{ header: [1, 2, 3, false] }],
@@ -167,7 +167,7 @@ var quill = new Quill('#orgStr', {
     theme: 'snow'
 });
 
-var quill = new Quill('#pubAgenda', {
+var pubAgendaQuill = new Quill('#pubAgenda', {
     modules: {
         toolbar: [
             [{ header: [1, 2, 3, false] }],
@@ -178,7 +178,7 @@ var quill = new Quill('#pubAgenda', {
     theme: 'snow'
 });
 
-var quill = new Quill('#hist', {
+var histQuill = new Quill('#hist', {
     modules: {
         toolbar: [
             [{ header: [1, 2, 3, false] }],
@@ -189,7 +189,7 @@ var quill = new Quill('#hist', {
     theme: 'snow'
 });
 
-var quill = new Quill('#disb', {
+var disbQuill = new Quill('#disb', {
     modules: {
         toolbar: [
             [{ header: [1, 2, 3, false] }],
@@ -200,7 +200,7 @@ var quill = new Quill('#disb', {
     theme: 'snow'
 });
 
-var quill = new Quill('#gov', {
+var govQuill = new Quill('#gov', {
     modules: {
         toolbar: [
             [{ header: [1, 2, 3, false] }],
@@ -211,7 +211,7 @@ var quill = new Quill('#gov', {
     theme: 'snow'
 });
 
-var quill = new Quill('#demo', {
+var demoQuill = new Quill('#demo', {
     modules: {
         toolbar: [
             [{ header: [1, 2, 3, false] }],
@@ -222,7 +222,7 @@ var quill = new Quill('#demo', {
     theme: 'snow'
 });
 
-var quill = new Quill('#dist', {
+var distQuill = new Quill('#dist', {
     modules: {
         toolbar: [
             [{ header: [1, 2, 3, false] }],
@@ -233,7 +233,7 @@ var quill = new Quill('#dist', {
     theme: 'snow'
 });
 
-var quill = new Quill('#pois', {
+var poisQuill = new Quill('#pois', {
     modules: {
         toolbar: [
             [{ header: [1, 2, 3, false] }],
@@ -244,7 +244,7 @@ var quill = new Quill('#pois', {
     theme: 'snow'
 });
 
-var quill = new Quill('#simb', {
+var simbQuill = new Quill('#simb', {
     modules: {
         toolbar: [
             [{ header: [1, 2, 3, false] }],
@@ -255,7 +255,7 @@ var quill = new Quill('#simb', {
     theme: 'snow'
 });
 
-var quill = new Quill('#inWork', {
+var inWorkQuill = new Quill('#inWork', {
     modules: {
         toolbar: [
             [{ header: [1, 2, 3, false] }],
