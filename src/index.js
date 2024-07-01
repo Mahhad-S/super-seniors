@@ -502,6 +502,32 @@ app.post('/updateArticle/:category/:id', async (req, res) => {
     }
 });
 
+app.get('/searchArticles', async (req, res) => {
+    const { title } = req.query;
+    console.log('Search query received:', title); // Log the search query received
+    try {
+        const generalArticles = await GeneralArticleCollection.find({ title: { $regex: title, $options: 'i' } });
+        const characterArticles = await CharacterArticleCollection.find({ title: { $regex: title, $options: 'i' } });
+        const itemsArticles = await ItemsArticleCollection.find({ title: { $regex: title, $options: 'i' } });
+        const locationsArticles = await LocationsArticleCollection.find({ title: { $regex: title, $options: 'i' } });
+        const organizationsArticles = await OrganizationsArticleCollection.find({ title: { $regex: title, $options: 'i' } });
+
+        const articles = [
+            ...generalArticles.map(article => ({ ...article._doc, category: 'general' })),
+            ...characterArticles.map(article => ({ ...article._doc, category: 'character' })),
+            ...itemsArticles.map(article => ({ ...article._doc, category: 'items' })),
+            ...locationsArticles.map(article => ({ ...article._doc, category: 'locations' })),
+            ...organizationsArticles.map(article => ({ ...article._doc, category: 'organizations' })),
+        ];
+
+        console.log('Search results:', articles); // Log the search results
+        res.json(articles);
+    } catch (error) {
+        console.error('Error searching articles:', error); // Log the error message
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
 });
