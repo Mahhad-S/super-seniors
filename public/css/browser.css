@@ -128,7 +128,7 @@ a {
     margin-right: 70px;
     margin-top: 0;
     flex: 1;
-    background-color: #575757;
+    background-color: #ffdb8d;
     padding: 20px 50px;
     /*adjust for page sizing*/
     overflow: auto;
@@ -285,6 +285,7 @@ h1 {
 .footer {
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
     background-color: rgba(0, 0, 0);
     color: #fff;

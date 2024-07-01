@@ -66,17 +66,19 @@
                 <div class="article-container organizations hidden">
                     <!-- Articles for Organization Category will be dynamically loaded here -->
                 </div>
-
                 <!-- Custom Confirmation Modal -->
-                <div id="confirmationModal" class="modal">
-                    <div class="modal-content">
-                        <p>Are you sure you want to delete this article?</p>
-                        <button id="confirmDelete">Yes, Delete</button>
-                        <button id="cancelDelete">Cancel</button>
-                    </div>
-                </div>
+<div id="confirmationModal" class="modal">
+    <div class="modal-content">
+        <p>Are you sure you want to delete this article?</p>
+        <button id="confirmDelete">Yes, Delete</button>
+        <button id="cancelDelete">Cancel</button>
+        <div id="deleteMessage" class="hidden">
+            Article deleted successfully
+        </div>
+    </div>
+</div>
 
-            </div>
+                
         </div>
 
         <footer class="footer">
@@ -149,7 +151,12 @@
                             });
                             if (response.ok) {
                                 button.closest('.article').remove();
-                                alert('Article deleted successfully');
+                                // Show delete message
+                                const deleteMessage = document.getElementById('deleteMessage');
+                                deleteMessage.classList.remove('hidden');
+                                setTimeout(() => {
+                                        deleteMessage.classList.add('hidden');
+                                }, 3000); // hide after 3 sec
                             } else {
                                 alert('Failed to delete article');
                             }
