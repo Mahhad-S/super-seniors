@@ -248,7 +248,10 @@ app.post("/saveArticleCharacter", async (req, res) => {
 });
 
 app.post("/saveArticleOrg", async (req, res) => {
-    const { title, body, sttb, sptb, spbb, sbtb } = req.body;
+    const { 
+        title, body, sttb, sptb, spbb, sbtb, slogan, denonym, altName, 
+        foundingDate, dissolutionDate, orgStr, pubAgenda, hist, disb 
+    } = req.body;
 
     const newArticle = new OrganizationsArticleCollection({
         title,
@@ -256,7 +259,16 @@ app.post("/saveArticleOrg", async (req, res) => {
         sttb,
         sptb,
         spbb,
-        sbtb
+        sbtb,
+        slogan,
+        denonym,
+        altName,
+        foundingDate,
+        dissolutionDate,
+        orgStructure: orgStr,
+        publicAgenda: pubAgenda,
+        history: hist,
+        disbandment: disb
     });
 
     try {

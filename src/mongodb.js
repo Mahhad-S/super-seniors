@@ -84,7 +84,7 @@ LocationsArticleSchema = new mongoose.Schema({
     sbtb: String
 });
 
-OrganizationsArticleSchema = new mongoose.Schema({
+const OrganizationsArticleSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -96,7 +96,16 @@ OrganizationsArticleSchema = new mongoose.Schema({
     sttb: String,
     sptb: String,
     spbb: String,
-    sbtb: String
+    sbtb: String,
+    slogan: String,
+    denonym: String,
+    altName: String,
+    foundingDate: String,
+    dissolutionDate: String,
+    orgStructure: String,
+    publicAgenda: String,
+    history: String,
+    disbandment: String
 });
 
 const GeneralArticleCollection = mongoose.model("GeneralArticles", GeneralArticleSchema);
