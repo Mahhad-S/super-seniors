@@ -126,30 +126,35 @@
                 }
             });
     
-            async function loadArticles(category) {
-                const response = await fetch(`/viewArticle${capitalizeFirstLetter(category)}`);
-                const articles = await response.json();
-                displayArticles(articles, category);
-            }
+            function displayArticles(articles) {
+                const containers = {
+                    general: document.querySelector('.article-container.general'),
+                    character: document.querySelector('.article-container.character'),
+                    items: document.querySelector('.article-container.items'),
+                    locations: document.querySelector('.article-container.locations'),
+                    organizations: document.querySelector('.article-container.organizations')
+                };
     
-            function displayArticles(articles, category) {
-                const container = document.querySelector(`.article-container.${category}`);
-                container.innerHTML = '';
+                // Clear previous search results
+                Object.values(containers).forEach(container => container.innerHTML = '');
+    
                 articles.forEach(article => {
+                    const container = containers[article.category];
                     const articleRow = document.createElement('div');
                     articleRow.className = 'article';
                     articleRow.innerHTML = `
                         <div>${article.title}</div>
                         <div>
-                            <button class="browser-button view-button" data-id="${article._id}" data-category="${category}">View</button>
-                            <button class="browser-button edit-button" data-id="${article._id}" data-category="${category}">Edit</button>
-                            <button class="browser-button delete-button" data-id="${article._id}" data-category="${category}">Delete</button>
+                            <button class="browser-button view-button" data-id="${article._id}" data-category="${article.category}">View</button>
+                            <button class="browser-button edit-button" data-id="${article._id}" data-category="${article.category}">Edit</button>
+                            <button class="browser-button delete-button" data-id="${article._id}" data-category="${article.category}">Delete</button>
                         </div>
                     `;
                     container.appendChild(articleRow);
                 });
     
-                container.querySelectorAll('.view-button').forEach(button => {
+                // Attach event listeners to new buttons
+                document.querySelectorAll('.view-button').forEach(button => {
                     button.addEventListener('click', async function () {
                         const id = this.getAttribute('data-id');
                         const category = this.getAttribute('data-category');
@@ -165,7 +170,7 @@
                     });
                 });
     
-                container.querySelectorAll('.edit-button').forEach(button => {
+                document.querySelectorAll('.edit-button').forEach(button => {
                     button.addEventListener('click', function () {
                         const id = this.getAttribute('data-id');
                         const category = this.getAttribute('data-category');
@@ -173,7 +178,7 @@
                     });
                 });
     
-                container.querySelectorAll('.delete-button').forEach(button => {
+                document.querySelectorAll('.delete-button').forEach(button => {
                     button.addEventListener('click', function () {
                         const id = this.getAttribute('data-id');
                         const category = this.getAttribute('data-category');
@@ -213,5 +218,6 @@
             }
         });
     </script>
+    
 </body>
 </html>
