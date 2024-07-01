@@ -108,7 +108,7 @@ var editorQuill = new Quill('#editor', {
             ['bold', 'italic', 'underline', 'strike', ],
             [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
         ],
-      },
+    },
     theme: 'snow'
 });
 
@@ -119,7 +119,7 @@ var sttbQuill = new Quill('#sttb', {
             ['bold', 'italic', 'underline', 'strike', ],
             [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
         ],
-      },
+    },
     theme: 'snow'
 });
 
@@ -130,7 +130,7 @@ var sptbQuill = new Quill('#sptb', {
             ['bold', 'italic', 'underline', 'strike', ],
             [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
         ],
-      },
+    },
     theme: 'snow'
 });
 
@@ -141,7 +141,7 @@ var spbbQuill = new Quill('#spbb', {
             ['bold', 'italic', 'underline', 'strike', ],
             [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
         ],
-      },
+    },
     theme: 'snow'
 });
 
@@ -152,7 +152,7 @@ var sbtbQuill = new Quill('#sbtb', {
             ['bold', 'italic', 'underline', 'strike', ],
             [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
         ],
-      },
+    },
     theme: 'snow'
 });
 
@@ -163,7 +163,7 @@ var orgStrQuill = new Quill('#orgStr', {
             ['bold', 'italic', 'underline', 'strike', ],
             [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
         ],
-      },
+    },
     theme: 'snow'
 });
 
@@ -174,7 +174,7 @@ var pubAgendaQuill = new Quill('#pubAgenda', {
             ['bold', 'italic', 'underline', 'strike', ],
             [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
         ],
-      },
+    },
     theme: 'snow'
 });
 
@@ -185,7 +185,7 @@ var histQuill = new Quill('#hist', {
             ['bold', 'italic', 'underline', 'strike', ],
             [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
         ],
-      },
+    },
     theme: 'snow'
 });
 
@@ -196,7 +196,7 @@ var disbQuill = new Quill('#disb', {
             ['bold', 'italic', 'underline', 'strike', ],
             [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
         ],
-      },
+    },
     theme: 'snow'
 });
 
@@ -207,7 +207,7 @@ var govQuill = new Quill('#gov', {
             ['bold', 'italic', 'underline', 'strike', ],
             [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
         ],
-      },
+    },
     theme: 'snow'
 });
 
@@ -218,7 +218,7 @@ var demoQuill = new Quill('#demo', {
             ['bold', 'italic', 'underline', 'strike', ],
             [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
         ],
-      },
+    },
     theme: 'snow'
 });
 
@@ -229,7 +229,7 @@ var distQuill = new Quill('#dist', {
             ['bold', 'italic', 'underline', 'strike', ],
             [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
         ],
-      },
+    },
     theme: 'snow'
 });
 
@@ -240,7 +240,7 @@ var poisQuill = new Quill('#pois', {
             ['bold', 'italic', 'underline', 'strike', ],
             [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
         ],
-      },
+    },
     theme: 'snow'
 });
 
@@ -251,7 +251,7 @@ var simbQuill = new Quill('#simb', {
             ['bold', 'italic', 'underline', 'strike', ],
             [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
         ],
-      },
+    },
     theme: 'snow'
 });
 
@@ -262,7 +262,7 @@ var inWorkQuill = new Quill('#inWork', {
             ['bold', 'italic', 'underline', 'strike', ],
             [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
         ],
-      },
+    },
     theme: 'snow'
 });
 
