@@ -156,6 +156,116 @@ var quill = new Quill('#sbtb', {
     theme: 'snow'
 });
 
+var quill = new Quill('#orgStr', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
+    theme: 'snow'
+});
+
+var quill = new Quill('#pubAgenda', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
+    theme: 'snow'
+});
+
+var quill = new Quill('#hist', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
+    theme: 'snow'
+});
+
+var quill = new Quill('#disb', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
+    theme: 'snow'
+});
+
+var quill = new Quill('#gov', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
+    theme: 'snow'
+});
+
+var quill = new Quill('#demo', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
+    theme: 'snow'
+});
+
+var quill = new Quill('#dist', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
+    theme: 'snow'
+});
+
+var quill = new Quill('#pois', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
+    theme: 'snow'
+});
+
+var quill = new Quill('#simb', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
+    theme: 'snow'
+});
+
+var quill = new Quill('#inWork', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
+    theme: 'snow'
+});
+
 document.getElementById('quillForm').addEventListener('submit', function(event) {
     event.preventDefault();
     
