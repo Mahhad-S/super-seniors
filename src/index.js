@@ -528,6 +528,30 @@ app.get('/searchArticles', async (req, res) => {
     }
 });
 
+app.get('/getAllArticles', async (req, res) => {
+    try {
+        const generalArticles = await GeneralArticleCollection.find({});
+        const characterArticles = await CharacterArticleCollection.find({});
+        const itemsArticles = await ItemsArticleCollection.find({});
+        const locationsArticles = await LocationsArticleCollection.find({});
+        const organizationsArticles = await OrganizationsArticleCollection.find({});
+
+        const articles = [
+            ...generalArticles.map(article => ({ ...article._doc, category: 'general' })),
+            ...characterArticles.map(article => ({ ...article._doc, category: 'character' })),
+            ...itemsArticles.map(article => ({ ...article._doc, category: 'items' })),
+            ...locationsArticles.map(article => ({ ...article._doc, category: 'locations' })),
+            ...organizationsArticles.map(article => ({ ...article._doc, category: 'organizations' })),
+        ];
+
+        res.json(articles);
+    } catch (error) {
+        console.error('Error fetching all articles:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
 });
