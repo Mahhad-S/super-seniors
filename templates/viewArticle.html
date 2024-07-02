@@ -39,20 +39,6 @@
                         <p id="articleSttb"></p>
                         <div class="sidebar-panel">
                             <p id="articleSptb"></p>
-
-                            <p id="articleCh_hair"></p>
-                            <p id="articleCh_skin"></p>
-                            <p id="articleCh_eyes"></p>
-                            <p id="articleCh_height"></p>
-                            <p id="articleCh_weight"></p>
-                            <p id="articleCh_sex"></p>
-                            <p id="articleCh_gender"></p>
-
-                            <p id="articleCh_race"></p>
-                            <p id="articleCh_eth"></p>
-                            <p id="articleCh_nationality"></p>
-                            <p id="articleCh_age"></p>
-
                             <p id="articleSpbb"></p>
                         </div>
                         <p id="articleSbtb"></p>
@@ -76,38 +62,12 @@
             const spbb = localStorage.getItem('articleSpbb');
             const sbtb = localStorage.getItem('articleSbtb');
 
-            const ch_hair = localStorage.getItem('articleCh_hair');
-            const ch_skin = localStorage.getItem('articleCh_skin');
-            const ch_eyes = localStorage.getItem('articleCh_eyes');
-            const ch_height = localStorage.getItem('articleCh_height');
-            const ch_weight = localStorage.getItem('articleCh_weight');
-            const ch_sex = localStorage.getItem('articleCh_sex');
-            const ch_gender = localStorage.getItem('articleCh_gender');
-
-            const ch_race = localStorage.getItem('articleCh_race');
-            const ch_eth = localStorage.getItem('articleCh_eth');
-            const ch_nationality = localStorage.getItem('articleCh_nationality');
-            const ch_age = localStorage.getItem('articleCh_age');
-
             document.getElementById('articleTitle').textContent = title;
             document.getElementById('articleBody').innerHTML = body;  // Use innerHTML to render HTML content
             document.getElementById('articleSttb').innerHTML = sttb;
             document.getElementById('articleSptb').innerHTML = sptb;
             document.getElementById('articleSpbb').innerHTML = spbb;
             document.getElementById('articleSbtb').innerHTML = sbtb;
-
-            document.getElementById('articleCh_hair').innerHTML = ch_hair;
-            document.getElementById('articleCh_skin').innerHTML = ch_skin;
-            document.getElementById('articleCh_eyes').innerHTML = ch_eyes;
-            document.getElementById('articleCh_height').innerHTML = ch_height;
-            document.getElementById('articleCh_weight').innerHTML = ch_weight;
-            document.getElementById('articleCh_sex').innerHTML = ch_sex;
-            document.getElementById('articleCh_gender').innerHTML = ch_gender;
-
-            document.getElementById('articleCh_race').innerHTML = ch_race;
-            document.getElementById('articleCh_eth').innerHTML = ch_eth;
-            document.getElementById('articleCh_nationality').innerHTML = ch_nationality;
-            document.getElementById('articleCh_age').innerHTML = ch_age;
         });
     </script>
     <script src="/script.js"></script>

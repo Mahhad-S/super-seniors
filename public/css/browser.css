@@ -219,8 +219,8 @@ h1 {
     color: #8B4513; /* Darken text on hover */
 }
 
-/* Modal (background) */
-.modal {
+/* Model (background) */
+.model {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -232,8 +232,8 @@ h1 {
     background-color: rgba(0, 0, 0, 0.4); 
 }
 
-/* Modal Content */
-.modal-content {
+/* Model Content */
+.model-content {
     background-color: #fefefe;
     margin: 10% auto; 
     padding: 20px;
