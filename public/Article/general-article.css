@@ -184,14 +184,12 @@ body {
 
 .content-box .content {
     display: none;
-    background-color: white;
     color: black;
 }
 
 .content-box .content.active {
     display: block;
     margin-bottom: 50px;
-    background-color: white;
     color: black;
 }
 
@@ -208,8 +206,6 @@ body {
 }
 
 .content-box .content.active input {
-    width: 100%;
-    height: 300px;
     padding: 10px;
     margin-top: 10px;
     border: 1px solid #ccc;
@@ -220,6 +216,8 @@ body {
 textarea,
 input {
     border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
   }
  
 textarea,
@@ -227,31 +225,41 @@ input,
   .ql-editor {
     padding: 4px;
     font-size: 14px;
+    background-color: white;
+  }
+  .ql-toolbar {
+    background-color: white;
   }
   
 #editor {
     width: 100%;
     height: 400px;
+    margin-bottom: 40px;
+    background-color: white;
 }
 
 #sttb {
     width: 100%;
     height: 200px;
+    background-color: white;
 }
 
 #sptb {
     width: 100%;
     height: 200px;
+    background-color: white;
 }
 
 #spbb {
     width: 100%;
     height: 200px;
+    background-color: white;
 }
 
 #sbtb {
     width: 100%;
     height: 200px;
+    background-color: white;
 }
 /* Quill Editor CSS -- Ends */
 

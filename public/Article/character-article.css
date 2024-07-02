@@ -294,6 +294,7 @@ input,
 .acc_section .acc_content {
     display: none;
     color: black;
+    margin-top: 10px;
 }
 
 .acc_section .acc_content.active {

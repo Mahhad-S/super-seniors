@@ -57,35 +57,36 @@
             
                                 <div class="acc_section">
                                     <div class="acc_content">
-                                        <div class="primary_content">
+
+                                        <div class="first_content">
                                             <h4>Price</h4>
-                                            <input class="ch_price_inp" type="text" id="ch_hair" name="ch_hair" placeholder="Write here...">
+                                            <input class="ch_price_inp" type="text" id="ch_price_inp" name="ch_price_inp" placeholder="Write here...">
                                             <h6>Color, length, styling, quality</h6>
 
                                             <h4>Weight</h4>
-                                            <input class="ch_weight_inp" type="text" id="ch_race" name="ch_race" placeholder="Write here...">
+                                            <input class="ch_weight_inp" type="text" id="ch_weight_inp" name="ch_weight_inp" placeholder="Write here...">
                                             <h6>Color, length, styling, quality</h6>
             
                                             <h4>Size</h4>
-                                            <input class="ch_size_inp" type="text" id="ch_eth" name="ch_eth" placeholder="Write here...">
+                                            <input class="ch_size_inp" type="text" id="ch_size_inp" name="ch_size_inp" placeholder="Write here...">
                                             <h6>Color, size, direction, blemishes</h6>
                                         </div>
             
                                         <div class="secd_content">
                                             <h4>Creation Date</h4>
-                                            <input class="ch_cDate_inp" type="text" id="ch_skin" name="ch_skin" placeholder="Write here...">
+                                            <input class="ch_cDate_inp" type="text" id="ch_cDate_inp" name="ch_cDate_inp" placeholder="Write here...">
                                             <h6>Color, size, direction, blemishes</h6>
 
                                             <h4>Destruction Date</h4>
-                                            <input class="ch_dDate_inp" type="text" id="ch_skin" name="ch_skin" placeholder="Write here...">
+                                            <input class="ch_dDate_inp" type="text" id="ch_dDate_inp" name="ch_dDate_inp" placeholder="Write here...">
                                             <h6>Color, size, direction, blemishes</h6>
                                         </div>
 
                                         <div class="third_content">
                                             <h4>History</h4>
-                                            <div id="hist"></div>
+                                            <div id="items_hist"></div>
 
-                                            <h4>Simbolism</h4>
+                                            <h4>Symbolism</h4>
                                             <div id="simb"></div>
 
                                             <h4>Inner Workings</h4>
@@ -124,61 +125,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('articleForm');
-            const saveButton = document.getElementById('saveButton');
-
-            saveButton.addEventListener('click', async function(event) {
-                event.preventDefault();
-
-                const title = document.getElementById('title').value;
-                const body = document.querySelector('#editor .ql-editor').innerHTML; 
-                const sttb = document.querySelector('#sttb .ql-editor').innerHTML; 
-                const sptb = document.querySelector('#sptb .ql-editor').innerHTML;
-                const spbb = document.querySelector('#spbb .ql-editor').innerHTML;
-                const sbtb = document.querySelector('#sbtb .ql-editor').innerHTML;
-
-                const data = { title, body, sttb, sptb, spbb, sbtb };
-
-                try {
-                    const response = await fetch('/saveArticleItem', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(data)
-                    });
-
-                        if (response.ok) {
-                    window.location.href = '/dashboard';
-                    } else {
-                        console.error('Error saving article:', response.statusText);
-                    }
-                } catch (error) {
-                    console.error('Error saving article:', error);
-                }
-            });
-        });
-    
-        function viewArticle() {
-            const title = document.getElementById('title').value;
-            const body = document.querySelector('#editor .ql-editor').innerHTML;
-            const sttb = document.querySelector('#sttb .ql-editor').innerHTML;
-            const sptb = document.querySelector('#sptb .ql-editor').innerHTML;
-            const spbb = document.querySelector('#spbb .ql-editor').innerHTML;
-            const sbtb = document.querySelector('#sbtb .ql-editor').innerHTML;
-    
-            localStorage.setItem('articleTitle', title);
-            localStorage.setItem('articleBody', body);
-            localStorage.setItem('articleSttb', sttb);
-            localStorage.setItem('articleSptb', sptb);
-            localStorage.setItem('articleSpbb', spbb);
-            localStorage.setItem('articleSbtb', sbtb);
-    
-            window.open('/viewArticle', '_blank');
-        }
-    </script>
+    <script src="/Article/items.js"></script>
     <script src="/script.js"></script>
     
 </body>

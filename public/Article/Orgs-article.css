@@ -264,25 +264,25 @@ input,
 
 #orgStr {
     width: 100%;
-    height: 200px;
+    height: 100px;
     background-color: white;
 }
 
 #pubAgenda {
     width: 100%;
-    height: 200px;
+    height: 100px;
     background-color: white;
 }
 
 #org_hist {
     width: 100%;
-    height: 200px;
+    height: 100px;
     background-color: white;
 }
 
 #disb {
     width: 100%;
-    height: 200px;
+    height: 100px;
     background-color: white;
 }
 /* Quill Editor CSS -- Ends */
@@ -317,19 +317,23 @@ input,
 .acc_section .acc_content {
     display: none;
     color: black;
+    margin-top: 10px;
 }
 
 .acc_section .acc_content.active {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     margin-bottom: 50px;
     color: black;
 }
 
-.primary_content {
+.first_content {
     width: 100%;
+    grid-column: 1 / 2;
+    grid-row: 1;
 }
 
-.primary_content input {
+.first_content input{
     width: 90%;
     height: 40px;
     border: 1px solid #ccc;
@@ -338,9 +342,11 @@ input,
 
 .secd_content {
     width: 100%;
+    grid-column: 2 / 3;
+    grid-row: 1;
 }
 
-.secd_content input {
+.secd_content input{
     width: 100%;
     height: 40px;
     border: 1px solid #ccc;
@@ -349,8 +355,9 @@ input,
 
 .third_content {
     width: 100%;
-    height: 200px;
-    background-color: white;
+    margin-bottom: 20px;
+    grid-column: 1 / -1;
+    grid-row: 2;
 }
 
 .acc_section .acc_content.active h3 {
