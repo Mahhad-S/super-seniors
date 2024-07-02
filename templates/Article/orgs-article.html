@@ -57,7 +57,8 @@
             
                                 <div class="acc_section">
                                     <div class="acc_content">
-                                        <div class="primary_content">
+
+                                        <div class="first_content">
                                             <h4>Slogan/Motto</h4>
                                             <input class="ch_slogan_inp" type="text" id="ch_slogan_inp" name="ch_slogan_inp" placeholder="Write here...">
                                             <h6>Color, length, styling, quality</h6>
@@ -89,11 +90,12 @@
                                             <div id="pubAgenda"></div>
 
                                             <h4>History</h4>
-                                            <div id="hist"></div>
+                                            <div id="org_hist"></div>
 
                                             <h4>Disbandment</h4>
                                             <div id="disb"></div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -127,103 +129,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('articleForm');
-            const saveButton = document.getElementById('saveButton');
-        
-            saveButton.addEventListener('click', async function(event) {
-                event.preventDefault();
-        
-                const title = document.getElementById('title').value;
-                const bodyEditor = document.querySelector('#editor .ql-editor');
-                const sttbEditor = document.querySelector('#sttb .ql-editor');
-                const sptbEditor = document.querySelector('#sptb .ql-editor');
-                const spbbEditor = document.querySelector('#spbb .ql-editor');
-                const sbtbEditor = document.querySelector('#sbtb .ql-editor');
-                const orgStrEditor = document.querySelector('#orgStr .ql-editor');
-                const pubAgendaEditor = document.querySelector('#pubAgenda .ql-editor');
-                const histEditor = document.querySelector('#hist .ql-editor');
-                const disbEditor = document.querySelector('#disb .ql-editor');
-        
-                const body = bodyEditor ? bodyEditor.innerHTML : '';
-                const sttb = sttbEditor ? sttbEditor.innerHTML : '';
-                const sptb = sptbEditor ? sptbEditor.innerHTML : '';
-                const spbb = spbbEditor ? spbbEditor.innerHTML : '';
-                const sbtb = sbtbEditor ? sbtbEditor.innerHTML : '';
-                const orgStr = orgStrEditor ? orgStrEditor.innerHTML : '';
-                const pubAgenda = pubAgendaEditor ? pubAgendaEditor.innerHTML : '';
-                const hist = histEditor ? histEditor.innerHTML : '';
-                const disb = disbEditor ? disbEditor.innerHTML : '';
-        
-                const slogan = document.getElementById('ch_slogan_inp').value;
-                const denonym = document.getElementById('ch_denonym_inp').value;
-                const altName = document.getElementById('ch_altName_inp').value;
-                const foundingDate = document.getElementById('ch_fDate_inp').value;
-                const dissolutionDate = document.getElementById('ch_dDate_inp').value;
-        
-                const data = {
-                    title,
-                    body,
-                    sttb,
-                    sptb,
-                    spbb,
-                    sbtb,
-                    slogan,
-                    denonym,
-                    altName,
-                    foundingDate,
-                    dissolutionDate,
-                    orgStr,
-                    pubAgenda,
-                    hist,
-                    disb
-                };
-        
-                try {
-                    const response = await fetch('/saveArticleOrg', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(data)
-                    });
-        
-                    if (response.ok) {
-                        window.location.href = '/dashboard';
-                    } else {
-                        console.error('Error saving article:', response.statusText);
-                    }
-                } catch (error) {
-                    console.error('Error saving article:', error);
-                }
-            });
-        });
-        
-        function viewArticle() {
-            const title = document.getElementById('title').value;
-            const bodyEditor = document.querySelector('#editor .ql-editor');
-            const sttbEditor = document.querySelector('#sttb .ql-editor');
-            const sptbEditor = document.querySelector('#sptb .ql-editor');
-            const spbbEditor = document.querySelector('#spbb .ql-editor');
-            const sbtbEditor = document.querySelector('#sbtb .ql-editor');
-        
-            const body = bodyEditor ? bodyEditor.innerHTML : '';
-            const sttb = sttbEditor ? sttbEditor.innerHTML : '';
-            const sptb = sptbEditor ? sptbEditor.innerHTML : '';
-            const spbb = spbbEditor ? spbbEditor.innerHTML : '';
-            const sbtb = sbtbEditor ? sbtbEditor.innerHTML : '';
-        
-            localStorage.setItem('articleTitle', title);
-            localStorage.setItem('articleBody', body);
-            localStorage.setItem('articleSttb', sttb);
-            localStorage.setItem('articleSptb', sptb);
-            localStorage.setItem('articleSpbb', spbb);
-            localStorage.setItem('articleSbtb', sbtb);
-        
-            window.open('/viewArticle', '_blank');
-        }
-    </script>    
+    <script src="/Article/orgs.js"></script>
     <script src="/script.js"></script>
     
 </body>
