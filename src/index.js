@@ -478,9 +478,7 @@ app.get('/getArticleDetails/:category/:id', async (req, res) => {
 
 app.post('/updateArticle/:category/:id', async (req, res) => {
     const { category, id } = req.params;
-    const { title, body, sttb, sptb, spbb, sbtb, 
-            ch_hair, ch_skin, ch_eyes, ch_height, ch_weight, ch_sex, ch_gender,
-            ch_race, ch_eth, ch_nationality, ch_age} = req.body;
+    const { title, body, sttb, sptb, spbb, sbtb} = req.body;
     let collection;
 
     switch (category) {
@@ -504,9 +502,7 @@ app.post('/updateArticle/:category/:id', async (req, res) => {
     }
 
     try {
-        await collection.findByIdAndUpdate(id, { title, body, sttb, sptb, spbb, sbtb, 
-                                                ch_hair, ch_skin, ch_eyes, ch_height, ch_weight, ch_sex, ch_gender,
-                                                ch_race, ch_eth, ch_nationality, ch_age});
+        await collection.findByIdAndUpdate(id, { title, body, sttb, sptb, spbb, sbtb});
         res.redirect('/dashboard');
     } catch (error) {
         console.error("Error updating article:", error);
