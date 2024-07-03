@@ -41,17 +41,17 @@ const CharacterArticleSchema = new mongoose.Schema({
     sptb: String,
     spbb: String,
     sbtb: String,
-    ch_hair: String,
-    ch_skin: String,
-    ch_eyes: String,
-    ch_height: String,
-    ch_weight: String,
-    ch_sex: String,
-    ch_gender: String,
-    ch_race: String,
-    ch_eth: String,
-    ch_nationality:String,
-    ch_age: String
+    cHair: String,
+    cSkin: String,
+    cEye: String,
+    cHeight: String,
+    cWeight: String,
+    cSex: String,
+    cGen: String,
+    cRace: String,
+    cEth: String,
+    cNat: String,
+    cAge: String
 });
 
 const ItemsArticleSchema = new mongoose.Schema({
@@ -66,10 +66,18 @@ const ItemsArticleSchema = new mongoose.Schema({
     sttb: String,
     sptb: String,
     spbb: String,
-    sbtb: String
+    sbtb: String,
+    iPrice: String,
+    iWeight: String,
+    iSize: String,
+    iCDate: String,
+    iDDate: String,
+    iHist: String,
+    iSimb: String,
+    iInWork: String
 });
 
-LocationsArticleSchema = new mongoose.Schema({
+const LocationsArticleSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -81,7 +89,17 @@ LocationsArticleSchema = new mongoose.Schema({
     sttb: String,
     sptb: String,
     spbb: String,
-    sbtb: String
+    sbtb: String,
+    lPop: String,
+    lDen: String,
+    lAlt: String,
+    lFDate: String,
+    lDDate: String,
+    lGov: String,
+    lHist: String,
+    lDemo: String,
+    lDist: String,
+    lPOIS: String
 });
 
 const OrganizationsArticleSchema = new mongoose.Schema({
@@ -97,15 +115,15 @@ const OrganizationsArticleSchema = new mongoose.Schema({
     sptb: String,
     spbb: String,
     sbtb: String,
-    slogan: String,
-    denonym: String,
-    altName: String,
-    foundingDate: String,
-    dissolutionDate: String,
-    orgStructure: String,
-    publicAgenda: String,
-    history: String,
-    disbandment: String
+    oSlog: String,
+    oDen: String,
+    oAlt: String,
+    oFDate: String,
+    oDDate: String,
+    oStr: String,
+    oAgenda: String,
+    oHist: String,
+    oDisb: String
 });
 
 const GeneralArticleCollection = mongoose.model("GeneralArticles", GeneralArticleSchema);

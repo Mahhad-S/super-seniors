@@ -92,7 +92,7 @@ app.get("/locations-article",(req, res) => {
     res.sendFile(path.join(__dirname, '../templates/Article/locations-article.html'));
 });
 
-app.get("/Orgs-article",(req, res) => {
+app.get("/organizations-article",(req, res) => {
     res.sendFile(path.join(__dirname, '../templates/Article/orgs-article.html'));
 });
 
@@ -193,7 +193,9 @@ app.post('/saveArticleGen', async (req, res) => {
 });
 
 app.post("/saveArticleItem", async (req, res) => {
-    const { title, body, sttb, sptb, spbb, sbtb } = req.body;
+    const { title, body, sttb, sptb, spbb, sbtb,
+            iPrice, iWeight, iSize, iCDate, iDDate, iHist, iSimb, iInWork 
+        } = req.body;
 
     const newArticle = new ItemsArticleCollection({
         title,
@@ -201,7 +203,15 @@ app.post("/saveArticleItem", async (req, res) => {
         sttb,
         sptb,
         spbb,
-        sbtb
+        sbtb,
+        iPrice,
+        iWeight,
+        iSize,
+        iCDate,
+        iDDate,
+        iHist,
+        iSimb,
+        iInWork
     });
 
     try {
@@ -215,8 +225,8 @@ app.post("/saveArticleItem", async (req, res) => {
 
 app.post("/saveArticleCharacter", async (req, res) => {
     const { title, body, sttb, sptb, spbb, sbtb, 
-            ch_hair, ch_skin, ch_eyes, ch_height, ch_weight, ch_sex, ch_gender,
-            ch_race, ch_eth, ch_nationality, ch_age} = req.body;
+            cHair, cSkin, cEye, cHeight, cWeight, cSex, cGen, cRace, cEth, cNat, cAge
+    } = req.body;
 
     const newArticle = new CharacterArticleCollection({
         title,
@@ -225,17 +235,17 @@ app.post("/saveArticleCharacter", async (req, res) => {
         sptb,
         spbb,
         sbtb,
-        ch_hair, 
-        ch_skin, 
-        ch_eyes, 
-        ch_height, 
-        ch_weight, 
-        ch_sex, 
-        ch_gender,
-        ch_race, 
-        ch_eth, 
-        ch_nationality, 
-        ch_age
+        cHair,
+        cSkin,
+        cEye,
+        cHeight,
+        cWeight,
+        cSex,
+        cGen,
+        cRace,
+        cEth,
+        cNat,
+        cAge
     });
 
     try {
@@ -248,9 +258,8 @@ app.post("/saveArticleCharacter", async (req, res) => {
 });
 
 app.post("/saveArticleOrg", async (req, res) => {
-    const { 
-        title, body, sttb, sptb, spbb, sbtb, slogan, denonym, altName, 
-        foundingDate, dissolutionDate, orgStr, pubAgenda, hist, disb 
+    const { title, body, sttb, sptb, spbb, sbtb, 
+            oSlog, oDen, oAlt, oFDate, oDDate, oStr, oAgenda, oHist, oDisb
     } = req.body;
 
     const newArticle = new OrganizationsArticleCollection({
@@ -260,15 +269,15 @@ app.post("/saveArticleOrg", async (req, res) => {
         sptb,
         spbb,
         sbtb,
-        slogan,
-        denonym,
-        altName,
-        foundingDate,
-        dissolutionDate,
-        orgStructure: orgStr,
-        publicAgenda: pubAgenda,
-        history: hist,
-        disbandment: disb
+        oSlog,
+        oDen,
+        oAlt,
+        oFDate,
+        oDDate,
+        oStr,
+        oAgenda,
+        oHist,
+        oDisb
     });
 
     try {
@@ -281,7 +290,9 @@ app.post("/saveArticleOrg", async (req, res) => {
 });
 
 app.post("/saveArticleLocation", async (req, res) => {
-    const { title, body, sttb, sptb, spbb, sbtb } = req.body;
+    const { title, body, sttb, sptb, spbb, sbtb,
+            lPop, lDen, lAlt, lFDate, lDDate, lGov, lHist, lDemo, lDist, lPOIS
+    } = req.body;
 
     const newArticle = new LocationsArticleCollection({
         title,
@@ -289,7 +300,17 @@ app.post("/saveArticleLocation", async (req, res) => {
         sttb,
         sptb,
         spbb,
-        sbtb
+        sbtb,
+        lPop,
+        lDen,
+        lAlt,
+        lFDate,
+        lDDate,
+        lGov,
+        lHist,
+        lDemo,
+        lDist,
+        lPOIS
     });
 
     try {

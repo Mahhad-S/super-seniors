@@ -219,37 +219,6 @@ h1 {
     color: #8B4513; /* Darken text on hover */
 }
 
-/* Model (background) */
-.model {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0, 0, 0, 0.4); 
-}
-
-/* Model Content */
-.model-content {
-    background-color: #fefefe;
-    margin: 10% auto; 
-    padding: 20px;
-    border: 10px solid #DEB887; 
-    border-radius: 15px; 
-    background: url(/css/imgAssets/old-paper.png); 
-    background-size: cover ; 
-    background-repeat: no-repeat;
-    width: 80%; 
-    max-width: 800px; 
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
-    font-family: 'Cormorant Garamond', serif; 
-    font-weight: bold; 
-    color: #5A3825; 
-}
-
 /* The Close Button */
 .close {
     color: #aaa;
