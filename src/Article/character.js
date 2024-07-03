@@ -103,13 +103,36 @@ function viewArticle() {
     const sptb = document.querySelector('#sptb .ql-editor').innerHTML;
     const spbb = document.querySelector('#spbb .ql-editor').innerHTML;
     const sbtb = document.querySelector('#sbtb .ql-editor').innerHTML;
+    const cHair = document.getElementById('ch_hair').value;
+    const cSkin = document.getElementById('ch_skin').value;
+    const cEye = document.getElementById('ch_eyes').value;
+    const cHeight = document.getElementById('ch_height').value;
+    const cWeight = document.getElementById('ch_weight').value;
+    const cSex = document.getElementById('ch_sex').value;
+    const cGen = document.getElementById('ch_gender').value;
+    const cRace = document.getElementById('ch_race').value;
+    const cEth = document.getElementById('ch_eth').value;
+    const cNat = document.getElementById('ch_nationality').value;
+    const cAge = document.getElementById('ch_age').value;
 
+    localStorage.setItem('articleCategory', 'character');
     localStorage.setItem('articleTitle', title);
     localStorage.setItem('articleBody', body);
     localStorage.setItem('articleSttb', sttb);
     localStorage.setItem('articleSptb', sptb);
     localStorage.setItem('articleSpbb', spbb);
     localStorage.setItem('articleSbtb', sbtb);
+    localStorage.setItem('articleCHair', cHair);
+    localStorage.setItem('articleCSkin', cSkin);
+    localStorage.setItem('articleCEye', cEye);
+    localStorage.setItem('articleCHeight', cHeight);
+    localStorage.setItem('articleCWeight', cWeight);
+    localStorage.setItem('articleCSex', cSex);
+    localStorage.setItem('articleCGen', cGen);
+    localStorage.setItem('articleCRace', cRace);
+    localStorage.setItem('articleCEth', cEth);
+    localStorage.setItem('articleCNat', cNat);
+    localStorage.setItem('articleCAge', cAge);
 
     window.open('/viewArticle', '_blank');
 }

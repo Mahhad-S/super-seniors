@@ -130,13 +130,30 @@ function viewArticle() {
     const sptb = document.querySelector('#sptb .ql-editor').innerHTML;
     const spbb = document.querySelector('#spbb .ql-editor').innerHTML;
     const sbtb = document.querySelector('#sbtb .ql-editor').innerHTML;
+    const iPrice = document.getElementById('ch_price_inp').value;
+    const iWeight = document.getElementById('ch_weight_inp').value;
+    const iSize = document.getElementById('ch_size_inp').value;
+    const iCDate = document.getElementById('ch_cDate_inp').value;
+    const iDDate = document.getElementById('ch_dDate_inp').value;
+    const iHist = document.querySelector('#items_hist .ql-editor').innerHTML;
+    const iSimb = document.querySelector('#simb .ql-editor').innerHTML;
+    const iInWork = document.querySelector('#inWork .ql-editor').innerHTML;
 
+    localStorage.setItem('articleCategory', 'items');
     localStorage.setItem('articleTitle', title);
     localStorage.setItem('articleBody', body);
     localStorage.setItem('articleSttb', sttb);
     localStorage.setItem('articleSptb', sptb);
     localStorage.setItem('articleSpbb', spbb);
     localStorage.setItem('articleSbtb', sbtb);
+    localStorage.setItem('articlePrice', iPrice);
+    localStorage.setItem('articleWeight', iWeight);
+    localStorage.setItem('articleSize', iSize);
+    localStorage.setItem('articleCDate', iCDate);
+    localStorage.setItem('articleDDate', iDDate);
+    localStorage.setItem('articleHist', iHist);
+    localStorage.setItem('articleSimb', iSimb);
+    localStorage.setItem('articleInWork', iInWork);
 
     window.open('/viewArticle', '_blank');
 }

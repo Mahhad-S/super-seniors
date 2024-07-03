@@ -213,6 +213,10 @@ h1 {
 .delete-button {
     background-color: #CD853F; /* Peru, for a bit of variation */
 }
+.confirm-delete {
+    background-color: #d65e5e;
+    color: #ffffff;
+}
 
 .browser-button:hover {
     opacity: 0.9;

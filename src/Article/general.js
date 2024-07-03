@@ -75,6 +75,7 @@ function viewArticle() {
     const spbb = document.querySelector('#spbb .ql-editor').innerHTML;
     const sbtb = document.querySelector('#sbtb .ql-editor').innerHTML;
 
+    localStorage.setItem('articleCategory', 'general');
     localStorage.setItem('articleTitle', title);
     localStorage.setItem('articleBody', body);
     localStorage.setItem('articleSttb', sttb);

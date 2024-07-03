@@ -142,13 +142,32 @@ function viewArticle() {
     const sptb = document.querySelector('#sptb .ql-editor').innerHTML;
     const spbb = document.querySelector('#spbb .ql-editor').innerHTML;
     const sbtb = document.querySelector('#sbtb .ql-editor').innerHTML;
+    const oSlog = document.getElementById('ch_slogan_inp').value;
+    const oDen = document.getElementById('ch_denonym_inp').value;
+    const oAlt = document.getElementById('ch_altName_inp').value;
+    const oFDate = document.getElementById('ch_fDate_inp').value;
+    const oDDate = document.getElementById('ch_dDate_inp').value;
+    const oStr = document.querySelector('#orgStr .ql-editor').innerHTML;
+    const oAgenda = document.querySelector('#pubAgenda .ql-editor').innerHTML;
+    const oHist = document.querySelector('#org_hist .ql-editor').innerHTML;
+    const oDisb = document.querySelector('#disb .ql-editor').innerHTML;
 
+    localStorage.setItem('articleCategory', 'organizations');
     localStorage.setItem('articleTitle', title);
     localStorage.setItem('articleBody', body);
     localStorage.setItem('articleSttb', sttb);
     localStorage.setItem('articleSptb', sptb);
     localStorage.setItem('articleSpbb', spbb);
     localStorage.setItem('articleSbtb', sbtb);
+    localStorage.setItem('articleOSlog', oSlog);
+    localStorage.setItem('articleODen', oDen);
+    localStorage.setItem('articleOAlt', oAlt);
+    localStorage.setItem('articleOFDate', oFDate);
+    localStorage.setItem('articleODDate', oDDate);
+    localStorage.setItem('articleOStr', oStr);
+    localStorage.setItem('articleOAgenda', oAgenda);
+    localStorage.setItem('articleOHist', oHist);
+    localStorage.setItem('articleODisb', oDisb);
 
     window.open('/viewArticle', '_blank');
 }

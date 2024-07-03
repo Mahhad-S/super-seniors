@@ -163,12 +163,64 @@
                         const category = this.getAttribute('data-category');
                         const response = await fetch(`/getArticle/${category}/${id}`);
                         const article = await response.json();
+
+                        // Clear local storage
+                        localStorage.clear();
+
+                        // Set common article data
                         localStorage.setItem('articleTitle', article.title);
                         localStorage.setItem('articleBody', article.body);
                         localStorage.setItem('articleSttb', article.sttb || '');
                         localStorage.setItem('articleSptb', article.sptb || '');
                         localStorage.setItem('articleSpbb', article.spbb || '');
                         localStorage.setItem('articleSbtb', article.sbtb || '');
+
+                        // Set category-specific data and open the article
+                        localStorage.setItem('articleCategory', category);
+                        if (category === 'character') {
+                            localStorage.setItem('articleCHair', article.cHair || '');
+                            localStorage.setItem('articleCSkin', article.cSkin || '');
+                            localStorage.setItem('articleCEye', article.cEye || '');
+                            localStorage.setItem('articleCHeight', article.cHeight || '');
+                            localStorage.setItem('articleCWeight', article.cWeight || '');
+                            localStorage.setItem('articleCSex', article.cSex || '');
+                            localStorage.setItem('articleCGen', article.cGen || '');
+                            localStorage.setItem('articleCRace', article.cRace || '');
+                            localStorage.setItem('articleCEth', article.cEth || '');
+                            localStorage.setItem('articleCNat', article.cNat || '');
+                            localStorage.setItem('articleCAge', article.cAge || '');
+                        } else if (category === 'items') {
+                            localStorage.setItem('articleIPrice', article.iPrice || '');
+                            localStorage.setItem('articleIWeight', article.iWeight || '');
+                            localStorage.setItem('articleISize', article.iSize || '');
+                            localStorage.setItem('articleICDate', article.iCDate || '');
+                            localStorage.setItem('articleIDDate', article.iDDate || '');
+                            localStorage.setItem('articleIHist', article.iHist || '');
+                            localStorage.setItem('articleISimb', article.iSimb || '');
+                            localStorage.setItem('articleIInWork', article.iInWork || '');
+                        } else if (category === 'locations') {
+                            localStorage.setItem('articleLPop', article.lPop || '');
+                            localStorage.setItem('articleLDen', article.lDen || '');
+                            localStorage.setItem('articleLAlt', article.lAlt || '');
+                            localStorage.setItem('articleLFDate', article.lFDate || '');
+                            localStorage.setItem('articleLDDate', article.lDDate || '');
+                            localStorage.setItem('articleLGov', article.lGov || '');
+                            localStorage.setItem('articleLHist', article.lHist || '');
+                            localStorage.setItem('articleLDemo', article.lDemo || '');
+                            localStorage.setItem('articleLDist', article.lDist || '');
+                            localStorage.setItem('articleLPOIS', article.lPOIS || '');
+                        } else if (category === 'organizations') {
+                            localStorage.setItem('articleOSlog', article.oSlog || '');
+                            localStorage.setItem('articleODen', article.oDen || '');
+                            localStorage.setItem('articleOAlt', article.oAlt || '');
+                            localStorage.setItem('articleOFDate', article.oFDate || '');
+                            localStorage.setItem('articleODDate', article.oDDate || '');
+                            localStorage.setItem('articleOStr', article.oStr || '');
+                            localStorage.setItem('articleOAgenda', article.oAgenda || '');
+                            localStorage.setItem('articleOHist', article.oHist || '');
+                            localStorage.setItem('articleODisb', article.oDisb || '');
+                        }
+
                         window.open('/viewArticle', '_blank');
                     });
                 });

@@ -96,6 +96,10 @@ app.get("/organizations-article",(req, res) => {
     res.sendFile(path.join(__dirname, '../templates/Article/orgs-article.html'));
 });
 
+app.get("/orgs-article", (req, res) => {
+    res.sendFile(path.join(__dirname, '../templates/Article/orgs-article.html'));
+});
+
 app.get("/items-article",(req, res) => {
     res.sendFile(path.join(__dirname, '../templates/Article/items-article.html'));
 });

@@ -158,13 +158,32 @@ function viewArticle() {
     const sptb = document.querySelector('#sptb .ql-editor').innerHTML;
     const spbb = document.querySelector('#spbb .ql-editor').innerHTML;
     const sbtb = document.querySelector('#sbtb .ql-editor').innerHTML;
+    const lPop = document.getElementById('ch_pop_inp').value;
+    const lDen = document.getElementById('ch_denonym_inp').value;
+    const lAlt = document.getElementById('ch_altName_inp').value;
+    const lFDate = document.getElementById('ch_fDate_inp').value;
+    const lDDate = document.getElementById('ch_dDate_inp').value;
+    const lGov = document.querySelector('#gov .ql-editor').innerHTML;
+    const lHist = document.querySelector('#loc_hist .ql-editor').innerHTML;
+    const lDemo = document.querySelector('#demo .ql-editor').innerHTML;
+    const lDist = document.querySelector('#dist .ql-editor').innerHTML;
 
+    localStorage.setItem('articleCategory', 'locations');
     localStorage.setItem('articleTitle', title);
     localStorage.setItem('articleBody', body);
     localStorage.setItem('articleSttb', sttb);
     localStorage.setItem('articleSptb', sptb);
     localStorage.setItem('articleSpbb', spbb);
     localStorage.setItem('articleSbtb', sbtb);
+    localStorage.setItem('articleLPop', lPop);
+    localStorage.setItem('articleLDen', lDen);
+    localStorage.setItem('articleLAlt', lAlt);
+    localStorage.setItem('articleLFDate', lFDate);
+    localStorage.setItem('articleLDDate', lDDate);
+    localStorage.setItem('articleLGov', lGov);
+    localStorage.setItem('articleLHist', lHist);
+    localStorage.setItem('articleLDemo', lDemo);
+    localStorage.setItem('articleLDist', lDist);
 
     window.open('/viewArticle', '_blank');
 }
