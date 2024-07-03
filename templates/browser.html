@@ -180,6 +180,27 @@
                         window.location.href = `/${category}-article?id=${id}`;
                     });
                 });
+
+                document.querySelectorAll('.delete-button').forEach(button => {
+                    button.addEventListener('click', async function () {
+                        const id = this.getAttribute('data-id');
+                        const category = this.getAttribute('data-category');
+                        if (confirm('Are you sure you want to delete this article?')) {
+                            try {
+                                const response = await fetch(`/deleteArticle/${category}/${id}`, {
+                                    method: 'DELETE'
+                                });
+                                if (response.ok) {
+                                    loadAllArticles();
+                                } else {
+                                    console.error('Delete request failed:', response.statusText);
+                                }
+                            } catch (error) {
+                                console.error('Error deleting article:', error);
+                            }
+                        }
+                    });
+                });                
             }
         });
     </script>
