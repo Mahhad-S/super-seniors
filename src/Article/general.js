@@ -1,3 +1,58 @@
+var editorQuill = new Quill('#editor', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
+    theme: 'snow'
+});
+
+var sttbQuill = new Quill('#sttb', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
+    theme: 'snow'
+});
+
+var sptbQuill = new Quill('#sptb', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
+    theme: 'snow'
+});
+
+var spbbQuill = new Quill('#spbb', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
+    theme: 'snow'
+});
+
+var sbtbQuill = new Quill('#sbtb', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+      },
+    theme: 'snow'
+});
+
 document.addEventListener('DOMContentLoaded', async function() {
     const urlParams = new URLSearchParams(window.location.search);
     const articleId = urlParams.get('id');

@@ -120,7 +120,7 @@ a {
 
 /* Main Content Styles */
 .main-content {
-    background-image: url(/css/imgAssets/old-paper.png);
+    /*background-image: url(/css/imgAssets/old-paper.png);*/
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -128,7 +128,7 @@ a {
     margin-right: 70px;
     margin-top: 0;
     flex: 1;
-    background-color: #ffdb8d;
+    /*background-color: #ffdb8d;*/ background-color: #575757;
     padding: 20px 50px;
     /*adjust for page sizing*/
     overflow: auto;

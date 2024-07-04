@@ -101,7 +101,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     width: 800px;
-    height: 300%;
+    height: 270%;
     backdrop-filter: blur(5px);
     pointer-events: none;
     z-index: 1;

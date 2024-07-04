@@ -92,7 +92,7 @@ app.get("/locations-article",(req, res) => {
     res.sendFile(path.join(__dirname, '../templates/Article/locations-article.html'));
 });
 
-app.get("/organizations-article",(req, res) => {
+app.get("/orgs-article",(req, res) => {
     res.sendFile(path.join(__dirname, '../templates/Article/orgs-article.html'));
 });
 
