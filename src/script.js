@@ -2,7 +2,7 @@ let lastScrollTop = 0;
         const navbar = document.querySelector('.navbar');
     
         window.addEventListener('scroll', function() {
-            let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            let currentScroll = window.scrollY || document.documentElement.scrollTop;
             if (currentScroll > lastScrollTop) {
                 // Scrolling down
                 navbar.classList.add('navbar-hidden');
@@ -99,61 +99,3 @@ const quill = new Quill('#editor', {
   });
 */
 
-/* Quill Text Editor and Functions -- Starts  */
-    var editorQuill = new Quill('#editor', {
-        modules: {
-            toolbar: [
-                [{ header: [1, 2, 3, false] }],
-                ['bold', 'italic', 'underline', 'strike', ],
-                [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-            ],
-          },
-        theme: 'snow'
-    });
-    
-    var sttbQuill = new Quill('#sttb', {
-        modules: {
-            toolbar: [
-                [{ header: [1, 2, 3, false] }],
-                ['bold', 'italic', 'underline', 'strike', ],
-                [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-            ],
-          },
-        theme: 'snow'
-    });
-    
-    var sptbQuill = new Quill('#sptb', {
-        modules: {
-            toolbar: [
-                [{ header: [1, 2, 3, false] }],
-                ['bold', 'italic', 'underline', 'strike', ],
-                [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-            ],
-          },
-        theme: 'snow'
-    });
-    
-    var spbbQuill = new Quill('#spbb', {
-        modules: {
-            toolbar: [
-                [{ header: [1, 2, 3, false] }],
-                ['bold', 'italic', 'underline', 'strike', ],
-                [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-            ],
-          },
-        theme: 'snow'
-    });
-    
-    var sbtbQuill = new Quill('#sbtb', {
-        modules: {
-            toolbar: [
-                [{ header: [1, 2, 3, false] }],
-                ['bold', 'italic', 'underline', 'strike', ],
-                [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
-            ],
-          },
-        theme: 'snow'
-    });
-
-
-/* Quill Text Editor and Functions -- Ends  */

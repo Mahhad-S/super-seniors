@@ -1,3 +1,58 @@
+var editorQuill = new Quill('#editor', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+        },
+    theme: 'snow'
+});
+
+var sttbQuill = new Quill('#sttb', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+        },
+    theme: 'snow'
+});
+
+var sptbQuill = new Quill('#sptb', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+        },
+    theme: 'snow'
+});
+
+var spbbQuill = new Quill('#spbb', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+        },
+    theme: 'snow'
+});
+
+var sbtbQuill = new Quill('#sbtb', {
+    modules: {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', ],
+            [{ list: 'ordered' }, { list: 'bullet' }, 'link',],
+        ],
+        },
+    theme: 'snow'
+});
+
 var goveQuill = new Quill('#gov', {
     modules: {
         toolbar: [
@@ -132,7 +187,7 @@ document.getElementById('saveButton').addEventListener('click', async function(e
             });
         } else {
             // Create new article
-            response = await fetch(`/saveArticleLoc`, {
+            response = await fetch(`/saveArticleLocation`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -1,6 +1,4 @@
-/* dashboard.css */
 @import url("https://fonts.googleapis.com/css?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap");
 * {
     margin: 0;
     padding: 0;
@@ -9,16 +7,16 @@
 }
 
 body.tab-active-bg {
-    background-position: center; /* Keep the background image centered */
+    background-position: center;
 }
-/* General Styles */
+
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     background-image: url(/css/imgAssets/background-2.png);
-    background-size: cover; /* Cover the entire background */
-    background-position: center; /* Center the background image */
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
 }
 
@@ -27,7 +25,6 @@ a {
     color: inherit;
 }
 
-/* Navbar Styles */
 .navbar{
     position: fixed;
     top: 0;
@@ -39,11 +36,11 @@ a {
     padding: 10px 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    transition: top 0.3s; /* Add this line for smooth transitions */
+    transition: top 0.3s;
 }
 
 .navbar-hidden {
-    top: -70px; /* Adjust based on the actual height of your navbar */
+    top: -70px;
 }
 
 .navbar-logo {
@@ -81,7 +78,6 @@ a {
     background-color: #555;
 }
 
-/* Container Styles */
 .container {
     display: flex;
     flex: 1;
@@ -89,11 +85,9 @@ a {
     margin-top: 70px;
     background-color: rgba(167, 167, 167, 0.9);
     overflow: hidden;
-    /*adjust for page sizing*/
-    min-width: 300px; /* Set a minimum width for the container */
+    min-width: 300px;
 }
 
-/* Sidebar Styles */
 .sidebar {
     width: 200px;
     background-color: #333;
@@ -118,19 +112,13 @@ a {
     background-color: #555;
 }
 
-/* Main Content Styles */
 .main-content {
-    background-image: url(/css/imgAssets/old-paper.png);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: #575757;
     margin-left: 70px;
     margin-right: 70px;
     margin-top: 0;
     flex: 1;
-    background-color: #ffdb8d;
     padding: 20px 50px;
-    /*adjust for page sizing*/
     overflow: auto;
     margin: 0 70px;
     min-width: calc(300px - 140px);
@@ -141,16 +129,50 @@ h1 {
     color: #333;
 }
 
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+#search-bar {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #333;
+    border-right: none; /* Makes it blend with the button */
+    border-radius: 5px 0 0 5px; /* Rounded corners on the left side */
+    outline: none;
+    width: 300px; /* Adjust based on preference */
+    margin-bottom: 20px;
+}
+
+#search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0; /* Rounded corners on the right side */
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+#search-button:hover {
+    background-color: #555;
+}
+
 .browser-content {
-    color: #000; /* Adjusted for better contrast, consider even darker shades if needed */
-    font-size: 22px; /* Slightly larger for better visibility */
-    font-weight: bold; /* Keeps it bold for emphasis */
+    color: #f3f3f3;
+    font-size: 22px;
+    font-weight: bold;
     padding: 20px;
     width: 100%;
     box-sizing: border-box;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Subtle shadow for depth */
-    line-height: 1.6; /* Improved line spacing for readability */
-    font-family: 'Arial', sans-serif; /* A readable and widely supported font */
+    line-height: 1.6;
+    font-family: 'Arial', sans-serif;
 }
 
 .category {
@@ -160,59 +182,58 @@ h1 {
 .category-toggle {
     cursor: pointer;
 }
+
 .category:before {
-    content: '▶'; /* Default arrow is pointing right */
+    content: '▶';
     position: absolute;
     top: 50%;
     left: 5px;
     transform: translateY(-50%);
-    transition: transform 0.3s ease; /* Smooth transition for arrow rotation */
+    transition: transform 0.3s ease;
 }
 
 .category.expanded:before {
-    transform: translateY(-50%) rotate(90deg); /* Rotated arrow when category is expanded */
+    transform: translateY(-50%) rotate(90deg);
 }
-
 
 .article {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 5px 20px;
-    color: #000000; /* Deep brown, resembling old ink */
-    font-family: 'Times New Roman', serif; /* Serif font for a vintage look */
-    font-size: 20px; /* Slightly larger for readability */
-    font-weight: normal; /* Adjust as needed */
-    text-shadow: 1px 1px 1px #FFF8DC; /* Subtle shadow for depth */
-    line-height: 1.6; /* Improved line spacing */
+    color: #f3f3f3;
+    font-family: 'Times New Roman', serif;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.6;
 }
 
 .browser-button {
     padding: 8px 15px;
     font-size: 16px;
-    border: 1px solid #8B4513; /* Styled border */
+    border: 1px solid #8B4513;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
     border-radius: 5px;
-    background-color: #F4A460; /* Sandy brown */
-    color: #5A3825; /* Darker brown for text */
-    font-family: 'Cormorant Garamond', serif; /* Font that mimics old print */
+    background-color: #F4A460;
+    color: #5A3825;
+    font-family: 'Cormorant Garamond', serif;
     font-weight: bold;
-    text-shadow: 1px 1px 5px #000000; /* Subtle text shadow for depth */
-    margin-right: 7px; /* Space between buttons */
+    margin-right: 7px;
 }
 
 .view-button {
-    background-color: #F4A460; /* Consistent with the theme */
+    background-color: #F4A460;
 }
 
 .edit-button {
-    background-color: #DEB887; /* Burlywood, slightly lighter */
+    background-color: #DEB887;
 }
 
 .delete-button {
-    background-color: #CD853F; /* Peru, for a bit of variation */
+    background-color: #CD853F;
 }
+
 .confirm-delete {
     background-color: #d65e5e;
     color: #ffffff;
@@ -220,10 +241,9 @@ h1 {
 
 .browser-button:hover {
     opacity: 0.9;
-    color: #8B4513; /* Darken text on hover */
+    color: #8B4513;
 }
 
-/* The Close Button */
 .close {
     color: #aaa;
     float: right;
@@ -238,23 +258,6 @@ h1 {
     cursor: pointer;
 }
 
-
-/* The Close Button */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Footer Styles */
 .footer {
     position: fixed;
     bottom: 0;
@@ -269,11 +272,10 @@ h1 {
     font-size: 14px;
 }
 
-
 @media (max-width: 768px) {
     .main-content {
         padding: 10px 20px;
-        margin: 0 20px 0 20px; /* Adjust horizontal margin */
+        margin: 0 20px 0 20px;
     }
 
     .title-input, .article-content {

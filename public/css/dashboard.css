@@ -86,6 +86,7 @@ body {
 }
 .container-two{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between; 
     flex: 1;
     width: 100%;
@@ -176,4 +177,11 @@ h1 {
     font-style: normal;
     text-align: center;
     color: #fff;
+}
+
+@media (max-width: 268px) {
+    .content-center {
+        padding: 10px 20px;
+        margin: 0 20px 0 20px; /* Adjust horizontal margin */
+    }
 }
