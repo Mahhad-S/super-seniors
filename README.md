@@ -9,8 +9,9 @@ so that they may have a centralized location to store any and all information re
 worldbuilding
 
 ### To Start the Local Server
+
 To start the local server, input the following command into your terminal: **nodemon src/index.js**
-Then on your web browser, input the URL: **http://localhost:3000**
+Then on your web browser, input the URL: **<http://localhost:3000>**
 
 If nodemon is not present on your desktop, you can install it using: **npm i -g nodemon**
 
